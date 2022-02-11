@@ -1,0 +1,261 @@
+.components-base-control__label {
+	font-weight: 600;
+}
+
+.stax_meta_panel_meta {
+	> .components-base-control__field {
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+
+		> label {
+			font-weight: normal;
+			margin: 0;
+		}
+	}
+}
+
+.stax-meta-radio-image {
+	input[type="radio"] {
+		display: none;
+
+		+ label div {
+			border: 2px solid transparent;
+			border-radius: 6px;
+			overflow: hidden;
+		}
+
+		+ label img {
+			display: block;
+		}
+
+		&:checked + label div {
+			border-color: var(--wp-admin-theme-color);
+		}
+	}
+
+	> .components-base-control__field {
+		> .components-base-control {
+			margin: -2.5px;
+		}
+	}
+
+	.components-base-control__field {
+		display: inherit;
+
+		.components-base-control__field {
+			display: grid;
+			grid-template-columns: 25% 25% 25% 25%;
+		}
+	}
+
+	.components-radio-control__option {
+		margin: 2.5px;
+
+		label {
+			position: relative;
+			margin-bottom: 26px;
+		}
+
+		.option-label {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			margin-top: 5px;
+			font-size: 12px;
+			color: #a8a8a8;
+			text-align: center;
+		}
+	}
+}
+
+.stax-meta-control {
+	margin-bottom: 10px;
+
+	&.stax-meta-checkbox {
+		margin-bottom: 20px;
+	}
+}
+
+.stax-meta-button-group .components-button-group {
+	width: 100%;
+	display: flex;
+
+	.components-button {
+		border-color: #cccccc;
+		color: #555555;
+		stroke: #555555;
+		max-height: 30px;
+		flex: 1;
+		justify-content: center;
+
+		&.is-primary {
+			color: #ffffff;
+			stroke: #ffffff;
+			border-color: var(--wp-admin-theme-color);
+		}
+
+		&.is-secondary:not(:disabled):not([aria-disabled="true"]):hover {
+			color: #555555;
+			border-color: #cccccc;
+		}
+	}
+}
+
+.ti-sortable-item-area {
+	z-index: 999999;
+	&.sortable-ghost {
+		color: #ccc;
+	}
+
+	&:not(:first-of-type):not(:last-of-type) {
+		.ti-sortable-item {
+			margin-top: -1px;
+			margin-bottom: -1px;
+		}
+	}
+
+	.ti-sortable-item {
+		display: flex;
+		background: #ffffff;
+		border: 1px solid #d5dadf;
+
+		.ti-sortable-handle {
+			display: flex;
+			justify-content: center;
+			align-self: center;
+			flex-basis: 20%;
+			cursor: move;
+
+			.components-button {
+				color: #bfbfbf;
+
+				&:hover,
+				&:focus {
+					color: #bfbfbf;
+					box-shadow: none;
+					background: none;
+				}
+			}
+		}
+
+		.ti-sortable-item-label {
+			cursor: default;
+			flex-basis: 60%;
+			display: flex;
+			align-items: center;
+
+			&::selection {
+				background: none;
+			}
+		}
+
+		.ti-sortable-item-toggle {
+			height: auto;
+			flex-basis: 20%;
+			justify-content: center;
+			padding: 10px 5px;
+			border-radius: 0;
+
+			&.is-tertiary:hover,
+			&.is-tertiary:focus {
+				box-shadow: none;
+			}
+
+			svg {
+				fill: #0073aa;
+			}
+		}
+
+		&.hidden {
+			display: flex;
+			color: #e5e5e5;
+
+			.ti-sortable-handle {
+				.components-button {
+					color: #e5e5e5;
+
+					&:hover,
+					&:focus {
+						color: #e5e5e5;
+					}
+				}
+			}
+
+			.ti-sortable-item-label {
+				color: #e5e5e5;
+			}
+
+			.ti-sortable-item-toggle {
+				span {
+					color: #e5e5e5;
+				}
+				svg {
+					fill: #e5e5e5;
+				}
+			}
+		}
+	}
+}
+
+.stax-meta-checkbox .components-base-control__field {
+	margin-bottom: 20px;
+}
+
+.stx-reset-all .components-base-control__field {
+	display: flex;
+
+	label {
+		flex: 1;
+		margin: 0;
+		align-self: center;
+	}
+}
+
+.components-button.has-icon[aria-label^="Stax"] {
+	svg * {
+		fill: #000000;
+	}
+}
+
+.components-button.is-pressed.has-icon[aria-label^="Stax"] {
+	background: var(--wp-admin-theme-color);
+
+	svg * {
+		fill: #ffffff;
+	}
+}
+
+.stx-meta-notice-wrapper {
+	h4 {
+		font-family: Helvetica, sans-serif;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 20px;
+		color: #1e1e1f;
+	}
+
+	svg {
+		background: var(--wp-admin-theme-color);
+		padding: 0 6px;
+		fill: #fff;
+		width: 9px;
+		display: inline;
+		vertical-align: middle;
+		border-radius: 2px;
+		margin: 0 4px;
+	}
+}
+
+.stax-meta-sortable-items {
+	margin-bottom: 0;
+}
+
+.disabled-items {
+	.ti-sortable-item {
+		margin-top: -1px;
+		margin-bottom: -1px;
+	}
+}

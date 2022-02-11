@@ -1,0 +1,61 @@
+.customize-control-interface-tabs {
+	display: list-item !important;
+}
+
+.stax-tabs-control {
+	display: table;
+	width: -webkit-calc(100% + 28px);
+	width: calc(100% + 28px);
+	margin: -15px 0 0 -12px;
+	border-bottom: 1px solid #ddd;
+	table-layout: fixed;
+}
+
+.stax-tabs-control .stax-customizer-tab {
+	display: table-cell;
+	width: 100%;
+	border-right: 1px solid #ddd;
+	text-align: center;
+}
+
+.stax-tabs-control .stax-customizer-tab:last-child {
+	border-right: none;
+}
+
+.stax-tabs-control .stax-customizer-tab label {
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+	color: #333;
+	background: #fff;
+	box-shadow: inset 0 0 0 0 #0085ba;
+	font-weight: 600;
+	text-decoration: none;
+	text-transform: capitalize;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.stax-tabs-control .stax-customizer-tab label i {
+	margin-right: 4px;
+	color: #333;
+}
+
+.stax-tabs-control .stax-customizer-tab label:hover {
+	color: #0085ba;
+	background: #f3f3f5;
+}
+
+.stax-tabs-control .stax-customizer-tab label:hover i {
+	color: #333;
+}
+
+.stax-tabs-control .stax-customizer-tab.active label {
+	color: #0085ba;
+	background-color: #fff;
+	box-shadow: inset 0 -3px 0 0 #0085ba;
+}
+
+.stax-tabs-control input[type="radio"] {
+	display: none !important;
+}

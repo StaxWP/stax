@@ -1,0 +1,31 @@
+.stx-nav-wrap ul.primary-menu-ul > {
+	li i {
+		margin-top: 0;
+		font-size: inherit;
+		line-height: inherit;
+		width: auto;
+		height: auto;
+	}
+}
+
+.builder-item--nav-icon {
+	// --padding: 8px 18px;
+	// --margin: 0;
+}
+
+.builder-item--nav-icon {
+	// --color: var(--stx-text-color);
+	--borderRadius: var(--border-radius);
+	--borderWidth: 0;
+}
+
+.builder-item--header_search_responsive {
+	--iconSize: 14px;
+	--formFieldFontSize: 14px;
+	--formFieldBorderWidth: 2px;
+	--formFieldBorderRadius: var(--border-radius, 3px);
+	--height: 40px;
+	--padding: 8px 18px;
+	--margin: 0;
+}
+

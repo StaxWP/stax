@@ -1,0 +1,8 @@
+@import "../vars";
+
+.item--inner.builder-item--footer_copyright {
+
+	font-weight: var(--fontWeight, var(--bodyFontWeight));
+	line-height: var(--lineHeight, var(--bodyLineHeight));
+
+}

@@ -1,0 +1,97 @@
+@font-face {
+	font-family: 'stax';
+	src:  url('stax.eot?ue0583');
+	src:  url('stax.eot?ue0583#iefix') format('embedded-opentype'),
+	url('stax.ttf?ue0583') format('truetype'),
+	url('stax.woff?ue0583') format('woff'),
+	url('stax.svg?ue0583#stax') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'stax' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-facebook:before {
+	content: "\e91e";
+}
+.icon-instagram:before {
+	content: "\e92e";
+}
+.icon-linkedin:before {
+	content: "\e91f";
+}
+.icon-pinterest:before {
+	content: "\e920";
+}
+.icon-twitter:before {
+	content: "\e921";
+}
+.icon-whatsapp:before {
+	content: "\e92f";
+}
+.icon-youtube:before {
+	content: "\e930";
+}
+.icon-bookmark-solid:before {
+	content: "\e900";
+}
+.icon-bookmark:before {
+	content: "\e901";
+}
+.icon-cloud-upload:before {
+	content: "\e915";
+}
+.icon-comment-lines:before {
+	content: "\e926";
+}
+.icon-comments:before {
+	content: "\e927";
+}
+.icon-ellipsis-h:before {
+	content: "\e90b";
+}
+.icon-ellipsis-v:before {
+	content: "\e90c";
+}
+.icon-images:before {
+	content: "\e93a";
+}
+.icon-long-arrow-left:before {
+	content: "\e90e";
+}
+.icon-long-arrow-right:before {
+	content: "\e90f";
+}
+.icon-moon-stars:before {
+	content: "\e918";
+}
+.icon-play:before {
+	content: "\e936";
+}
+.icon-quote-right:before {
+	content: "\e912";
+}
+.icon-search:before {
+	content: "\e923";
+}
+.icon-loading:before {
+	content: "\e913";
+}
+.icon-close:before {
+	content: "\e91c";
+}

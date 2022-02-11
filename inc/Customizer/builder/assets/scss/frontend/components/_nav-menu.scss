@@ -1,0 +1,176 @@
+@import "../vars";
+
+%show-dropdown {
+	opacity: 1;
+	visibility: visible;
+}
+
+.caret {
+	transition: 0.3s ease;
+}
+
+.dd-title {
+	flex-grow: var(--flexG);
+}
+
+.builder-item--primary-menu {
+	--fontSize: var(--bodyFontSize);
+}
+
+.builder-item .item--inner.builder-item--primary-menu {
+	font-family: var(--fontFamily);
+	font-weight: var(--fontWeight);
+}
+
+.nav-ul {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 calc(var(--spacing) / 2 * -1);
+	padding: 0 0 0 var(--listPad, 0);
+
+	li a {
+		display: flex;
+		align-items: center;
+		min-height: var(--height);
+		position: relative;
+	}
+
+	a:hover {
+		color: var(--hoverColor);
+	}
+
+	> li {
+		margin: 0 calc(var(--spacing) / 2);
+	}
+
+	li {
+		display: block;
+		position: relative;
+
+		&.current-menu-item > a,
+		&.current_page_item > a {
+			color: var(--activeColor);
+		}
+
+		&:hover > .sub-menu,
+		&:focus-within > .sub-menu {
+			@extend %show-dropdown;
+		}
+	}
+
+	.caret {
+		display: flex;
+		margin-left: 5px;
+		justify-content: center;
+
+		svg {
+			fill: currentColor;
+			width: 0.5em;
+			height: 0.5em;
+		}
+	}
+
+	.sub-menu {
+		background-color: var(--bgColor);
+		z-index: 100;
+		position: absolute;
+		top: 100%;
+		box-shadow: $soft-box-shadow;
+		visibility: hidden;
+		opacity: 0;
+		padding-left: 0;
+
+		li {
+			min-width: 150px;
+		}
+
+		a {
+			padding: $spacing-xxs $spacing-md;
+			white-space: nowrap;
+			display: flex;
+		}
+
+		.sub-menu {
+			left: 100%;
+			top: 0;
+			right: unset;
+		}
+		.caret-wrap {
+			margin-left: auto;
+		}
+	}
+}
+
+.sub-menu.dropdown-open {
+	@extend %show-dropdown;
+}
+
+.header-menu-sidebar {
+	.stx--nav-wrap {
+		width: 100%;
+	}
+
+	.nav-ul {
+		--spacing: 0;
+		flex-direction: column;
+		width: 100%;
+
+		li {
+			width: 100%;
+			&:focus-within > .sub-menu:not(.dropdown-open) {
+				visibility: hidden;
+			}
+		}
+	
+
+		a {
+			padding: $spacing-sm 0;
+			white-space: unset;
+		}
+
+		.caret svg {
+			width: 1em;
+			height: 1em;
+		}
+
+		.caret-wrap {
+			margin: -15px 0;
+			padding: 15px 15px 15px 5px;
+
+			&.dropdown-open .caret {
+				transform: rotateX(180deg);
+			}
+		}
+
+		.sub-menu {
+			left: unset !important;
+			top: unset !important;
+			right: unset !important;
+			background: unset;
+			position: relative;
+			max-width: 100%;
+			box-shadow: none;
+			max-height: 0;
+			overflow: hidden;
+			padding-left: 20px;
+			visibility: hidden;
+
+			&.dropdown-open {
+				max-height: 1300px;
+				@extend %show-dropdown;
+			}
+		}
+
+		&.dropdowns-expanded {
+			> li > .sub-menu {
+				max-height: 1200px;
+			}
+
+			> li > a {
+				.caret-wrap {
+					display: none;
+				}
+			}
+		}
+	}
+}

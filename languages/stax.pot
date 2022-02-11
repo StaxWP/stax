@@ -1,0 +1,2078 @@
+# Copyright (C) 2021 Stax
+# This file is distributed under the same license as the Stax package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Stax\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: StaxWP\n"
+"Report-Msgid-Bugs-To: Stax\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: comments.php:45
+msgid "People reacted to this story."
+msgstr ""
+
+#: comments.php:46
+msgid "No Comments"
+msgstr ""
+
+#: comments.php:51
+msgid "Leave a comment"
+msgstr ""
+
+#: header.php:44
+msgid "Skip to content"
+msgstr ""
+
+#. translators: 1: required WP version number, 2: required PHP version number, 3: available WP version number, 4: available PHP version number
+#: inc/back-compat.php:25
+msgid "Stax requires at least WordPress version %1$s and PHP version %2$s. You are running versions %3$s and %3$s respectively. Please update and try again."
+msgstr ""
+
+#. translators: 1: required WP version number, 2: available WP version number
+#: inc/back-compat.php:30
+msgid "Stax requires at least WordPress version %1$s. You are running version %2$s. Please update and try again."
+msgstr ""
+
+#. translators: 1: required PHP version number, 2: available PHP version number
+#: inc/back-compat.php:35
+msgid "Stax requires at least PHP version %1$s. You are running version %2$s. Please update and try again."
+msgstr ""
+
+#: page-templates/full-large.php:3
+msgid "Full Width - Large container"
+msgstr ""
+
+#: page-templates/full-small.php:3
+msgid "Full Width - Small container"
+msgstr ""
+
+#: page-templates/left-right-sidebars.php:3
+msgid "Left & Right Sidebars"
+msgstr ""
+
+#: page-templates/left-sidebar.php:3
+msgid "Left Sidebar"
+msgstr ""
+
+#: page-templates/right-sidebar.php:3
+msgid "Right Sidebar"
+msgstr ""
+
+#: page-templates/two-left-sidebars.php:3
+msgid "Two Left Sidebars"
+msgstr ""
+
+#: page-templates/two-right-sidebars.php:3
+msgid "Two Right Sidebars"
+msgstr ""
+
+#: template-parts/header.php:36
+msgid "Toggle navigation"
+msgstr ""
+
+#: template-parts/header.php:63
+msgid "What do you want to find?"
+msgstr ""
+
+#: template-parts/header.php:64, inc/Config/Customizer/HeaderOptions.php:83
+msgid "Search"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:178
+msgid "Browse:"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:179
+msgid "Home"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:180
+msgid "404 Not Found"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:181
+msgid "Archives"
+msgstr ""
+
+#. translators: %s is the search query. The HTML entities are opening and closing curly quotes.
+#: inc/Breadcrumb/Trail.php:183
+msgid "Search results for &#8220;%s&#8221;"
+msgstr ""
+
+#. translators: %s is the page number.
+#: inc/Breadcrumb/Trail.php:185
+msgid "Page %s"
+msgstr ""
+
+#. translators: Minute archive title. %s is the minute time format.
+#: inc/Breadcrumb/Trail.php:187
+msgid "Minute %s"
+msgstr ""
+
+#. translators: Weekly archive title. %s is the week date format.
+#: inc/Breadcrumb/Trail.php:189
+msgid "Week %s"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:772
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:790
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:808
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:825, inc/Breadcrumb/Trail.php:854, inc/Breadcrumb/Trail.php:891, inc/Breadcrumb/Trail.php:918
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:826, inc/Breadcrumb/Trail.php:892
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:827
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: inc/Breadcrumb/Trail.php:855
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: inc/Comments/Component.php:169
+msgid "New comment(s)"
+msgstr ""
+
+#: inc/Comments/Component.php:238
+msgid "Cancel reply"
+msgstr ""
+
+#: inc/Comments/Component.php:241
+msgid "Post comment"
+msgstr ""
+
+#: inc/Comments/Component.php:260
+msgid "Write a response"
+msgstr ""
+
+#: inc/Comments/Component.php:261
+msgid "Write a response to %s"
+msgstr ""
+
+#: inc/Comments/Component.php:374
+msgid "Edit"
+msgstr ""
+
+#: inc/Comments/Component.php:378
+msgid "Report"
+msgstr ""
+
+#: inc/Comments/Component.php:390
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/Comments/Component.php:404
+msgid "Reply"
+msgstr ""
+
+#: inc/Comments/Component.php:405
+msgid "Log in to reply."
+msgstr ""
+
+#: inc/Config/Component.php:84
+msgid "No sidebar"
+msgstr ""
+
+#: inc/Config/Component.php:88
+msgid "Left sidebar"
+msgstr ""
+
+#: inc/Config/Component.php:92
+msgid "Right sidebar"
+msgstr ""
+
+#: inc/Config/Component.php:96
+msgid "2 left sidebars"
+msgstr ""
+
+#: inc/Config/Component.php:100
+msgid "Left & right sidebars"
+msgstr ""
+
+#: inc/Config/Component.php:104
+msgid "2 right sidebars"
+msgstr ""
+
+#: inc/Config/Component.php:110
+msgid "Small"
+msgstr ""
+
+#: inc/Config/Component.php:114, inc/Config/Component.php:149
+msgid "Large"
+msgstr ""
+
+#: inc/Config/Component.php:118, inc/Elementor/Widgets/Posts.php:190, inc/Customizer/core/options/Layout_Sidebar.php:117
+msgid "Left"
+msgstr ""
+
+#: inc/Config/Component.php:119
+msgid "Center"
+msgstr ""
+
+#: inc/Config/Component.php:120, inc/Elementor/Widgets/Posts.php:191, inc/Customizer/core/options/Layout_Sidebar.php:121
+msgid "Right"
+msgstr ""
+
+#: inc/Config/Component.php:125, inc/Elementor/Widgets/ArticleSlider.php:103, inc/Elementor/Widgets/ArticleSlider.php:115, inc/Elementor/Widgets/ArticleSlider.php:130, inc/Elementor/Widgets/ArticleSlider.php:142, inc/Elementor/Widgets/ArticleSlider.php:154, inc/Elementor/Widgets/ArticleSlider.php:170, inc/Elementor/Widgets/ArticleSlider.php:186, inc/Elementor/Widgets/ArticleSlider.php:202, inc/Elementor/Widgets/CategoryGrid.php:45, inc/Elementor/Widgets/CategoryGrid.php:57, inc/Elementor/Widgets/Onboarding.php:92
+msgid "Hide"
+msgstr ""
+
+#: inc/Config/Component.php:129, inc/Config/Customizer/PageOptions.php:101, inc/Elementor/Widgets/ArticleSlider.php:102, inc/Elementor/Widgets/ArticleSlider.php:114, inc/Elementor/Widgets/ArticleSlider.php:129, inc/Elementor/Widgets/ArticleSlider.php:141, inc/Elementor/Widgets/ArticleSlider.php:153, inc/Elementor/Widgets/ArticleSlider.php:169, inc/Elementor/Widgets/ArticleSlider.php:185, inc/Elementor/Widgets/ArticleSlider.php:201, inc/Elementor/Widgets/CategoryGrid.php:44, inc/Elementor/Widgets/CategoryGrid.php:56, inc/Elementor/Widgets/Onboarding.php:91
+msgid "Show"
+msgstr ""
+
+#: inc/Config/Component.php:135, inc/Custom_Logo/Component.php:92, inc/Custom_Logo/Component.php:131, inc/Custom_Logo/Component.php:170
+msgid "Default"
+msgstr ""
+
+#: inc/Config/Component.php:139
+msgid "Center horizontally"
+msgstr ""
+
+#: inc/Config/Component.php:145, inc/Config/Component.php:165, inc/Elementor/Widgets/ArticleSlider.php:484, inc/Elementor/Widgets/CategoryGrid.php:154, inc/Elementor/Widgets/CategoryGrid.php:228
+msgid "Normal"
+msgstr ""
+
+#: inc/Config/Component.php:155
+msgid "After content"
+msgstr ""
+
+#: inc/Config/Component.php:159
+msgid "Sticky on bottom"
+msgstr ""
+
+#: inc/Config/Component.php:169
+msgid "Wide"
+msgstr ""
+
+#: inc/Config/Component.php:173, inc/Elementor/Component.php:273, inc/Elementor/Component.php:288, inc/Elementor/Widgets/Onboarding.php:121, inc/Elementor/Widgets/Onboarding.php:163
+msgid "On"
+msgstr ""
+
+#: inc/Config/Component.php:174, inc/Elementor/Component.php:272, inc/Elementor/Component.php:287, inc/Elementor/Widgets/Onboarding.php:122, inc/Elementor/Widgets/Onboarding.php:164
+msgid "Off"
+msgstr ""
+
+#: inc/Config/Component.php:272
+msgid "Stax Options"
+msgstr ""
+
+#: inc/Config/Component.php:273
+msgid "Stax Theme specific settings"
+msgstr ""
+
+#: inc/Config/Component.php:667
+msgid "Something is not configured properly. Please contact theme author."
+msgstr ""
+
+#: inc/Config/Component.php:702
+msgid "Purchase code is not valid, make sure you pasted it right."
+msgstr ""
+
+#: inc/Config/Component.php:705
+msgid "Purchase code is empty"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:80
+msgid "Darkmode logo"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:89, inc/Custom_Logo/Component.php:94, inc/Custom_Logo/Component.php:128, inc/Custom_Logo/Component.php:133, inc/Custom_Logo/Component.php:167, inc/Custom_Logo/Component.php:172
+msgid "Select logo"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:90, inc/Custom_Logo/Component.php:129, inc/Custom_Logo/Component.php:168
+msgid "Change logo"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:91, inc/Custom_Logo/Component.php:130, inc/Custom_Logo/Component.php:169
+msgid "Remove"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:93, inc/Custom_Logo/Component.php:132, inc/Custom_Logo/Component.php:171
+msgid "No logo selected"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:95, inc/Custom_Logo/Component.php:134, inc/Custom_Logo/Component.php:173
+msgid "Choose logo"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:119
+msgid "Mobile logo"
+msgstr ""
+
+#: inc/Custom_Logo/Component.php:158
+msgid "Darkmode Mobile logo"
+msgstr ""
+
+#: inc/Editor/Component.php:64
+msgid "Primary theme color"
+msgstr ""
+
+#: inc/Editor/Component.php:69
+msgid "Pale pink"
+msgstr ""
+
+#: inc/Editor/Component.php:74
+msgid "Vivid red"
+msgstr ""
+
+#: inc/Editor/Component.php:79
+msgid "Luminous vivid orange"
+msgstr ""
+
+#: inc/Editor/Component.php:84
+msgid "Luminous vivid amber"
+msgstr ""
+
+#: inc/Editor/Component.php:89
+msgid "Light green cyan"
+msgstr ""
+
+#: inc/Editor/Component.php:94
+msgid "Vivid green cyan"
+msgstr ""
+
+#: inc/Editor/Component.php:99
+msgid "Pale cyan blue"
+msgstr ""
+
+#: inc/Editor/Component.php:104
+msgid "Vivid cyan blue"
+msgstr ""
+
+#: inc/Editor/Component.php:109
+msgid "Very light gray"
+msgstr ""
+
+#: inc/Editor/Component.php:114
+msgid "Cyan bluish gray"
+msgstr ""
+
+#: inc/Editor/Component.php:119
+msgid "Very dark gray"
+msgstr ""
+
+#: inc/Editor/Component.php:139
+msgid "small"
+msgstr ""
+
+#: inc/Editor/Component.php:140
+msgid "S"
+msgstr ""
+
+#: inc/Editor/Component.php:145
+msgid "regular"
+msgstr ""
+
+#: inc/Editor/Component.php:146
+msgid "M"
+msgstr ""
+
+#: inc/Editor/Component.php:151
+msgid "large"
+msgstr ""
+
+#: inc/Editor/Component.php:152
+msgid "L"
+msgstr ""
+
+#: inc/Editor/Component.php:157
+msgid "larger"
+msgstr ""
+
+#: inc/Editor/Component.php:158
+msgid "XL"
+msgstr ""
+
+#: inc/Elementor/Component.php:270
+msgid "Hide Header"
+msgstr ""
+
+#: inc/Elementor/Component.php:285
+msgid "Hide Title + Breadcrumb"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:338
+msgid "Stax wide mega large image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:339
+msgid "Stax wide large image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:340
+msgid "Stax mega large image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:341
+msgid "Stax extra large image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:342
+msgid "Stax large image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:343
+msgid "Stax medium image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:344
+msgid "Stax small image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:345
+msgid "Stax extra small image"
+msgstr ""
+
+#: inc/Image_Sizes/Component.php:346
+msgid "Stax for lazy load"
+msgstr ""
+
+#: inc/Lazyload/Component.php:89
+msgid "Lazy-load images"
+msgstr ""
+
+#: inc/Lazyload/Component.php:92
+msgid "Lazy-load on"
+msgstr ""
+
+#: inc/Lazyload/Component.php:93
+msgid "Lazy-load off"
+msgstr ""
+
+#: inc/Lazyload/Component.php:97
+msgid "Lazy-loading images means images are loaded only when they are in view. Improves performance, but can result in content jumping around on slower connections."
+msgstr ""
+
+#: inc/Nav_Menus/Component.php:65, inc/Customizer/core/options/Buttons.php:48, inc/Customizer/core/options/Form_Fields.php:583
+msgid "Primary"
+msgstr ""
+
+#: inc/Panel/Addons_Manager.php:341
+msgid "Requires PRO License"
+msgstr ""
+
+#: inc/Panel/Addons_Manager.php:342
+msgid "Activate license"
+msgstr ""
+
+#: inc/Panel/Component.php:115, inc/Panel/Component.php:116
+msgid "Stax Panel"
+msgstr ""
+
+#: inc/Panel/Component.php:123, inc/Panel/Component.php:124
+msgid "Stax Add-ons"
+msgstr ""
+
+#: inc/Panel/Component.php:177
+msgid "Super Fast and Customizable WordPress theme"
+msgstr ""
+
+#: inc/Panel/Component.php:218
+msgid "Upload Logo"
+msgstr ""
+
+#: inc/Panel/Component.php:223
+msgid "Set Colors"
+msgstr ""
+
+#: inc/Panel/Component.php:228, inc/Config/Customizer/TypographyOptions.php:42, inc/Config/Customizer/TypographyOptions.php:81, inc/Config/Customizer/TypographyOptions.php:297, inc/Elementor/Widgets/CategoryGrid.php:142, inc/Elementor/Widgets/Onboarding.php:249, inc/Elementor/Widgets/Onboarding.php:297, inc/Customizer/core/options/Main.php:43
+msgid "Typography"
+msgstr ""
+
+#: inc/Panel/Component.php:233
+msgid "Layout Options"
+msgstr ""
+
+#: inc/Panel/Component.php:238
+msgid "Header Options"
+msgstr ""
+
+#: inc/Panel/Component.php:243
+msgid "Footer Settings"
+msgstr ""
+
+#: inc/Panel/Component.php:257
+msgid "Customizer Quick Links"
+msgstr ""
+
+#: inc/Panel/Component.php:276
+msgid "More Settings from Plugins"
+msgstr ""
+
+#: inc/Panel/Component.php:314
+msgid "License Activation"
+msgstr ""
+
+#: inc/Panel/Component.php:319
+msgid "Register your license to automatically install and update theme add-ons."
+msgstr ""
+
+#: inc/Panel/Component.php:324
+msgid "Enter your Purchase code from Themeforest."
+msgstr ""
+
+#: inc/Panel/Component.php:327
+msgid "How to get it?"
+msgstr ""
+
+#: inc/Panel/Component.php:330
+msgid "Hit REGISTER button."
+msgstr ""
+
+#: inc/Panel/Component.php:345, inc/Panel/Component.php:349
+msgid "Purchase Code"
+msgstr ""
+
+#: inc/Panel/Component.php:358
+msgid "REGISTER"
+msgstr ""
+
+#: inc/Panel/Component.php:376
+msgid "<a href=\"%s\">Import demo sites</a> with one click and start building right away!"
+msgstr ""
+
+#: inc/Panel/Component.php:386
+msgid "Import Demo Content"
+msgstr ""
+
+#: inc/Panel/Component.php:390
+msgid "Stax sites"
+msgstr ""
+
+#: inc/Panel/Component.php:414
+msgid "Knowledge Base"
+msgstr ""
+
+#: inc/Panel/Component.php:418
+msgid "Have questions? Check out our knowledge base to learn more."
+msgstr ""
+
+#: inc/Panel/Component.php:422
+msgid "Visit Knowledge Base &raquo;"
+msgstr ""
+
+#. translators: %1$s: Stax Theme name.
+#: inc/Panel/Component.php:451
+msgid "%1$s Community"
+msgstr ""
+
+#. translators: %1$s: Stax Theme name.
+#: inc/Panel/Component.php:462
+msgid "Join the %1$s users. Share resources, ask questions, give feedback and help each other!"
+msgstr ""
+
+#: inc/Panel/Component.php:469
+msgid "Join Our Facebook Group &raquo;"
+msgstr ""
+
+#: inc/Panel/Component.php:487
+msgid "Install Add-ons"
+msgstr ""
+
+#: inc/Panel/Component.php:489
+msgid "Enhance your site with our recommended extensions. They are not mandatory and you can use any plugins you like."
+msgstr ""
+
+#: inc/Panel/Component.php:597
+msgid "License successfully activated!"
+msgstr ""
+
+#: inc/Panel/Component.php:639
+msgid "Always activate the child theme to safely update Stax and for better customization. <a href=\"%s\" target=\"_blank\">More on Child Themes</a>."
+msgstr ""
+
+#: inc/Post_Navigation/Component.php:160
+msgid "Previous story %s"
+msgstr ""
+
+#: inc/Required_Plugins/Component.php:186
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/Required_Plugins/Component.php:187
+msgid "Install Plugins"
+msgstr ""
+
+#: inc/Required_Plugins/Component.php:188
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: inc/Required_Plugins/Component.php:190
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: inc/Required_Plugins/Component.php:191
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:193
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:195
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:197
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:199
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:201
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:203
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:205
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:207
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:208
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Required_Plugins/Component.php:209
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/Required_Plugins/Component.php:210
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/Required_Plugins/Component.php:211
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: inc/Sidebars/Component.php:90
+msgid "Primary Sidebar"
+msgstr ""
+
+#: inc/Sidebars/Component.php:92, inc/Sidebars/Component.php:103, inc/Sidebars/Component.php:120, inc/Sidebars/Component.php:132, inc/Sidebars/Component.php:144, inc/Sidebars/Component.php:156
+msgid "Add widgets here."
+msgstr ""
+
+#: inc/Sidebars/Component.php:101
+msgid "Secondary Sidebar"
+msgstr ""
+
+#: inc/Sidebars/Component.php:118
+msgid "Footer Column 1"
+msgstr ""
+
+#: inc/Sidebars/Component.php:130
+msgid "Footer Column 2"
+msgstr ""
+
+#: inc/Sidebars/Component.php:142
+msgid "Footer Column 3"
+msgstr ""
+
+#: inc/Sidebars/Component.php:154
+msgid "Footer Column 4"
+msgstr ""
+
+#: overrides/widgets/articles.php:147, template-parts/content/entry-meta.php:40, template-parts/archive/article-parts/meta.php:20
+msgid "Written by %s"
+msgstr ""
+
+#: template-parts/archive/article-wide.php:171
+msgid "Read article"
+msgstr ""
+
+#: template-parts/archive/feed.php:14
+msgid "New from your network"
+msgstr ""
+
+#: template-parts/archive/feed.php:34, inc/Elementor/Widgets/ArticleSlider.php:74
+msgid "Latest articles"
+msgstr ""
+
+#: template-parts/content/comment-list.php:20
+msgid "Comments to:"
+msgstr ""
+
+#: template-parts/content/comment-list.php:48
+msgid "Older comments"
+msgstr ""
+
+#: template-parts/content/comment-list.php:63
+msgid "Comments are closed."
+msgstr ""
+
+#. translators: %s: post title
+#: template-parts/content/entry-actions.php:14
+msgid "Edit article <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content/entry-content.php:20, template-parts/content/entry-page.php:21
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: template-parts/content/entry-content.php:33, template-parts/content/entry-page.php:34
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content/entry-meta.php:48
+msgid "Posted on "
+msgstr ""
+
+#: template-parts/content/entry-meta.php:53
+msgid "Less than"
+msgstr ""
+
+#: template-parts/content/entry-meta.php:55
+msgid "min read"
+msgstr ""
+
+#: template-parts/content/panel-page.php:25
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: template-parts/related/by-author.php:39
+msgid "More from %s"
+msgstr ""
+
+#: template-parts/related/by-author.php:121, template-parts/related/by-category.php:95, template-parts/archive/featured-style/style_1.php:113, inc/Elementor/Widgets/templates/article-slider/style_1.php:113
+msgid "Next"
+msgstr ""
+
+#: template-parts/related/by-category.php:58
+msgid "Related articles"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:40
+msgid "Site Colors"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:63
+msgid "Light"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:64
+msgid "Dark"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:65
+msgid "Tutorials Hub"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:67
+msgid "Color Presets"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:68
+msgid "Choose from predefined color presets."
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:118
+msgid "Body Background color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:119
+msgid "Background color for your site"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:133
+msgid "Site Text color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:134
+msgid "General site text color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:146
+msgid "Headings color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:147
+msgid "Color used for all the headings in the site(H1-H6)"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:159
+msgid "Primary color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:160
+msgid "Set an accent color for your site. Used on buttons and other colored components"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:174
+msgid "Lighter color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:175
+msgid "Normally is a color that is close to the background color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:189
+msgid "Darker color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:190
+msgid "Normally is a color that is very different from the background color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:204
+msgid "Link color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:205
+msgid "Links(anchors) color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:219
+msgid "Border color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:220
+msgid "Site Borders color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:231
+msgid "Meta Text color"
+msgstr ""
+
+#: inc/Config/Customizer/ColorOptions.php:232
+msgid "Blog meta text color."
+msgstr ""
+
+#: inc/Config/Customizer/FooterOptions.php:42
+msgid "Footer"
+msgstr ""
+
+#: inc/Config/Customizer/FooterOptions.php:64
+msgid "Copyright text"
+msgstr ""
+
+#: inc/Config/Customizer/FooterOptions.php:71
+msgid "Footer background"
+msgstr ""
+
+#: inc/Config/Customizer/FooterOptions.php:72
+msgid "Set a background color for your footer."
+msgstr ""
+
+#: inc/Config/Customizer/HeaderOptions.php:42
+msgid "Header"
+msgstr ""
+
+#: inc/Config/Customizer/HeaderOptions.php:65
+msgid "Header Dark Mode"
+msgstr ""
+
+#: inc/Config/Customizer/HeaderOptions.php:66
+msgid "Your header will always be in dark mode"
+msgstr ""
+
+#: inc/Config/Customizer/HeaderOptions.php:74
+msgid "Sticky"
+msgstr ""
+
+#: inc/Config/Customizer/HeaderOptions.php:75
+msgid "Enable Sticky Header behaviour on scroll"
+msgstr ""
+
+#: inc/Config/Customizer/HeaderOptions.php:84
+msgid "Show search in header"
+msgstr ""
+
+#: inc/Config/Customizer/HeaderOptions.php:92
+msgid "Menu alignment"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:42, inc/Config/Customizer/LayoutOptions.php:128, inc/Customizer/core/options/Main.php:39
+msgid "Layout"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:61, inc/Elementor/Widgets/CategoryGrid.php:92, inc/Customizer/core/options/Typography.php:96
+msgid "General"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:62, inc/Customizer/core/options/Layout_Sidebar.php:152, inc/Customizer/core/options/Layout_Single_Post.php:29, inc/Customizer/core/options/Typography.php:328
+msgid "Single Post"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:63
+msgid "Archive Page"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:71
+msgid "Boxed Layout"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:87
+msgid "Layout width"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:100, inc/Config/Customizer/PostNavigationOptions.php:187, inc/Elementor/Widgets/ArticleSlider.php:491, inc/Elementor/Widgets/ArticleSlider.php:541
+msgid "Background color"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:129
+msgid "You can pick up to 2 sidebars."
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:137, inc/Customizer/core/options/Layout_Container.php:51
+msgid "Container width"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:138
+msgid "Note: When picking a layout with sidebar, the container width will be forced to large."
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:153
+msgid "Sticky primary sidebar"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:168
+msgid "Sticky secondary sidebar"
+msgstr ""
+
+#: inc/Config/Customizer/LayoutOptions.php:191
+msgid "Sticky top gap"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:42
+msgid "Miscellaneous"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:65
+msgid "Page preloader"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:66
+msgid "Display a page preloader when navigating."
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:74
+msgid "Maintenance Enabled"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:75
+msgid "WARNING: It will make the site available to admins only"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:82
+msgid "Maintenance Message"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:83
+msgid "The message that is visible for guests if you enabled maintenance"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:92
+msgid "Disable page comments"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:93
+msgid "Force disable comments on all pages"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:101
+msgid "Disable post comments"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:102
+msgid "Force disable comments on all posts. Will override any site or post Discussion Settings"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:110
+msgid "Display post updated date"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:111
+msgid "Show post updated date instead of published date on lists and single page"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:118
+msgid "Quick Javascript"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:119
+msgid "Small JS code to load in the footer of your site. You need to include the script tags."
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:127
+msgid "Development mode"
+msgstr ""
+
+#: inc/Config/Customizer/MiscOptions.php:128
+msgid "This will load css/js files not minified."
+msgstr ""
+
+#: inc/Config/Customizer/NotFoundOptions.php:42
+msgid "404 Page"
+msgstr ""
+
+#: inc/Config/Customizer/NotFoundOptions.php:64
+msgid "Custom image"
+msgstr ""
+
+#: inc/Config/Customizer/NotFoundOptions.php:65
+msgid "Change the default image on 404 page"
+msgstr ""
+
+#: inc/Config/Customizer/NotFoundOptions.php:71
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Maybe try a search?"
+msgstr ""
+
+#: inc/Config/Customizer/NotFoundOptions.php:72
+msgid "Results message"
+msgstr ""
+
+#: inc/Config/Customizer/NotFoundOptions.php:80
+msgid "Show footer on 404 page"
+msgstr ""
+
+#: inc/Config/Customizer/PageOptions.php:42
+msgid "Page"
+msgstr ""
+
+#: inc/Config/Customizer/PageOptions.php:65
+msgid "Display Breadcrumbs(above the title)"
+msgstr ""
+
+#: inc/Config/Customizer/PageOptions.php:71, inc/Elementor/Widgets/ArticleSlider.php:72, inc/Elementor/Widgets/ArticleSlider.php:357, inc/Elementor/Widgets/Onboarding.php:67, inc/Elementor/Widgets/Onboarding.php:240, inc/Elementor/Widgets/Posts.php:671, inc/Elementor/Widgets/Posts.php:757, inc/Customizer/core/options/Layout_Single_Product.php:79
+msgid "Title"
+msgstr ""
+
+#: inc/Config/Customizer/PageOptions.php:79
+msgid "Size"
+msgstr ""
+
+#: inc/Config/Customizer/PageOptions.php:87
+msgid "Alignment"
+msgstr ""
+
+#: inc/Config/Customizer/PageOptions.php:93
+msgid "Parallax shapes"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:42
+msgid "Post Navigation, Autoload & Related"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:63
+msgid "Post Navigation"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:71
+msgid "Show Post Navigation"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:72
+msgid "Display Next & Previous articles"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:80
+msgid "Position"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:81
+msgid "Where to show prev/next posts on post page"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:93
+msgid "Related Posts"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:101
+msgid "Show Related Posts"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:108
+msgid "Related to post categories"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:109
+msgid "Related to the current author"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:112
+msgid "Type"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:113
+msgid "What kind of related posts to display?"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:127
+msgid "Post image size"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:128
+msgid "How do you want your thumbs to be displayed?"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:140
+msgid "Title max lines"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:141
+msgid "Truncates titles to a predefined number of lines. If you have long titles and want to display the entire title, use a high number like 999."
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:163
+msgid "Excerpt max lines"
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:164
+msgid "Truncates excerpt to a predefined number of lines. To display the entire excerpt use a high number like 999."
+msgstr ""
+
+#: inc/Config/Customizer/PostNavigationOptions.php:212
+msgid "Background image"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:65
+msgid "Enable"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:66
+msgid "Disable"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:68
+msgid "Local Google Fonts"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:69
+msgid "When enabled it will download and load Google fonts from your site."
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:75, inc/Customizer/core/options/Typography.php:139
+msgid "Body"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:106
+msgid "Font size"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:136
+msgid "L Height"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:166
+msgid "L Spacing"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:187, inc/Customizer/core/options/Typography.php:100
+msgid "Headings"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:193
+msgid "Default Typography"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:224
+msgid "Default Line Height"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:243
+msgid "H%s Font size"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:260
+msgid "Line Height"
+msgstr ""
+
+#: inc/Config/Customizer/TypographyOptions.php:291
+msgid "Quote"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:24
+msgid "Article Slider (Stax)"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:43, inc/Elementor/Widgets/Posts.php:45
+msgid "Settings"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:50
+msgid "Slider type"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:54
+msgid "Style 1"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:55
+msgid "Style 2"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:65
+msgid "Appearance"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:75
+msgid "Type your title here"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:85
+msgid "Group by category"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:87, inc/Elementor/Widgets/ArticleSlider.php:297, inc/Elementor/Widgets/Posts.php:204, inc/Elementor/Widgets/Posts.php:222, inc/Elementor/Widgets/Posts.php:237, inc/Elementor/Widgets/Posts.php:249, inc/Elementor/Widgets/Posts.php:261, inc/Elementor/Widgets/Posts.php:282, inc/Elementor/Widgets/Posts.php:294, inc/Elementor/Widgets/Posts.php:307, inc/Elementor/Widgets/Posts.php:387, inc/Elementor/Widgets/Posts.php:399, inc/Elementor/Widgets/Posts.php:414, inc/Elementor/Widgets/Posts.php:429
+msgid "Yes"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:88, inc/Elementor/Widgets/ArticleSlider.php:298, inc/Elementor/Widgets/Posts.php:205, inc/Elementor/Widgets/Posts.php:223, inc/Elementor/Widgets/Posts.php:238, inc/Elementor/Widgets/Posts.php:250, inc/Elementor/Widgets/Posts.php:262, inc/Elementor/Widgets/Posts.php:283, inc/Elementor/Widgets/Posts.php:295, inc/Elementor/Widgets/Posts.php:308, inc/Elementor/Widgets/Posts.php:388, inc/Elementor/Widgets/Posts.php:400, inc/Elementor/Widgets/Posts.php:415, inc/Elementor/Widgets/Posts.php:430
+msgid "No"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:100, inc/Elementor/Widgets/Posts.php:235
+msgid "Show category"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:112
+msgid "Show breadcrumbs"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:127, inc/Elementor/Widgets/Posts.php:259
+msgid "Show excerpt"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:139, inc/Elementor/Widgets/Posts.php:247
+msgid "Show meta"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:151
+msgid "Show meta avatar"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:167
+msgid "Show meta author"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:183
+msgid "Show meta date"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:199
+msgid "Show button"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:216, inc/Elementor/Widgets/CategoryGrid.php:35, inc/Elementor/Widgets/Posts.php:273
+msgid "Query"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:230, inc/Elementor/Widgets/Posts.php:324
+msgid "Categories"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:251, inc/Elementor/Widgets/Posts.php:360, inc/Customizer/core/options/Layout_Single_Post.php:57
+msgid "Tags"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:261, inc/Elementor/Widgets/ArticleSlider.php:264, inc/Elementor/Widgets/Posts.php:472
+msgid "Total posts"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:271, inc/Elementor/Widgets/ArticleSlider.php:274, inc/Elementor/Widgets/CategoryGrid.php:78, inc/Elementor/Widgets/Posts.php:490
+msgid "Offset"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:281, inc/Elementor/Widgets/Posts.php:508
+msgid "Sort"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:285, inc/Elementor/Widgets/Posts.php:512
+msgid "Newest"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:286, inc/Elementor/Widgets/Posts.php:513
+msgid "Oldest"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:287, inc/Elementor/Widgets/Posts.php:514
+msgid "Random"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:295, inc/Elementor/Widgets/Posts.php:280
+msgid "Include sticky posts"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:309
+msgid "Colors"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:318, inc/Elementor/Widgets/ArticleSlider.php:440, inc/Elementor/Widgets/CategoryGrid.php:101, inc/Elementor/Widgets/Posts.php:626
+msgid "Box Shadow"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:330, inc/Elementor/Widgets/Posts.php:641
+msgid "Background"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:342, inc/Elementor/Widgets/Posts.php:656, inc/Elementor/Widgets/Posts.php:735, inc/Customizer/core/options/Layout_Blog.php:344, inc/Customizer/core/options/Layout_Single_Product.php:94
+msgid "Category"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:373, inc/Elementor/Widgets/Posts.php:686, inc/Elementor/Widgets/Posts.php:779, inc/Customizer/core/options/Layout_Blog.php:244
+msgid "Excerpt"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:388
+msgid "Breadcrumbs"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:406, inc/Elementor/Widgets/Posts.php:701, inc/Elementor/Widgets/Posts.php:801
+msgid "Meta"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:428
+msgid "Media"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:453, inc/Customizer/core/options/Form_Fields.php:558
+msgid "Button"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:464, inc/Elementor/Widgets/CategoryGrid.php:118
+msgid "Border radius"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:507, inc/Elementor/Widgets/ArticleSlider.php:556
+msgid "Text color"
+msgstr ""
+
+#: inc/Elementor/Widgets/ArticleSlider.php:534, inc/Elementor/Widgets/CategoryGrid.php:183, inc/Elementor/Widgets/CategoryGrid.php:248
+msgid "Hover"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:16
+msgid "Category Grid (Stax)"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:42
+msgid "Empty categories"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:54
+msgid "Subcategories"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:66
+msgid "Number of categories"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:110
+msgid "Border"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:133
+msgid "Category Title"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:161, inc/Elementor/Widgets/CategoryGrid.php:190, inc/Elementor/Widgets/Onboarding.php:258, inc/Elementor/Widgets/Onboarding.php:306, inc/Elementor/Widgets/Onboarding.php:344, inc/Customizer/core/options/Form_Fields.php:371
+msgid "Color"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:173, inc/Elementor/Widgets/CategoryGrid.php:202
+msgid "Shadow"
+msgstr ""
+
+#: inc/Elementor/Widgets/CategoryGrid.php:216, inc/Elementor/Widgets/CategoryGrid.php:235, inc/Elementor/Widgets/CategoryGrid.php:255
+msgid "Overlay"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:16
+msgid "Image Gallery (Stax)"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:36
+msgid "Image Gallery (max 6)"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:45, inc/Elementor/Widgets/Onboarding.php:52
+msgid "Add Image"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:60
+msgid "Caption"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:71
+msgid "Link to"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:75
+msgid "Media File"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:76, inc/Elementor/Widgets/Onboarding.php:99, inc/Customizer/core/options/Layout_Single_Product.php:111
+msgid "None"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:85
+msgid "Link"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:97
+msgid "Images"
+msgstr ""
+
+#: inc/Elementor/Widgets/Gallery.php:102
+msgid "Image item"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:24
+msgid "Onboarding (Stax)"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:43
+msgid "Onboarding"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:78
+msgid "Sub title"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:89, inc/Elementor/Widgets/Onboarding.php:336
+msgid "Separator"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:100
+msgid "Register Box"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:108
+msgid "Addons"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:119
+msgid "Main button"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:131
+msgid "Main button text"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:144
+msgid "Main button action"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:148
+msgid "Next slide"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:149
+msgid "Close popup"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:161
+msgid "Skip button"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:173
+msgid "Slides"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:193
+msgid "Image"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:201
+msgid "Width"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:274, inc/Elementor/Widgets/Onboarding.php:322, inc/Elementor/Widgets/Posts.php:579, inc/Customizer/core/options/Buttons.php:124
+msgid "Padding"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:288
+msgid "Subtitle"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:362
+msgid "Category Box"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:370
+msgid "Box default text color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:386
+msgid "Box active text color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:402
+msgid "Box default color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:418
+msgid "Box active color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:436, inc/Customizer/core/options/Buttons.php:32
+msgid "Buttons"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:444
+msgid "Next Button Background"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:460
+msgid "Next Button Color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:476
+msgid "Skip Button Color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:492
+msgid "Load More Button Background"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:508
+msgid "Load More Button Color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:524
+msgid "Register Button Background"
+msgstr ""
+
+#: inc/Elementor/Widgets/Onboarding.php:540
+msgid "Register Button Color"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:26
+msgid "Posts (Stax)"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:52
+msgid "Section title"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:59
+msgid "Masonry"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:63
+msgid "Default List"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:64
+msgid "Big List"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:65, inc/Customizer/core/options/Layout_Blog.php:82
+msgid "Grid"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:71
+msgid "Listing type"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:79, inc/Elementor/Widgets/Posts.php:128
+msgid "1"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:80, inc/Elementor/Widgets/Posts.php:129
+msgid "2"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:81
+msgid "3"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:82
+msgid "4"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:88, inc/Elementor/Widgets/Posts.php:135
+msgid "Desktop posts per row"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:102, inc/Elementor/Widgets/Posts.php:149
+msgid "Tablet posts per row"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:116, inc/Elementor/Widgets/Posts.php:163
+msgid "Mobile posts per row"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:179
+msgid "Post"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:186
+msgid "List image position"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:202
+msgid "Wide images"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:220
+msgid "Make 1st post big"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:292
+msgid "Exclude current post"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:304
+msgid "From current category"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:305
+msgid "Enabling this will get the posts from current category. Use this options if you plan to use this widget within a template across all your category pages."
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:385
+msgid "Enable pagination"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:397
+msgid "Ajax Pagination"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:412
+msgid "Hide Next/Prev buttons"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:427
+msgid "Hide page numbers"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:442
+msgid "Pagination Numbers Style"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:460
+msgid "Posts per page"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:524, inc/Elementor/Widgets/Posts.php:566
+msgid "Spacing"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:538
+msgid "Vertical"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:597
+msgid "Content padding"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:617
+msgid "Default Colors"
+msgstr ""
+
+#: inc/Elementor/Widgets/Posts.php:721
+msgid "Big Cards With Media - Colors"
+msgstr ""
+
+#: inc/Panel/templates/panel.php:5
+msgid "Stax"
+msgstr ""
+
+#: template-parts/content/error/404.php:29
+msgid "Ooooops"
+msgstr ""
+
+#: template-parts/content/error/500.php:14
+msgid "Oops! Something went wrong."
+msgstr ""
+
+#: template-parts/content/error/feed.php:15
+msgid "There is no feed available for you right now."
+msgstr ""
+
+#: template-parts/content/error/feed.php:20
+msgid "Try following authors or <a href=\"%s\">customize your interest categories</a> from your profile"
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content/error/index.php:17
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content/error/offline.php:14
+msgid "Oops! It looks like you&#8217;re offline."
+msgstr ""
+
+#: template-parts/content/panel/video.php:81, template-parts/content/panel/video.php:124
+msgid "Play video"
+msgstr ""
+
+#: inc/Customizer/core/options/Buttons.php:51, inc/Customizer/core/options/Form_Fields.php:584
+msgid "Secondary"
+msgstr ""
+
+#: inc/Customizer/core/options/Buttons.php:87
+msgid "Button Appearance"
+msgstr ""
+
+#: inc/Customizer/core/options/Buttons.php:164
+msgid "Button Text"
+msgstr ""
+
+#: inc/Customizer/core/options/Colors_Background.php:33
+msgid "Colors & Background"
+msgstr ""
+
+#: inc/Customizer/core/options/Colors_Background.php:81
+msgid "Global Colors"
+msgstr ""
+
+#: inc/Customizer/core/options/Colors_Background.php:89
+msgid "How the color system works"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:41, inc/Customizer/core/options/Form_Fields.php:58
+msgid "Form Fields"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:84
+msgid "Field Padding"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:136
+msgid "Field Spacing"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:170
+msgid "Field Background Color"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:212
+msgid "Border Width"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:265
+msgid "Border Radius"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:312
+msgid "Border Color"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:350
+msgid "Input Text"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:464
+msgid "Form Labels"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:485
+msgid "Label Spacing"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:578
+msgid "Button Style"
+msgstr ""
+
+#: inc/Customizer/core/options/Form_Fields.php:589
+msgid "Customize the default button styles"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:33, inc/Customizer/core/options/Layout_Sidebar.php:151
+msgid "Blog / Archive"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:51
+msgid "Blog Layout"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:74
+msgid "List"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:78
+msgid "Covers"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:105
+msgid "Columns"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:136
+msgid "Text Color"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:166
+msgid "Alternating layout"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:185
+msgid "Enable Masonry"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:203
+msgid "Ordering and Content"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:223
+msgid "Post Pagination"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:228
+msgid "Number"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:229
+msgid "Infinite Scroll"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:242, inc/Customizer/core/options/Layout_Single_Post.php:55
+msgid "Thumbnail"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:243, inc/Customizer/core/options/Layout_Single_Post.php:54
+msgid "Title & Meta"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:255
+msgid "Post Content Order"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:272
+msgid "Excerpt Length"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:295
+msgid "Thumbnail Shadow"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:322
+msgid "Post Meta"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:343
+msgid "Author"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:345
+msgid "Date"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:346, inc/Customizer/core/options/Layout_Single_Post.php:59
+msgid "Comments"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:358
+msgid "Meta Order"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:376
+msgid "Show Author Avatar"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:392
+msgid "Use last updated date instead of the published one"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:554
+msgid "Customize Typography for the Archive page"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Blog.php:556
+msgid "here"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:31
+msgid "Container"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:78
+msgid "Default Container Style"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:82
+msgid "Blog / Archive Container Style"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:86
+msgid "Single Post Container Style"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:96
+msgid "Shop / Archive Container Style"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:100
+msgid "Single Product Container Style"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:121
+msgid "Contained"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Container.php:122, inc/Customizer/core/options/Layout_Sidebar.php:113
+msgid "Full Width"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:31
+msgid "Content / Sidebar"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:50
+msgid "Sitewide Sidebar Layout"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:69
+msgid "Sitewide Content Width (%)"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:92
+msgid "Enable Advanced Options"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:159
+msgid "Shop / Archive"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:160, inc/Customizer/core/options/Layout_Single_Product.php:39
+msgid "Single Product"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:164
+msgid "Others"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:223
+msgid "Sidebar Layout"
+msgstr ""
+
+#. translators: %s is edit page link
+#: inc/Customizer/core/options/Layout_Sidebar.php:281
+msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Inherit\"."
+msgstr ""
+
+#. translators: %s is edit label
+#: inc/Customizer/core/options/Layout_Sidebar.php:285
+msgid "edit"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Sidebar.php:322
+msgid "Content Width (%)"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Single_Post.php:56
+msgid "Content"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Single_Post.php:58
+msgid "Post navigation"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Single_Post.php:71
+msgid "Elements Order"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Single_Product.php:58
+msgid "Exclusive Products"
+msgstr ""
+
+#: inc/Customizer/core/options/Layout_Single_Product.php:112
+msgid "All"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:104
+msgid "Blog"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:202
+msgid "Fallback Font"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:209
+msgid "Learn more about fallback fonts"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:311, inc/Customizer/core/options/Typography.php:327
+msgid "Post title"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:312
+msgid "Blog Archive"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:317
+msgid "Post excerpt"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:322, inc/Customizer/core/options/Typography.php:333
+msgid "Post meta"
+msgstr ""
+
+#: inc/Customizer/core/options/Typography.php:338
+msgid "Comments reply title"
+msgstr ""
+
+#: inc/Elementor/Widgets/templates/onboarding/onboarding.php:50
+msgid "Skip"
+msgstr ""
+
+#: inc/Elementor/Widgets/templates/posts/parts/pagination.php:29
+msgid "Newer Posts"
+msgstr ""
+
+#: inc/Elementor/Widgets/templates/posts/parts/pagination.php:30
+msgid "Older Posts"
+msgstr ""

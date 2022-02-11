@@ -1,0 +1,148 @@
+@tailwind base;
+
+@tailwind components;
+
+.sqp_form_input {
+	@apply sqp-bg-white sqp-appearance-none sqp-border sqp-border-solid sqp-border-gray-300 sqp-rounded sqp-w-full sqp-py-1 sqp-px-2 sqp-text-gray-700 sqp-leading-tight !important;
+}
+
+.sqp_form_input_big {
+	@apply sqp_form_input sqp-py-3 sqp-px-4 !important;
+}
+
+.sqp_form_label {
+	@apply sqp-block sqp-text-gray-700 sqp-font-medium sqp-mb-2 sqp-uppercase;
+}
+
+.sqp_btn {
+	@apply sqp-bg-gray-800 sqp-text-white sqp-font-bold sqp-py-3 sqp-px-4 sqp-rounded sqp-border-0 sqp-cursor-pointer;
+}
+
+.sqp_btn_md {
+	@apply sqp-py-2 sqp-px-3 !important;
+}
+
+.sqp_btn_sm {
+	@apply sqp-py-1 sqp-px-2 !important;
+}
+
+.sqp_btn_primary {
+	@apply sqp_btn sqp-bg-green-500;
+}
+
+.sqp_btn_primary:hover {
+	@apply sqp-bg-green-600;
+}
+
+.sqp_btn_intent {
+	@apply sqp_btn sqp-bg-orange-500;
+}
+
+.sqp_btn_intent:hover {
+	@apply sqp-bg-orange-600;
+}
+
+.sqp_btn_link {
+	@apply sqp_btn sqp-bg-gray-500 sqp-no-underline;
+}
+
+.sqp_btn_link:hover {
+	@apply sqp-bg-gray-600 sqp-text-white;
+}
+
+.sqp_box {
+	@apply sqp-bg-white sqp-border sqp-border-solid sqp-border-gray-400 sqp-mb-4;
+}
+
+.sqp_box_title {
+	@apply sqp-cursor-default sqp-p-4 sqp-m-0 sqp-text-sm sqp-border-solid sqp-border-0 sqp-border-b sqp-border-gray-200;
+}
+
+.sqp_box_list {
+	@apply sqp-flex sqp-flex-wrap sqp-m-0;
+}
+
+.sqp_box_list_item {
+	@apply sqp-flex sqp-items-center sqp-w-1/2 sqp-border-solid sqp-border-0 sqp-border-b sqp-border-gray-200 sqp-py-3 sqp-m-0;
+}
+
+.sqp_box_p {
+	@apply sqp-p-0 sqp-m-0 sqp-mb-4;
+}
+
+.sqp_plugin_btn {
+	@apply sqp-block sqp-px-3 sqp-py-5 sqp-uppercase sqp-no-underline sqp-font-bold sqp-border-solid sqp-border-0 sqp-border-t sqp-border-gray-300;
+}
+
+.svq-not-installed .sqp_plugin_btn {
+	@apply sqp-bg-red-100 sqp-text-red-600;
+}
+
+.svq-not-installed .sqp_plugin_btn:hover {
+	@apply sqp-bg-red-600 sqp-text-red-100;
+}
+
+.svq-active .sqp_plugin_btn {
+	@apply sqp-bg-gray-100 sqp-text-gray-600;
+}
+
+.svq-active .sqp_plugin_btn:hover {
+	@apply sqp-bg-gray-600 sqp-text-gray-100;
+}
+
+.svq-go-pro .sqp_plugin_btn {
+	@apply sqp-bg-orange-100 sqp-text-orange-600;
+}
+
+.svq-go-pro .sqp_plugin_btn:hover {
+	@apply sqp-bg-orange-600 sqp-text-orange-100;
+}
+
+.svq-inactive .sqp_plugin_btn {
+	@apply sqp-bg-blue-100 sqp-text-blue-600;
+}
+
+.svq-inactive .sqp_plugin_btn:hover {
+	@apply sqp-bg-blue-600 sqp-text-blue-100;
+}
+
+.svq-has-update .sqp_plugin_btn {
+	@apply sqp-bg-purple-100 sqp-text-purple-600;
+}
+
+.svq-has-update .sqp_plugin_btn:hover {
+	@apply sqp-bg-purple-600 sqp-text-purple-100;
+}
+
+.sqp_plugin_status {
+	@apply sqp-inline-block sqp-bg-white sqp-px-3 sqp-py-1 sqp-border sqp-border-solid sqp-rounded sqp-cursor-default;
+}
+
+.svq-not-installed .sqp_plugin_status {
+	@apply sqp-border-red-400 sqp-text-red-400;
+}
+
+.svq-active .sqp_plugin_status, .svq-needs-install .sqp_plugin_status {
+	@apply sqp-border-gray-500 sqp-text-gray-500;
+}
+
+.svq-go-pro .sqp_plugin_status {
+	@apply sqp-border-orange-400 sqp-text-orange-400;
+}
+
+.svq-inactive .sqp_plugin_status {
+	@apply sqp-border-blue-400 sqp-text-blue-400;
+}
+
+.svq-has-update .sqp_plugin_status {
+	@apply sqp-border-purple-400 sqp-text-purple-400;
+}
+
+
+@tailwind utilities;
+
+.sqp_stax_options div.notice,
+.sqp_stax_options div.updated,
+.sqp_stax_options div.error {
+	margin-top: 0
+}

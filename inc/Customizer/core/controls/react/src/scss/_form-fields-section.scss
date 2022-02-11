@@ -1,0 +1,18 @@
+$excluded: ":not(.customize-control-customizer-heading)";
+
+#sub-accordion-section-stax_form_fields_section {
+	#customize-control-stax_form_fields_padding,
+	#customize-control-stax_form_fields_spacing,
+	#customize-control-stax_form_fields_background_color,
+	#customize-control-stax_form_fields_border_width,
+	#customize-control-stax_form_fields_border_radius,
+	#customize-control-stax_input_text_color,
+	#customize-control-stax_label_spacing {
+		margin-bottom: 0;
+	}
+	.stax-customizer-link {
+		margin: 0 -15px;
+		padding: 0 10px 10px;
+		background: #fff;
+	}
+}
