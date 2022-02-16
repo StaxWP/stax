@@ -638,7 +638,7 @@ abstract class Abstract_Component implements Component {
 					'--fontSize'      => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_SUFFIX  => 'em',
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
 					],
 					'--lineHeight'    => [

@@ -9,6 +9,7 @@ namespace Stax\Customizer;
 
 use Stax\Component_Interface;
 use Stax\Customizer\Core\Loader;
+use function Stax\stax;
 
 /**
  * Class for managing Customizer integration.
@@ -28,8 +29,6 @@ class Component implements Component_Interface {
 	 * Adds the action and filter hooks to integrate with WordPress.
 	 */
 	public function initialize() {
-		add_action( 'after_switch_theme', [ $this, 'set_mods' ] );
-
 		add_action(
 			'after_setup_theme',
 			function() {
@@ -45,6 +44,8 @@ class Component implements Component_Interface {
 				add_filter( 'wp_nav_menu_args', [ $this, 'nav_walker' ], 1001 );
 			}
 		);
+
+		add_action( 'after_setup_theme', [ $this, 'add_default_starter_content' ] );
 
 		require_once get_template_directory() . '/inc/Customizer/Nav_Walker.php';
 		require_once get_template_directory() . '/inc/Customizer/core/Sanitizer.php';
@@ -123,6 +124,15 @@ class Component implements Component_Interface {
 
 		$this->load_builder();
 		$this->load_metaboxes();
+
+
+		add_filter(
+			'hfg_settings_schema',
+			function () {
+				return stax()->get_theme_default_mods();
+			},
+			101
+		);
 	}
 
 	/**
@@ -188,537 +198,6 @@ class Component implements Component_Interface {
 		$manager->init();
 	}
 
-	public function set_mods() {
-		$defaults = [
-			'header_search_responsive_component_align'    => [
-				'desktop' => 'right',
-				'tablet'  => 'left',
-				'mobile'  => 'left',
-			],
-			'header_search_field_height'                  => '{"mobile":40,"tablet":40,"desktop":40}',
-			'header_search_field_text_size'               => '{"mobile":14,"tablet":14,"desktop":14}',
-			'header_search_field_border_width'            => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'header_search_field_border_radius'           => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'header_search_field_background'              => '#ffffff',
-			'header_search_field_text_color'              => '#d1d1d1',
-			'header_search_component_padding'             => [
-				'mobile'       => [
-					'top'         => '',
-					'right'       => '',
-					'bottsssssom' => '',
-					'left'        => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'header_search_component_margin'              => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'header_search_responsive_field_height'       => [
-				'mobile'  => 40,
-				'tablet'  => 40,
-				'desktop' => 40,
-			],
-			'header_search_responsive_field_text_size'    => [
-				'mobile'  => 14,
-				'tablet'  => 14,
-				'desktop' => 14,
-			],
-			'header_search_responsive_field_border_width' => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'header_search_responsive_icon_size'          => 14,
-			'header_search_responsive_field_background'   => '',
-			'header_search_responsive_field_text_color'   => '#6acfc9',
-			'hfg_header_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"},{"id":"header_search_responsive"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"header_search_responsive"},{"id":"nav-icon"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"primary-menu"}]}}',
-			'hfg_header_layout_top_layout'                => 'layout-fullwidth',
-			'hfg_header_layout_main_layout'               => 'layout-full-contained',
-			'hfg_header_layout_main_background'           => [
-				'type'              => 'color',
-				'imageUrl'          => '',
-				'focusPoint'        => [
-					'x' => 0.5,
-					'y' => 0.5,
-				],
-				'colorValue'        => '#ffffff',
-				'overlayColorValue' => '',
-				'overlayOpacity'    => 50,
-				'fixed'             => false,
-				'useFeatured'       => false,
-			],
-			'hfg_header_layout_main_bottom_border'        => '{"mobile":1,"tablet":1,"desktop":1}',
-			'hfg_header_layout_main_border_color'         => 'var(--border-color)',
-			'primary-menu_component_typeface'             => [
-				'fontSize'      => [
-					'suffix'  => [
-						'mobile'  => 'rem',
-						'tablet'  => 'rem',
-						'desktop' => 'px',
-					],
-					'vars'    => [],
-					'mobile'  => 1,
-					'tablet'  => 1,
-					'desktop' => 16,
-				],
-				'lineHeight'    => [
-					'vars'    => [],
-					'mobile'  => 1.3,
-					'tablet'  => 1.3,
-					'desktop' => '',
-					'suffix'  => [
-						'mobile'  => 'rem',
-						'tablet'  => 'rem',
-						'desktop' => 'rem',
-					],
-				],
-				'letterSpacing' => [
-					'vars'    => [],
-					'mobile'  => 0,
-					'tablet'  => 0,
-					'desktop' => '',
-					'suffix'  => [
-						'mobile'  => 'px',
-						'tablet'  => 'px',
-						'desktop' => 'px',
-					],
-				],
-				'fontWeight'    => '300',
-				'textTransform' => 'none',
-			],
-			'logo_component_align'                        => [
-				'mobile'  => 'left',
-				'tablet'  => 'left',
-				'desktop' => 'left',
-			],
-			'primary-menu_spacing'                        => [
-				'mobile'  => 0,
-				'tablet'  => 0,
-				'desktop' => 20,
-			],
-			'primary-menu_item_height'                    => [
-				'mobile'  => 0,
-				'tablet'  => 0,
-				'desktop' => 25,
-			],
-			'header_search_responsive_open_type'          => 'canvas',
-			'primary-menu_component_padding'              => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'primary-menu_component_margin'               => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'primary-menu_color'                          => '#2a2a68',
-			'primary-menu_active_color'                   => '#1aaaa0',
-			'primary-menu_hover_color'                    => '#1aaaa0',
-			'primary-menu_component_font_family'          => '',
-			'header_search_responsive_component_padding'  => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'header_search_responsive_component_margin'   => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'hfg_header_layout_main_height'               => [
-				'mobile'  => 0,
-				'tablet'  => 0,
-				'desktop' => 0,
-			],
-			'hfg_header_layout_main_new_text_color'       => '',
-			'primary-menu_style'                          => 'style-plain',
-			'logo_display'                                => 'default',
-			'logo_show_tagline'                           => 0,
-			'logo_show_title'                             => 1,
-			'logo_max_width'                              => [
-				'mobile'  => 36,
-				'tablet'  => 36,
-				'desktop' => 200,
-			],
-			'logo_color'                                  => '#242424',
-			'logo_component_padding'                      => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'logo_component_margin'                       => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'header_search_responsive_color'              => '#2a2a68',
-			'header_search_responsive_hover_color'        => '#1aaaa0',
-			'nav-icon_menu_label'                         => '',
-			'nav-icon_component_padding'                  => [
-				'mobile'       => [
-					'top'    => '8',
-					'right'  => '8',
-					'bottom' => '8',
-					'left'   => '8',
-				],
-				'tablet'       => [
-					'top'    => '8',
-					'right'  => '8',
-					'bottom' => '8',
-					'left'   => '8',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'nav-icon_component_margin'                   => [
-				'mobile'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'nav-icon_button_appearance'                  => [
-				'type'         => 'fill',
-				'borderRadius' => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'borderWidth'  => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'background'   => '#242424',
-				'text'         => '#ffffff',
-			],
-			'hfg_footer_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[],"c-left":[{"id":"footer_copyright"}],"center":[],"c-right":[],"right":[]}}}',
-			'hfg_footer_layout_main_height'               => '{"mobile":0,"tablet":0,"desktop":50}',
-			'hfg_footer_layout_main_background'           => [
-				'type'              => 'color',
-				'imageUrl'          => '',
-				'focusPoint'        => [
-					'x' => 0.5,
-					'y' => 0.5,
-				],
-				'colorValue'        => '#ffffff',
-				'overlayColorValue' => '',
-				'overlayOpacity'    => 50,
-				'fixed'             => false,
-				'useFeatured'       => false,
-			],
-			'hfg_footer_layout_main_bottom_border'        => '{"mobile":1,"tablet":1,"desktop":1}',
-			'hfg_footer_layout_main_border_color'         => 'var(--border-color)',
-			'footer_copyright_color'                      => '#000000',
-			'footer_copyright_component_align'            => [
-				'mobile'  => 'center',
-				'tablet'  => 'center',
-				'desktop' => 'center',
-			],
-			'footer_copyright_component_vertical_align'   => 'middle',
-			'footer_copyright_component_margin'           => [
-				'mobile'       => [
-					'top'    => '-12',
-					'right'  => '0',
-					'bottom' => '20',
-					'left'   => '0',
-				],
-				'tablet'       => [
-					'top'    => '',
-					'right'  => '',
-					'bottom' => '',
-					'left'   => '',
-				],
-				'desktop'      => [
-					'top'    => '-10',
-					'right'  => '0',
-					'bottom' => '20',
-					'left'   => '0',
-				],
-				'mobile-unit'  => 'px',
-				'tablet-unit'  => 'px',
-				'desktop-unit' => 'px',
-			],
-			'footer_copyright_component_typeface'         => [
-				'fontSize'      => [
-					'suffix'  => [
-						'mobile'  => 'px',
-						'tablet'  => 'px',
-						'desktop' => 'px',
-					],
-					'vars'    => [],
-					'mobile'  => '12',
-					'tablet'  => '',
-					'desktop' => '14',
-				],
-				'lineHeight'    => [
-					'vars'    => [],
-					'mobile'  => '',
-					'tablet'  => '',
-					'desktop' => '',
-					'suffix'  => [
-						'mobile'  => 'px',
-						'tablet'  => 'px',
-						'desktop' => 'px',
-					],
-				],
-				'letterSpacing' => [
-					'vars'    => [],
-					'mobile'  => '',
-					'tablet'  => '',
-					'desktop' => '',
-					'suffix'  => [
-						'mobile'  => 'px',
-						'tablet'  => 'px',
-						'desktop' => 'px',
-					],
-				],
-				'fontWeight'    => '300',
-				'textTransform' => 'none',
-			],
-		];
-
-		$theme_mods = get_option( 'theme_mods_' . get_template() );
-
-		if ( ! empty( $theme_mods ) ) {
-			foreach ( $defaults as $key => $data ) {
-				if ( ! isset( $theme_mods[ $key ] ) ) {
-					set_theme_mod( $key, $data );
-				}
-			}
-		}
-	}
-
 	/**
 	 * Tweak menu walker to support selective refresh.
 	 *
@@ -732,6 +211,28 @@ class Component implements Component_Interface {
 		}
 
 		return $args;
+	}
+
+	/**
+	 * Add default starter content
+	 *
+	 * @return void
+	 */
+	public function add_default_starter_content() {
+		add_theme_support( 'starter-content', $this->set_starter_content() );
+	}
+
+	/**
+	 * Set starter content
+	 *
+	 * @return array
+	 */
+	public function set_starter_content() {
+		$content = [
+			'theme_mods' => stax()->get_theme_default_mods(),
+		];
+
+		return $content;
 	}
 
 }

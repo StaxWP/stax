@@ -219,6 +219,7 @@ abstract class Abstract_Builder implements Builder {
 		$this->init();
 
 		add_action( 'hfg_' . $this->get_id() . '_render', [ $this, 'load_template' ] );
+
 		$this->define_builder_settings();
 
 		foreach ( $this->get_rows() as $row_id => $row_name ) {

@@ -3,7 +3,7 @@ Contributors: StaxWP
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable: 1.0.6
+Stable: 1.0.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,11 +31,14 @@ THEME FEATURES:
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial release
+= 1.0.7 =
+* Add starter-content theme support
 
 = 1.0.6 =
 * Fix Elementor section full width
+
+= 1.0.0 =
+* Initial release
 
 == Copyright ==
 Stax WordPress Theme, Copyright 2022 StaxWP https://staxwp.com

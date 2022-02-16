@@ -66,7 +66,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'get_excerpt'              => [ $this, 'get_excerpt' ],
 			'get_the_posts_navigation' => [ $this, 'get_the_posts_navigation' ],
 			'get_html_class'           => [ $this, 'get_html_class' ],
-			'get_featured_posts'       => [ $this, 'get_featured_posts' ],
 		];
 	}
 
@@ -79,7 +78,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		// Ensure WordPress manages the document title.
 		add_theme_support( 'title-tag' );
-		
+
 		$args = [
 			'search-form',
 			'comment-form',
@@ -87,7 +86,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'gallery',
 			'caption',
 		];
-		
+
 		// Ensure WordPress theme features render in HTML5 markup.
 		add_theme_support( 'html5', $args );
 
@@ -111,22 +110,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
-
-		// Add support for feature content
-		add_theme_support(
-			'featured-content',
-			[
-				'featured_content_filter' => 'stax_get_featured_posts',
-				'max_posts'               => 6,
-			]
-		);
-	}
-
-	/**
-	 * @return mixed|null
-	 */
-	public function get_featured_posts() {
-		return apply_filters( 'stax_get_featured_posts', [] );
 	}
 
 	/**
