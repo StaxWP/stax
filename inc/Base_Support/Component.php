@@ -145,6 +145,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$classes[] = 'page-has-related';
 		}
 
+		if ( is_singular() && 'no' === stax()->get_option( Config::OPTION_SINGLE_SHOW_TITLE ) ) {
+			$classes[] = 'has-no-media-panel';
+		}
+
 		$show_footer = true;
 
 		if ( is_404() ) {

@@ -39,7 +39,12 @@ class Component implements Component_Interface {
 	}
 
 	public function enqueue_editor_assets() {
-		wp_enqueue_style( 'stax-root', get_theme_file_uri( 'assets/css/root-vars.css' ), [], false );
+		wp_enqueue_style(
+			'stax-root',
+			get_theme_file_uri( 'assets/css/root-vars.css' ),
+			[],
+			stax()->get_version()
+		);
 	}
 
 	/**
@@ -49,7 +54,7 @@ class Component implements Component_Interface {
 		add_theme_support( 'editor-styles' );
 
 		// This theme styles the visual editor with editor-style.css to match the theme style.
-		add_editor_style( [ 'assets/css/style-editor.css', 'assets/css/root-vars.css' ] );
+		add_editor_style( [ 'assets/css/style-editor.css' ] );
 
 		// Add support for default block styles.
 		add_theme_support( 'wp-block-styles' );

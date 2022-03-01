@@ -74,7 +74,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'get_post_data'            => [ $this, 'get_post_data' ],
 			'set_post_data'            => [ $this, 'set_post_data' ],
 			'get_article_components'   => [ $this, 'get_article_components' ],
-			'get_theme_default_mods'   => [ $this, 'get_theme_default_mods' ]
+			'get_theme_default_mods'   => [ $this, 'get_theme_default_mods' ],
 		];
 	}
 
@@ -135,10 +135,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return mixed
 	 */
 	public function fetch_metabox_value( $value, $option ) {
-		if ( get_post_type( get_the_ID() ) === 'page' ) {
-			return $value;
-		}
-
 		if ( isset( Config::OPTIONS[ $option ]['metabox'] ) && Config::OPTIONS[ $option ]['metabox']['exists'] ) {
 			$metabox_value = get_post_meta( get_the_ID(), $option, true );
 

@@ -8,8 +8,8 @@ class Dynamic_Css {
 	 * Register actions.
 	 */
 	public function init() {
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue' ], 100 );
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ], 100 );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'print_guntenberg_style' ], 100 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'print_builder_style' ], 100 );
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'add_customize_vars_tag' ] );
 
 		if ( is_customize_preview() ) {
@@ -55,9 +55,11 @@ class Dynamic_Css {
 	}
 
 	/**
-	 * Load frontend style.
+	 * Get frontend style.
+	 *
+	 * @return string
 	 */
-	public function enqueue() {
+	public function get_style() {
 		$this->legacy_style();
 
 		$generator    = new Frontend();
@@ -71,11 +73,19 @@ class Dynamic_Css {
 
 		$style .= $this->get_root_css();
 
-		$style = self::minify_css( $style );
-
-		wp_add_inline_style( 'stax-header', $style );
+		return self::minify_css( $style );
 	}
 
+	/**
+	 * Enqueue frontend style
+	 */
+	public function print_builder_style() {
+		wp_add_inline_style( 'stax-header', $this->get_style() );
+	}
+
+	public function print_guntenberg_style() {
+		wp_add_inline_style( 'stax-root', $this->get_style() );
+	}
 
 	/**
 	 * Basic CSS minification.

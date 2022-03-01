@@ -7,6 +7,8 @@
 
 namespace Stax;
 
+use Stax\Customizer\Config;
+
 ?>
 
 <?php
@@ -14,7 +16,13 @@ while ( have_posts() ) :
 	the_post();
 	?>
 
-	<?php stax()->get_template_part( 'template-parts/content/panel', get_post_type() ); ?>
+	<?php
+
+	if ( 'yes' === stax()->get_option( Config::OPTION_SINGLE_SHOW_TITLE ) ) {
+		stax()->get_template_part( 'template-parts/content/panel', get_post_type() );
+	}
+
+	?>
 
 	<?php
 

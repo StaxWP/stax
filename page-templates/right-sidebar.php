@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Right Sidebar
+ * Template Name: Stax - Right Sidebar
  *
  * Right sidebar
  *
@@ -10,6 +10,8 @@
  */
 
 namespace Stax;
+
+use Stax\Customizer\Config;
 
 stax()->force_main_layout( 'right' );
 
@@ -23,7 +25,11 @@ get_header();
 				the_post();
 				?>
 
-				<?php stax()->get_template_part( 'template-parts/content/panel', get_post_type() ); ?>
+				<?php
+				if ( 'yes' === stax()->get_option( Config::OPTION_SINGLE_SHOW_TITLE ) ) {
+					stax()->get_template_part( 'template-parts/content/panel', get_post_type() );
+				}
+				?>
 
 				<main id="primary" class="svq-main-page">
 					<?php stax()->get_template_part( 'template-parts/content/entry', get_post_type() ); ?>

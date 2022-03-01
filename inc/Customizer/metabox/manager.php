@@ -249,6 +249,10 @@ final class Manager {
 			'stax_sidebar_meta_controls',
 			[
 				[
+					'id'   => 'stax_show_title_section',
+					'type' => 'checkbox',
+				],
+				[
 					'id'   => 'stax_single_post_media_panel_height',
 					'type' => 'select',
 				],

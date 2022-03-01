@@ -9,7 +9,6 @@ import {
 	BaseControl,
 	RadioControl,
 	SelectControl,
-	ToggleControl,
 	Tooltip,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
@@ -19,6 +18,7 @@ class MetaFieldsManager extends Component {
 		super(props);
 
 		this.defaultState = {
+			stax_show_title_section: "yes",
 			stax_single_post_media_panel_height: "inherit",
 			stax_single_post_media_panel_text: "inherit",
 			stax_single_post_cateory_breadcrumb: "inherit",
@@ -1600,6 +1600,49 @@ class MetaFieldsManager extends Component {
 		);
 	}
 
+	renderDisablePanel() {
+		return (
+			<BaseControl
+				label={__("Media Panel", "stax")}
+				help={__(
+					"You can hide the Media Panel section which contains the title and the post meta to create cool hero sections in Gutenberg.",
+					"stax"
+				)}
+				id="stax_show_title_section"
+				className="stx-show-title-section stax_meta_panel_meta components-panel__body is-opened"
+			>
+				<ButtonGroup>
+					<Button
+						variant="primary"
+						isPressed={
+							this.props.metaValue("stax_show_title_section") ===
+								"yes" ||
+							this.props.metaValue("stax_show_title_section") ===
+								undefined
+						}
+						onClick={(value) => {
+							this.updateValues("stax_show_title_section", "yes");
+						}}
+					>
+						{__("Show", "stax")}
+					</Button>
+					<Button
+						variant="primary"
+						isPressed={
+							this.props.metaValue("stax_show_title_section") ===
+							"no"
+						}
+						onClick={(value) => {
+							this.updateValues("stax_show_title_section", "no");
+						}}
+					>
+						{__("Hide", "stax")}
+					</Button>
+				</ButtonGroup>
+			</BaseControl>
+		);
+	}
+
 	renderResetButton() {
 		return (
 			<BaseControl
@@ -1623,7 +1666,11 @@ class MetaFieldsManager extends Component {
 	render() {
 		return (
 			<>
-				{this.renderPostLayoutGroup()}
+				{this.renderDisablePanel()}
+				{"yes" === this.props.metaValue("stax_show_title_section") ||
+				undefined === this.props.metaValue("stax_show_title_section")
+					? this.renderPostLayoutGroup()
+					: ""}
 				{this.renderResetButton()}
 			</>
 		);
