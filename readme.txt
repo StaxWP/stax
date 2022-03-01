@@ -3,7 +3,7 @@ Contributors: StaxWP
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable: 1.0.7
+Stable: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,6 +30,11 @@ THEME FEATURES:
 — Not coding required.
 
 == Changelog ==
+
+= 1.1.0 =
+* Add new page template to be used for Page builders
+* Add new option at page level to hide the whole title section. In case you want to use a page builder or add the title from Gutenberg.
+* Other styling improvements
 
 = 1.0.7 =
 * Add starter-content theme support
