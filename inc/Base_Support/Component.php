@@ -159,6 +159,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$classes[] = 'no-footer-widgets';
 		}
 
+		if (function_exists('has_blocks') && has_blocks() ) {
+			$classes[] = 'has-blocks';
+		}
+
 		return $classes;
 	}
 

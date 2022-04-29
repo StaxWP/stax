@@ -76,6 +76,15 @@ class Layout_Container extends Base_Customizer {
 						'defaultVal' => Config::OPTIONS[ Config::OPTION_GENERAL_CONTAINER_WIDTH ]['default'],
 						'output'     => Config::OPTIONS[ Config::OPTION_GENERAL_CONTAINER_WIDTH ]['input_attrs'],
 					],
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'  => [
+							'vars'     => '--layout-max-width',
+							'selector' => 'body',
+							'suffix'   => 'px',
+						],
+						'type' => 'default',
+					],
 					'priority'        => 20,
 					'active_callback' => [ $this, 'if_container_boxed' ],
 				],
@@ -104,7 +113,6 @@ class Layout_Container extends Base_Customizer {
 							.layout-boxed {
 							    background-color: {{value}};
 						    }',
-
 					],
 				],
 				'\Stax\Customizer\Core\Controls\React\Color'

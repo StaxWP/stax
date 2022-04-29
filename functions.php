@@ -1119,6 +1119,22 @@ function stax_add_page_preloader() {
 }
 add_action( 'wp_body_open', 'stax_add_page_preloader', 1 );
 
+/**
+ * Add custom inline css
+ */
+add_filter('stax_dynamic_style_output', function( $style ) {
+
+	$block_gap = stax()->get_option( 'stax_block_gap');
+	if ( $block_gap ) {
+		$style .= ".has-blocks .svq-main-page .entry-content > * + * {
+			margin-top: $block_gap;
+		}";
+	}
+	// also we could override all gaps in page
+	// $style .= "body{--wp--style--block-gap: $block_gap;}";
+
+	return $style;
+});
 
 /**
  * Initialize the plugin tracker

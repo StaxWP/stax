@@ -62,6 +62,8 @@ class Component implements Component_Interface {
 		// Add support for wide-aligned images.
 		add_theme_support( 'align-wide' );
 
+		add_theme_support( 'custom-spacing' );
+
 		// Add support for color palettes.
 		add_theme_support(
 			'editor-color-palette',

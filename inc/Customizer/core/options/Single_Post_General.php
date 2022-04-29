@@ -111,14 +111,16 @@ class Single_Post_General extends Base_Customizer {
 						'step'       => 10,
 						'units'      => [ 'px' ],
 						'defaultVal' => Config::OPTIONS[ Config::OPTION_SINGLE_POST_MEDIA_PANEL_MAX_HEIGHT ]['default'],
+						'output'     => Config::OPTIONS[ Config::OPTION_SINGLE_POST_MEDIA_PANEL_MAX_HEIGHT ]['input_attrs'],
 					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--media-max-height',
-							'suffix'   => 'px',
 							'selector' => 'body',
+							'suffix'   => 'px',
 						],
+						'type' => 'default',
 					],
 					'priority'              => 32,
 					'active_callback'       => [ $this, 'if_not_up_to_desktop' ],

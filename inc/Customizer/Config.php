@@ -174,6 +174,7 @@ class Config {
 	const OPTION_LAYOUT_ARCHIVE_STICKY_SECONDARY_SIDEBAR = 'stax_layout_archive_sticky_secondary_sidebar';
 	const OPTION_LAYOUT_ARCHIVE_SIDEBAR_GAP              = 'stax_layout_archive_sidebar_gap';
 
+	const OPTION_SINGLE_BLOCK_GAP                        = 'stax_block_gap';
 	const OPTION_SINGLE_SHOW_TITLE                        = 'stax_show_title_section';
 	const OPTION_SINGLE_POST_NAVIGATION                   = 'stax_single_post_navigation';
 	const OPTION_SINGLE_POST_NAVIGATION_POSITION          = 'stax_single_post_navigation_position';
@@ -327,6 +328,12 @@ class Config {
 		self::OPTION_LAYOUT_ARCHIVE_SIDEBAR_GAP            => [
 			'default' => 80,
 		],
+		self::OPTION_SINGLE_BLOCK_GAP                       => [
+			'default' => '',
+			'metabox' => [
+				'exists' => true,
+			],
+		],
 		self::OPTION_SINGLE_SHOW_TITLE                    => [
 			'default' => 'yes',
 			'metabox' => [
@@ -355,7 +362,12 @@ class Config {
 			],
 		],
 		self::OPTION_SINGLE_POST_MEDIA_PANEL_MAX_HEIGHT    => [
-			'default' => 800,
+			'type'        => self::OPTION_TYPE_VAR,
+			'default'     => 800,
+			'input_attrs' => [
+				'var'  => 'media-max-height',
+				'unit' => 'px',
+			],
 		],
 		self::OPTION_SINGLE_POST_TITLE_COLOR               => [
 			'default' => 'dark',

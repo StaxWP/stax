@@ -11,6 +11,7 @@ import {
 	SelectControl,
 	Tooltip,
 } from "@wordpress/components";
+import { __experimentalUnitControl as UnitControl } from '@wordpress/components';
 import { __ } from "@wordpress/i18n";
 
 class MetaFieldsManager extends Component {
@@ -18,6 +19,7 @@ class MetaFieldsManager extends Component {
 		super(props);
 
 		this.defaultState = {
+			stax_block_gap: "",
 			stax_show_title_section: "yes",
 			stax_single_post_media_panel_height: "inherit",
 			stax_single_post_media_panel_text: "inherit",
@@ -1600,46 +1602,73 @@ class MetaFieldsManager extends Component {
 		);
 	}
 
-	renderDisablePanel() {
+	renderCommonPanel() {
+		const units = [
+			{ value: 'rem', label: 'rem', default: 2 },
+			{ value: 'px', label: 'px', default: 0 },
+			{ value: '%', label: '%', default: 0 },
+			{ value: 'em', label: 'em', default: 0 },
+		
+		];
+	
 		return (
-			<BaseControl
-				label={__("Media Panel", "stax")}
-				help={__(
-					"You can hide the Media Panel section which contains the title and the post meta to create cool hero sections in Gutenberg.",
-					"stax"
-				)}
-				id="stax_show_title_section"
-				className="stx-show-title-section stax_meta_panel_meta components-panel__body is-opened"
-			>
-				<ButtonGroup>
-					<Button
-						variant="primary"
-						isPressed={
-							this.props.metaValue("stax_show_title_section") ===
-								"yes" ||
-							this.props.metaValue("stax_show_title_section") ===
-								undefined
-						}
-						onClick={(value) => {
-							this.updateValues("stax_show_title_section", "yes");
-						}}
-					>
-						{__("Show", "stax")}
-					</Button>
-					<Button
-						variant="primary"
-						isPressed={
-							this.props.metaValue("stax_show_title_section") ===
-							"no"
-						}
-						onClick={(value) => {
-							this.updateValues("stax_show_title_section", "no");
-						}}
-					>
-						{__("Hide", "stax")}
-					</Button>
-				</ButtonGroup>
-			</BaseControl>
+			<>
+				<BaseControl
+					label={__("Editor Block Gap", "stax")}
+					help={__(
+						"Customize the gap between Gutenberg editor blocks. It applies to first level blocks from the page.",
+						"stax"
+					)}
+					id="stax_block_gap"
+					className="stx-block-gap components-panel__body is-opened"
+				>
+					<UnitControl 
+						onChange={ ( value ) => { this.updateValues("stax_block_gap", value) } } 
+						value={this.props.metaValue('stax_block_gap')}
+						placeholder="2"
+						units={units}
+					/>
+				</BaseControl>
+
+				<BaseControl
+					label={__("Title/Media Panel", "stax")}
+					help={__(
+						"You can hide the Title & Media Panel section which contains the title and the post meta to create cool hero sections in Gutenberg.",
+						"stax"
+					)}
+					id="stax_show_title_section"
+					className="stx-show-title-section stax_meta_panel_meta components-panel__body is-opened"
+				>
+					<ButtonGroup>
+						<Button
+							variant="primary"
+							isPressed={
+								this.props.metaValue("stax_show_title_section") ===
+									"yes" ||
+								this.props.metaValue("stax_show_title_section") ===
+									undefined
+							}
+							onClick={(value) => {
+								this.updateValues("stax_show_title_section", "yes");
+							}}
+						>
+							{__("Show", "stax")}
+						</Button>
+						<Button
+							variant="primary"
+							isPressed={
+								this.props.metaValue("stax_show_title_section") ===
+								"no"
+							}
+							onClick={(value) => {
+								this.updateValues("stax_show_title_section", "no");
+							}}
+						>
+							{__("Hide", "stax")}
+						</Button>
+					</ButtonGroup>
+				</BaseControl>
+			</>
 		);
 	}
 
@@ -1666,7 +1695,7 @@ class MetaFieldsManager extends Component {
 	render() {
 		return (
 			<>
-				{this.renderDisablePanel()}
+				{this.renderCommonPanel()}
 				{"yes" === this.props.metaValue("stax_show_title_section") ||
 				undefined === this.props.metaValue("stax_show_title_section")
 					? this.renderPostLayoutGroup()

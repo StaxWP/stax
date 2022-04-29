@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('wp-components', 'wp-compose', 'wp-data', 'wp-edit-post', 'wp-element', 'wp-i18n', 'wp-keyboard-shortcuts', 'wp-plugins', 'wp-polyfill'), 'version' => 'ab1c5a393607401757374e05e9d0e12c');
+<?php return array('dependencies' => array('wp-components', 'wp-compose', 'wp-data', 'wp-edit-post', 'wp-element', 'wp-i18n', 'wp-keyboard-shortcuts', 'wp-plugins', 'wp-polyfill'), 'version' => 'c66ac89d4b124052b0eac0d3f7cb782b');

@@ -1,6 +1,7 @@
 /* Root variables for Stax theme */
 .label-control {
-  font-size: var(--font-size-base); }
+  font-size: var(--font-size-base);
+}
 
 :root {
   --body-bg-color: hsl(var(--body-bg-h), var(--body-bg-s), var(--body-bg-l));
@@ -202,6 +203,7 @@
   --container-lg: 960px;
   --container-xl: 1140px;
   --container-xxl: 1400px;
+  --container-width: 740px;
   --svq-color-primary: #4256d6;
   --svq-color-red: #F44336;
   --svq-color-pink: #E91E63;
@@ -221,7 +223,8 @@
   --grid-gutter-width: 40px;
   --el-spacing: 2rem;
   --transitionDuration: 300ms;
-  --transitionTF: cubic-bezier(0.645, 0.045, 0.355, 1); }
+  --transitionTF: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
 
 .theme-color-dark {
   --light-color: hsl(0, 0%, var(--light-l)) !important;
@@ -246,7 +249,8 @@
   --text-color: hsla(0, 0%, 100%, 0.5) !important;
   --text-meta-color: hsla(0, 0%, 100%, 0.5) !important;
   --text-muted-color: hsl(0, 0%, 38%) !important;
-  --heading-color: hsla(0, 0%, 100%, 0.8) !important; }
+  --heading-color: hsla(0, 0%, 100%, 0.8) !important;
+}
 
 .theme-color-light {
   --body-bg-color: hsl(var(--body-bg-h), var(--body-bg-s), var(--body-bg-l)) !important;
@@ -266,4 +270,5 @@
   --text-color: hsl(218, 7%, 32%) !important;
   --text-meta-color: hsl(220, 6%, 59%) !important;
   --text-muted-color: hsl(228, 6%, 68%) !important;
-  --heading-color: hsl(0, 0%, 14%) !important; }
+  --heading-color: hsl(0, 0%, 14%) !important;
+}

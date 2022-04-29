@@ -3,7 +3,7 @@ Contributors: StaxWP
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable: 1.1.0
+Stable: 1.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,14 +11,14 @@ Stax is a fast, lightweight and super customizable theme that uses the latest te
 
 Stax is super customisable from colors, fonts to creating incredible pages using popular visual page builders.
 
-A theme for Wordpress enthusiasts which seamlessly integrate specific publishing features.
+A theme for WordPress enthusiasts which seamlessly integrates specific publishing features.
 
 == Description ==
 Stax is fast, lightweight and super customizable theme that uses the latest technologies available.
 
 Stax is super customisable from colors, fonts to creating incredible pages using popular visual page builders.
 
-A theme for Wordpress enthusiasts which seamlessly integrate specific publishing features.
+A theme for WordPress enthusiasts which seamlessly integrates specific publishing features.
 
 THEME FEATURES:
 
@@ -30,6 +30,12 @@ THEME FEATURES:
 — Not coding required.
 
 == Changelog ==
+
+= 1.2.0 =
+* Add all Google fonts instead of just popular
+* Fix Customizer Slider controls
+* Fix deprecated functions & fatal errors with newer Elementor versions
+* Remove unused functions from elementor widgets
 
 = 1.1.0 =
 * Add new page template to be used for Page builders
@@ -61,16 +67,16 @@ License: GNU GPL v3
 Stax uses header/footer builder code from Neve theme, Copyright ThemeIsle
 License: GPLv2 or later, Source: https://wordpress.org/themes/neve/
 
-css-vars-ponyfills.js, Copyright 2018-2019 John Hildenbiddle <http://hildenbiddle.com> 
+css-vars-ponyfills.js, Copyright 2018-2019 John Hildenbiddle <http://hildenbiddle.com>
 License: MIT, Source: https://github.com/jhildenbiddle/css-vars-ponyfill
 
 lightbox.js, Copyright (c) 2015 Lokesh Dhakar
 License: MIT, Source: https://github.com/lokesh/lightbox2
 
-hc-sticky.js, Copyright Some Web Media, 
+hc-sticky.js, Copyright Some Web Media,
 License: MIT, Source: https://github.com/somewebmedia/hc-sticky
 
-object-fit-polyfill.js, Copyright Constance Chen, 
+object-fit-polyfill.js, Copyright Constance Chen,
 License: MIT, Source: https://github.com/constancecchen/object-fit-polyfill
 
 plyr, Copyright Sam Potts

@@ -60,7 +60,7 @@ use Stax\Customizer\Config;
 	}
 
 	$sticky_class = $is_sticky ? 'svq-sticky-el' : '';
-	$gap          = $sticky_gap['size'];
+	$gap          = $sticky_gap;
 
 	if ( $is_sticky ) {
 		\Stax_Assets::instance()->enqueue_hc_sticky();

@@ -249,6 +249,10 @@ final class Manager {
 			'stax_sidebar_meta_controls',
 			[
 				[
+					'id'   => 'stax_block_gap',
+					'type' => 'text',
+				],
+				[
 					'id'   => 'stax_show_title_section',
 					'type' => 'checkbox',
 				],

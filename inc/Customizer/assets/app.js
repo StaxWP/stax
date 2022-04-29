@@ -106,7 +106,7 @@ window.addEventListener("load", function () {
 							args.directional || false
 						);
 
-						addStyle(
+						addVarStyle(
 							settingType,
 							settingId,
 							newValue,
@@ -135,7 +135,7 @@ window.addEventListener("load", function () {
 								style += `body ${i.selector} { ${i.prop}: ${newValue} !important; }`;
 							});
 
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case "stax_background_control":
 							if (newValue.type === "color") {
@@ -155,7 +155,7 @@ window.addEventListener("load", function () {
 								style += `${args.selector}:before{ content: none !important;}`;
 								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`;
 								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
-								addCss(settingId, style);
+								addCSS(settingId, style);
 								return false;
 							}
 							if (
@@ -208,7 +208,7 @@ window.addEventListener("load", function () {
 							style +=
 								args.selector +
 								"{ background-color: transparent !important; }";
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case "\\Stax\\Customizer\\Core\\Controls\\React\\Responsive_Radio_Buttons":
 							handleResponsiveRadioButtons(args, newValue);
@@ -291,7 +291,7 @@ window.addEventListener("load", function () {
 									args.additional.prop +
 									":unset;}}";
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case "\\Stax\\Customizer\\Core\\Controls\\React\\Spacing":
 							for (const device in deviceMap) {
@@ -335,7 +335,7 @@ window.addEventListener("load", function () {
 								}
 								style += "}}";
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case "\\Stax\\Customizer\\Core\\Controls\\React\\Typography":
 							if (args.selector !== true) {
@@ -386,39 +386,35 @@ window.addEventListener("load", function () {
 										args.live_refresh_default &&
 										args.live_refresh_default.line_height
 									) {
-										style += `line-height:${
-											args.live_refresh_default
-												.line_height[device]
-										}${
-											args.live_refresh_default
+										style += `line-height:${args.live_refresh_default
+											.line_height[device]
+											}${args.live_refresh_default
 												.line_height.suffix &&
-											args.live_refresh_default
-												.line_height.suffix[device]
+												args.live_refresh_default
+													.line_height.suffix[device]
 												? args.live_refresh_default
-														.line_height.suffix[
-														device
-												  ]
+													.line_height.suffix[
+												device
+												]
 												: ""
-										};`;
+											};`;
 									}
 
 									if (
 										newValue.lineHeight &&
 										newValue.lineHeight[device]
 									) {
-										style += `line-height:${
-											newValue.lineHeight[device]
-										}${
-											newValue.lineHeight.suffix[
-												device
+										style += `line-height:${newValue.lineHeight[device]
+											}${newValue.lineHeight.suffix[
+											device
 											] || ""
-										};`;
+											};`;
 									}
 
 									style += `}}`;
 								}
 
-								addCss(settingId, style);
+								addCSS(settingId, style);
 							} else {
 								let typoStylesObj = getStyle();
 
@@ -675,7 +671,7 @@ window.addEventListener("load", function () {
 										background-color: ${txtColor};
 										color: ${txtColor};
 									}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case "text":
 							const textContainer = document.querySelector(
@@ -709,14 +705,18 @@ window.addEventListener("load", function () {
 											width: ${newValue}px;
 											height: ${newValue}px;
 										}`;
-								addCss(settingId, style);
+								addCSS(settingId, style);
+								return false;
+							} else if (args.additional.type === "default") {
+								addCSS(settingId, style);
 								return false;
 							}
 
+							console.log(args, args.selector, newValue);
 							style += `html ${args.selector} {
 											${args.additional.type}: ${newValue}px;
 										}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 
 							break;
 						case "\\Stax\\Customizer\\Core\\Controls\\React\\Color":
@@ -725,7 +725,7 @@ window.addEventListener("load", function () {
 							style += `html ${args.selector} {
 										${args.additional.prop}: ${colorValue};
 									}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case "\\Stax\\Customizer\\Core\\Controls\\React\\Font_Family":
 							break;
@@ -896,10 +896,10 @@ window.addEventListener("load", function () {
 			} else {
 				$("head").append(
 					'<style type="text/css" class="' +
-						settings.styleClass +
-						'">' +
-						result +
-						"</style>"
+					settings.styleClass +
+					'">' +
+					result +
+					"</style>"
 				);
 			}
 		},
