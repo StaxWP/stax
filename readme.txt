@@ -1,9 +1,9 @@
 === Stax ===
 Contributors: StaxWP
 Requires at least: 5.0
-Tested up to: 5.9
+Tested up to: 6.0
 Requires PHP: 7.0
-Stable: 1.2.0
+Stable: 1.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,6 +30,9 @@ THEME FEATURES:
 — Not coding required.
 
 == Changelog ==
+
+= 1.2.1 =
+* Fix Classic editor styles and WordpPress 6.0 testing
 
 = 1.2.0 =
 * Add all Google fonts instead of just popular

@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '4ec71e33ba8db68d4393b17069290be43f8abaea',
+    'reference' => '9134983cd7c91d11178f1a2924f7d5670d89c490',
     'name' => 'stax/theme',
   ),
   'versions' => 
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '4ec71e33ba8db68d4393b17069290be43f8abaea',
+      'reference' => '9134983cd7c91d11178f1a2924f7d5670d89c490',
     ),
   ),
 );
