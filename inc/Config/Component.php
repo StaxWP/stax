@@ -213,12 +213,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$post_blocks = parse_blocks( $content );
 
 			foreach ( $post_blocks as $block ) {
-				if ( $block['blockName'] === 'core/embed' ) {
+				if ( ( $block['blockName'] ?? '' ) === 'core/embed' && ! empty( $block['attrs']['url'] ) ) {
 					$data = [
 						'source' => 'other',
 						'video'  => $block['attrs']['url'],
 					];
-				} elseif ( $block['blockName'] === 'core/video' ) {
+				} elseif ( ( $block['blockName'] ?? '' ) === 'core/video' && ! empty( $block['attrs']['id'] ) ) {
 					$data = [
 						'source' => 'hosted',
 						'video'  => $block['attrs']['id'],
@@ -253,14 +253,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$post_blocks = parse_blocks( $content );
 
 			foreach ( $post_blocks as $block ) {
-				if ( $block ['blockName'] === 'core/gallery' ) {
+				if ( ( $block['blockName'] ?? '' ) === 'core/gallery' ) {
 					if ( empty( $block['innerBlocks'] ) && isset( $block['attrs']['ids'] ) ) {
 						foreach ( $block['attrs']['ids'] as $id ) {
 							$data[] = $id;
 						}
 					} else {
 						foreach ( $block['innerBlocks'] as $inner_block ) {
-							$data[] = $inner_block['attrs']['id'];
+							if ( ! empty( $inner_block['attrs']['id'] ) ) {
+								$data[] = $inner_block['attrs']['id'];
+							}
 						}
 					}
 				}

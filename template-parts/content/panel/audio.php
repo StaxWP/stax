@@ -14,7 +14,7 @@ if ( has_block( 'audio', get_the_content() ) ) {
 	$post_blocks = parse_blocks( get_the_content() );
 
 	foreach ( $post_blocks as $block ) {
-		if ( $block['blockName'] === 'core/audio' ) {
+		if ( ( $block['blockName'] ?? '' ) === 'core/audio' && ! empty( $block['attrs']['id'] ) ) {
 			$audio = $block['attrs']['id'];
 		}
 

@@ -404,7 +404,7 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function cart_total() {
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'WC' ) || ! is_object( WC() ) || ! isset( WC()->cart ) || ! is_object( WC()->cart ) ) {
 			return '';
 		}
 		return '<span class="stx-cart-icon-total-plain">' . WC()->cart->cart_contents_total . '</span>';
@@ -416,7 +416,7 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function cart_total_currency_symbol() {
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'WC' ) || ! is_object( WC() ) || ! isset( WC()->cart ) || ! is_object( WC()->cart ) ) {
 			return '';
 		}
 

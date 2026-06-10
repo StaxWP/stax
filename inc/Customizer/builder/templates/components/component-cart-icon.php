@@ -8,7 +8,10 @@ $custom_html       = '';
 $expand_enabled    = true;
 $cart_label        = '';
 $allowed_post_tags = wp_kses_allowed_html( 'header_footer_grid' );
-$cart_is_empty     = WC()->cart->get_cart_contents_count() === 0;
+$cart              = function_exists( 'WC' ) && is_object( WC() ) && isset( WC()->cart ) && is_object( WC()->cart ) ? WC()->cart : null;
+$cart_count        = $cart ? (int) $cart->get_cart_contents_count() : 0;
+$cart_is_empty     = $cart_count === 0;
+$cart_url          = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : '#';
 
 $off_canvas_closing_button = '';
 $mini_cart_classes         = [ 'stx-nav-cart', 'widget' ];
@@ -28,7 +31,7 @@ if ( (bool) $expand_enabled === false ) {
 	echo $cart_is_empty ? ' cart-is-empty' : '';
 	?>
 	">
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-icon-wrapper">
+		<a href="<?php echo esc_url( $cart_url ); ?>" class="cart-icon-wrapper">
 			<?php
 			if ( ! empty( $cart_label ) ) {
 				echo '<span class="cart-icon-label inherit-ff">';
@@ -42,7 +45,7 @@ if ( (bool) $expand_enabled === false ) {
 				<?php esc_html_e( 'Cart', 'stax' ); ?>
 			</span>
 			<span class="cart-count">
-				<?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?>
+				<?php echo esc_html( $cart_count ); ?>
 			</span>
 			<?php do_action( 'stax_cart_icon_after_cart_total' ); ?>
 		</a>

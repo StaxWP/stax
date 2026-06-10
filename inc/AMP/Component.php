@@ -87,6 +87,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		$amp_theme_support = get_theme_support( 'amp' );
 
-		return ! empty( $amp_theme_support[0]['comments_live_list'] );
+		return is_array( $amp_theme_support )
+			&& isset( $amp_theme_support[0] )
+			&& is_array( $amp_theme_support[0] )
+			&& ! empty( $amp_theme_support[0]['comments_live_list'] );
 	}
 }

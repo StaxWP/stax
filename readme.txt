@@ -1,9 +1,9 @@
 === Stax ===
 Contributors: StaxWP
 Requires at least: 5.0
-Tested up to: 6.0
-Requires PHP: 7.0
-Stable: 1.2.1
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable: 1.2.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,6 +30,11 @@ THEME FEATURES:
 — Not coding required.
 
 == Changelog ==
+
+= 1.2.2 =
+* Tested up to WordPress 7.0
+* Raise minimum PHP requirement to 7.4
+* Harden WooCommerce cart access and block parsing for PHP 8 compatibility
 
 = 1.2.1 =
 * Fix Classic editor styles and WordpPress 6.0 testing

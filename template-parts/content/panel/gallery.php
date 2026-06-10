@@ -16,14 +16,16 @@ if ( has_block( 'gallery', get_the_content() ) ) {
 	$post_blocks = parse_blocks( get_the_content() );
 
 	foreach ( $post_blocks as $block ) {
-		if ( $block['blockName'] === 'core/gallery' ) {
+		if ( ( $block['blockName'] ?? '' ) === 'core/gallery' ) {
 			if ( empty( $block['innerBlocks'] ) && isset( $block['attrs']['ids'] ) ) {
 				foreach ( $block['attrs']['ids'] as $id ) {
 					$gallery[] = $id;
 				}
 			} else {
 				foreach ( $block['innerBlocks'] as $inner_block ) {
-					$gallery[] = $inner_block['attrs']['id'];
+					if ( ! empty( $inner_block['attrs']['id'] ) ) {
+						$gallery[] = $inner_block['attrs']['id'];
+					}
 				}
 			}
 		}
