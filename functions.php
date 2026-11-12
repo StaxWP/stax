@@ -1137,21 +1137,25 @@ add_filter('stax_dynamic_style_output', function( $style ) {
 });
 
 /**
- * Initialize the plugin tracker
+ * Once: remove what the Appsero usage tracker (bundled until 1.2.2) stored on the site. Its slug is the theme
+ * folder name. Themes have no uninstall routine, so this runs on update only.
  *
  * @return void
  */
-function appsero_init_tracker_stax() {
-
-	if ( ! class_exists( 'Appsero\Client' ) ) {
-		require_once __DIR__ . '/vendor/appsero/src/Client.php';
+function stax_remove_appsero_data() {
+	if ( get_option( 'stax_appsero_removed' ) ) {
+		return;
 	}
 
-	$client = new Appsero\Client( 'b090e7cc-42a2-43c2-99a1-5c19b06b9661', 'Stax', __FILE__ );
+	$slug = get_template();
 
-	// Active insights.
-	$client->insights()->init();
+	foreach ( [ '_tracking_last_send', '_allow_tracking', '_tracking_notice', '_tracking_skipped' ] as $suffix ) {
+		delete_option( $slug . $suffix );
+	}
 
+	wp_clear_scheduled_hook( $slug . '_tracker_send_event' );
+
+	update_option( 'stax_appsero_removed', '1' );
 }
 
-appsero_init_tracker_stax();
+add_action( 'init', 'stax_remove_appsero_data' );

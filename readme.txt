@@ -31,6 +31,9 @@ THEME FEATURES:
 
 == Changelog ==
 
+= Unreleased =
+* Removed: usage tracker (Appsero) and its opt-in notice; its stored options and scheduled event are deleted on update. No usage data is collected.
+
 = 1.2.2 =
 * Tested up to WordPress 7.0
 * Raise minimum PHP requirement to 7.4
@@ -64,8 +67,7 @@ Stax WordPress Theme, Copyright 2022 StaxWP https://staxwp.com
 Stax is licensed and distributed under the GPLv3 or later.
 
 ## Privacy Policy
-Stax uses Appsero SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
-Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users.
+Stax collects no usage data and sends nothing to StaxWP. Google Fonts chosen in the Customizer are loaded from fonts.googleapis.com. The usage tracker (Appsero) bundled until version 1.2.2 was removed, and what it stored is deleted on update.
 
 == Resources ==
 
