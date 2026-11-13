@@ -9,14 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T12:23:01+00:00\n"
+"POT-Creation-Date: 2026-11-13T20:38:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: stax\n"
 
 #. Theme Name of the theme
 #: style.css
-#: inc/Editor/Component.php:223
+#: inc/Editor/Component.php:284
 #: inc/Panel/templates/panel.php:5
 msgid "Stax"
 msgstr ""
@@ -225,6 +225,36 @@ msgctxt "weekly archives date format"
 msgid "W"
 msgstr ""
 
+#: inc/Builder_Integration/Component.php:135
+msgid "Skip to content"
+msgstr ""
+
+#: inc/Builder_Integration/Component.php:193
+msgid "Stax Builder"
+msgstr ""
+
+#. translators: %s: plugin name, for example Stax Builder.
+#: inc/Builder_Integration/Managed_Control.php:49
+#, php-format
+msgid "The footer is managed by %s."
+msgstr ""
+
+#. translators: %s: plugin name, for example Stax Builder.
+#: inc/Builder_Integration/Managed_Control.php:51
+#, php-format
+msgid "The header is managed by %s."
+msgstr ""
+
+#. translators: %s: plugin name, for example Stax Builder.
+#: inc/Builder_Integration/Managed_Control.php:59
+#, php-format
+msgid "Edit in %s"
+msgstr ""
+
+#: inc/Builder_Integration/Managed_Control.php:63
+msgid "Your theme settings for this area are kept and come back if you deactivate the plugin."
+msgstr ""
+
 #: inc/class-stax-assets.php:157
 msgid "Image viewer"
 msgstr ""
@@ -393,7 +423,7 @@ msgid "After opening body tag"
 msgstr ""
 
 #: inc/Compat/Component.php:155
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:601
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:643
 #: inc/Customizer/builder/Core/Builder/Header.php:23
 msgid "Header"
 msgstr ""
@@ -456,30 +486,30 @@ msgstr ""
 msgid "Border Width"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:683
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:708
 msgid "Section Content"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1532
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1557
 #: inc/Customizer/builder/Core/Components/Abstract_Component.php:905
 #: inc/Customizer/core/options/Archive_List.php:100
 #: inc/Customizer/core/controls/react/bundle/controls.js:1
 msgid "Left"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1536
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1561
 #: inc/Customizer/builder/Core/Components/Abstract_Component.php:909
 msgid "Center"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1540
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1565
 #: inc/Customizer/builder/Core/Components/Abstract_Component.php:913
 #: inc/Customizer/core/options/Archive_List.php:104
 #: inc/Customizer/core/controls/react/bundle/controls.js:1
 msgid "Right"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1551
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1576
 #: inc/Customizer/builder/Core/Components/Abstract_Component.php:931
 #: inc/Customizer/core/options/Single_Page.php:96
 #: inc/Customizer/core/options/Single_Post_General.php:313
@@ -487,62 +517,62 @@ msgstr ""
 msgid "Alignment"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1597
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1622
 #: inc/Customizer/builder/Core/Components/SearchResponsive.php:99
 msgid "Open Behaviour"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1602
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1627
 msgid "Slide from Left"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1603
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1628
 msgid "Slide from Right"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1604
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1629
 msgid "Pull from Left"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1605
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1630
 msgid "Pull from Right"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1606
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1631
 msgid "Full Canvas"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1607
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1632
 msgid "Slide Down"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1622
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1647
 msgid "Sidebar Width"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1686
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1711
 msgid "Number of Columns"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1703
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1728
 msgid "Columns Layout"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1717
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1742
 #: inc/Customizer/core/controls/react/bundle/controls.js:1
 msgid "Top"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1721
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1746
 msgid "Middle"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1725
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1750
 #: inc/Customizer/core/controls/react/bundle/controls.js:1
 msgid "Bottom"
 msgstr ""
 
-#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1739
+#: inc/Customizer/builder/Core/Builder/Abstract_Builder.php:1764
 msgid "Vertical Alignment"
 msgstr ""
 
@@ -1050,10 +1080,6 @@ msgstr ""
 #: inc/Customizer/core/controls/react/bundle/3.js:1
 #: inc/Customizer/core/controls/react/bundle/7.js:1
 msgid "Search"
-msgstr ""
-
-#: inc/Customizer/builder/templates/header-wrapper.php:13
-msgid "Skip to content"
 msgstr ""
 
 #: inc/Customizer/builder/templates/rows.php:65
@@ -1979,27 +2005,27 @@ msgstr ""
 msgid "Toggle the %s submenu"
 msgstr ""
 
-#: inc/Editor/Component.php:186
+#: inc/Editor/Component.php:247
 msgid "Pill"
 msgstr ""
 
-#: inc/Editor/Component.php:189
+#: inc/Editor/Component.php:250
 msgid "Shadow"
 msgstr ""
 
-#: inc/Editor/Component.php:192
+#: inc/Editor/Component.php:253
 msgid "Card"
 msgstr ""
 
-#: inc/Editor/Component.php:195
+#: inc/Editor/Component.php:256
 msgid "Checklist"
 msgstr ""
 
-#: inc/Editor/Component.php:198
+#: inc/Editor/Component.php:259
 msgid "Eyebrow"
 msgstr ""
 
-#: inc/Editor/Component.php:224
+#: inc/Editor/Component.php:285
 msgid "Sections designed for the Stax theme."
 msgstr ""
 
@@ -2746,167 +2772,177 @@ msgstr ""
 msgid "Footer Column 4"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:202
-#: inc/Style_Switch/Component.php:203
-#: inc/Style_Switch/Component.php:214
-#: inc/Style_Switch/Component.php:630
-msgid "Stax style"
-msgstr ""
-
-#: inc/Style_Switch/Component.php:246
+#: inc/Style_Switch/Component.php:297
 msgid "Stax 2.0 has a faster, lighter style."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:246
-msgid "Preview it, then switch with one click."
+#: inc/Style_Switch/Component.php:297
+msgid "See it side by side with your current look, then switch with one click."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:252
-#: inc/Style_Switch/Component.php:254
+#: inc/Style_Switch/Component.php:303
+msgid "Compare the styles"
+msgstr ""
+
+#: inc/Style_Switch/Component.php:305
 msgid "Preview"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:257
+#: inc/Style_Switch/Component.php:306
 msgid "Switch now"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:258
+#: inc/Style_Switch/Component.php:309
 msgid "Not now"
 msgstr ""
 
 #. translators: %d: number of days.
-#: inc/Style_Switch/Component.php:289
+#: inc/Style_Switch/Component.php:340
 #, php-format
-msgid "Your site now uses the new Stax style. You can switch back for %d days in Appearance > Stax style."
+msgid "Your site now uses the Stax 2.0 style. You can switch back for %d days in Appearance > Stax Panel."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:290
-msgid "Your site uses the classic Stax style again."
+#: inc/Style_Switch/Component.php:341
+msgid "Your site uses the Stax 1.x style again."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:291
-msgid "Nothing changed. Reload the page and try again."
-msgstr ""
-
-#: inc/Style_Switch/Component.php:315
-msgid "Your site uses the classic Stax 1.x style."
-msgstr ""
-
-#: inc/Style_Switch/Component.php:316
-msgid "Your site uses the new Stax 2.0 style."
-msgstr ""
-
-#: inc/Style_Switch/Component.php:318
-msgid "The new style loads a much smaller stylesheet, so pages load faster. Your colors, fonts, layout, header and footer stay the same."
-msgstr ""
-
-#: inc/Style_Switch/Component.php:323
-msgid "What changes when you switch"
-msgstr ""
-
-#: inc/Style_Switch/Component.php:334
-msgid "Switch to the new style"
-msgstr ""
-
-#: inc/Style_Switch/Component.php:336
-msgid "Switch back to the old style"
+#: inc/Style_Switch/Component.php:342
+msgid "Your site keeps the Stax 2.0 style."
 msgstr ""
 
 #: inc/Style_Switch/Component.php:343
-msgid "Nothing changes until you switch. You can switch back for 30 days."
+msgid "Nothing changed. Reload the page and try again."
+msgstr ""
+
+#: inc/Style_Switch/Component.php:354
+msgid "Stax 2.0 style"
+msgstr ""
+
+#: inc/Style_Switch/Component.php:370
+msgid "Your site uses the Stax 2.0 style."
 msgstr ""
 
 #. translators: %s: date.
-#: inc/Style_Switch/Component.php:346
+#: inc/Style_Switch/Component.php:375
 #, php-format
-msgid "Switching back restores your previous style settings. Available until %s."
+msgid "Switch back to the 1.x look (until %s)"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:363
-msgid "Preview the new style"
+#: inc/Style_Switch/Component.php:379
+msgid "Keep 2.0 and hide this"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:363
-msgid "Preview the old style"
+#: inc/Style_Switch/Component.php:406
+msgid "Your site still uses the Stax 1.x stylesheet. The 2.0 style loads much less CSS, so pages show up faster. Your colors, fonts, layout, header and footer stay the same."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:373
-msgid "Classic style"
+#: inc/Style_Switch/Component.php:410
+msgid "What changes when you switch"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:374
-msgid "New style"
+#: inc/Style_Switch/Component.php:418
+msgid "Switch to the 2.0 style"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:377
-msgid "Show in the preview"
+#: inc/Style_Switch/Component.php:421
+msgid "Open a full preview"
+msgstr ""
+
+#. translators: %d: number of days.
+#: inc/Style_Switch/Component.php:428
+#, php-format
+msgid "Nothing changes until you switch. You can switch back for %d days."
+msgstr ""
+
+#: inc/Style_Switch/Component.php:440
+msgid "Now: Stax 1.x"
+msgstr ""
+
+#: inc/Style_Switch/Component.php:441
+msgid "After the switch: Stax 2.0"
 msgstr ""
 
 #. translators: %s: style name.
-#: inc/Style_Switch/Component.php:385
+#: inc/Style_Switch/Component.php:459
 #, php-format
-msgid "%s (current)"
+msgid "Home page preview, %s"
+msgstr ""
+
+#: inc/Style_Switch/Component.php:472
+msgid "Stax 1.x (current)"
+msgstr ""
+
+#: inc/Style_Switch/Component.php:473
+msgid "Stax 2.0"
+msgstr ""
+
+#: inc/Style_Switch/Component.php:476
+msgid "Show in the preview"
 msgstr ""
 
 #. translators: 1: new size in KB, 2: old size in KB.
-#: inc/Style_Switch/Component.php:416
+#: inc/Style_Switch/Component.php:515
 #, php-format
 msgid "Theme stylesheet: %1$d KB instead of %2$d KB."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:427
+#: inc/Style_Switch/Component.php:526
 msgid "Colors: no change needed, your colors are easy to read."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:432
+#: inc/Style_Switch/Component.php:531
 msgid "Colors that were too light to read easily become just dark enough:"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:439
+#: inc/Style_Switch/Component.php:538
 msgid "becomes"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:454
+#: inc/Style_Switch/Component.php:553
 msgid "Content: none of your content uses old Stax 1.x classes."
 msgstr ""
 
 #. translators: %d: number of CSS classes.
-#: inc/Style_Switch/Component.php:466
+#: inc/Style_Switch/Component.php:565
 #, php-format
 msgid "Content: %d class from Stax 1.x is used, so its styles are kept:"
 msgid_plural "Content: %d classes from Stax 1.x are used, so their styles are kept:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/Style_Switch/Component.php:471
+#: inc/Style_Switch/Component.php:570
 msgid " and more."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:544
+#: inc/Style_Switch/Component.php:643
 msgid "Sorry, you are not allowed to change the theme style."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:693
+#: inc/Style_Switch/Component.php:731
+msgid "Stax style"
+msgstr ""
+
+#: inc/Style_Switch/Component.php:801
 msgid "Publish or discard your Customizer changes first, then switch."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:694
+#: inc/Style_Switch/Component.php:802
 msgid "Working..."
 msgstr ""
 
-#: inc/Style_Switch/Migration.php:416
+#: inc/Style_Switch/Migration.php:433
 msgid "Menu items color"
 msgstr ""
 
-#: inc/Style_Switch/Migration.php:417
+#: inc/Style_Switch/Migration.php:434
 msgid "Menu active item color"
 msgstr ""
 
-#: inc/Style_Switch/Migration.php:418
+#: inc/Style_Switch/Migration.php:435
 msgid "Menu hover color"
 msgstr ""
 
-#: inc/Style_Switch/Migration.php:419
+#: inc/Style_Switch/Migration.php:436
 msgid "Search icon hover color"
 msgstr ""
 

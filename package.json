@@ -9,7 +9,7 @@
     "build": "node bin/build.mjs",
     "build:css": "node bin/build.mjs css",
     "build:js": "node bin/build.mjs js",
-    "pot": "wp i18n make-pot . languages/stax.pot --exclude=node_modules,dist,bin,inc/Customizer/core/controls/react/src,inc/Customizer/metabox/src",
+    "pot": "wp i18n make-pot . languages/stax.pot --exclude=node_modules,dist,bin,docs,inc/Customizer/core/controls/react/src,inc/Customizer/metabox/src",
     "zip": "sh bin/make-zip.sh"
   },
   "devDependencies": {
