@@ -46,36 +46,31 @@ class Component implements Component_Interface {
 	 * @return array
 	 */
 	private function get_recommended_plugins() {
+		// Optional, free plugins from WordPress.org. Nothing is installed without the admin clicking.
 		$recommended_plugins = [
 			[
-				'name'               => 'Elementor Page Builder',
-				'slug'               => 'elementor',
-				'version'            => '3.5.4',
-				'required'           => false,
-				'force_activation'   => false,
-				'force_deactivation' => false,
-				'external_url'       => '',
-				'description'        => 'Build your pages with an advanced Drag & Drop interface.',
+				'name'        => 'Elementor',
+				'slug'        => 'elementor',
+				'required'    => false,
+				'description' => __( 'Build pages with a drag and drop editor. Stax registers the Elementor Pro Theme Builder locations.', 'stax' ),
 			],
 			[
-				'name'               => 'Visibility Logic for Elementor',
-				'slug'               => 'visibility-logic-elementor',
-				'version'            => '2.2.3',
-				'required'           => false,
-				'force_activation'   => false,
-				'force_deactivation' => false,
-				'external_url'       => '',
-				'description'        => 'Hide or show an Elementor widget based on whether a user is logged in, logged out (guest), has specific role, based on user meta, at specific dates or by the browser used.',
+				'name'        => 'Visibility Logic for Elementor',
+				'slug'        => 'visibility-logic-elementor',
+				'required'    => false,
+				'description' => __( 'Show or hide Elementor widgets and sections by login status, user role, date and more.', 'stax' ),
 			],
 			[
-				'name'               => 'Customizer Export/Import',
-				'slug'               => 'customizer-export-import',
-				'required'           => false,
-				'version'            => '0.9.2',
-				'force_activation'   => false,
-				'force_deactivation' => false,
-				'external_url'       => '',
-				'description'        => 'The Customizer Export/Import plugin allows you to export or import your WordPress customizer settings from directly within the customizer interface.',
+				'name'        => 'BuddyBuilder',
+				'slug'        => 'stax-buddy-builder',
+				'required'    => false,
+				'description' => __( 'Design BuddyPress and BuddyBoss community pages with Elementor.', 'stax' ),
+			],
+			[
+				'name'        => 'Customizer Export/Import',
+				'slug'        => 'customizer-export-import',
+				'required'    => false,
+				'description' => __( 'Export or import your Customizer settings.', 'stax' ),
 			],
 		];
 
