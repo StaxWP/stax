@@ -9,7 +9,7 @@
  *   assets/css/src/blocks.css         block styles (front end and editor)
  *   assets/css/src/compat/<name>.css  hand-written plugin compatibility rules
  *   inc/Customizer/builder/assets/scss/style.scss   header/footer builder
- *   assets/js/index.js, assets/js/lightbox.js, assets/js/hfg/app.js
+ *   assets/js/index.js, assets/js/lightbox.js, assets/js/hfg/*.js (bundled to hfg/app.js)
  *
  * Outputs (do not edit): assets/css/index(.min).css, assets/css/compat/*.css, assets/css/legacy/stax-1x.min.css,
  * inc/Customizer/builder/assets/css/style(.min).css, assets/js/*.min.js.
@@ -168,6 +168,9 @@ async function buildCss() {
 }
 
 async function buildJs() {
+	// Header/footer builder script, bundled from its ES module sources (assets/js/hfg/index.js).
+	await esbuild.build({ entryPoints: [r('assets/js/hfg/index.js')], outfile: r('assets/js/hfg/app.js'), bundle: true, format: 'iife', target: 'es2017', logLevel: 'silent' });
+
 	for (const file of ['assets/js/index.js', 'assets/js/lightbox.js', 'assets/js/hfg/app.js']) {
 		const out = file.replace(/\.js$/, '.min.js');
 		await esbuild.build({ entryPoints: [r(file)], outfile: r(out), minify: true, target: 'es2017', legalComments: 'none', logLevel: 'silent' });

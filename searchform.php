@@ -11,21 +11,21 @@ if ( array_key_exists( 'additional_form_classes', $args ) && is_array( $args['ad
 $value       = array_key_exists( 'value', $args ) ? $args['value'] : '';
 $placeholder = apply_filters( 'stx_search_placeholder', $placeholder );
 $aria_label  = __( 'Search', 'stax' );
-$home_url    = home_url( '/' )
+$home_url    = home_url( '/' );
+$field_id    = wp_unique_id( 'stax-search-' );
 
 ?>
 
 <form role="search"
 	method="get"
-	class="<?php echo esc_html( implode( ' ', $form_classes ) ); ?>"
+	class="<?php echo esc_attr( implode( ' ', $form_classes ) ); ?>"
 	action="<?php echo esc_url( $home_url ); ?>">
-	<label>
-		<span class="screen-reader-text"><?php echo esc_html__( 'Search for...', 'stax' ); ?></span>
-	</label>
+	<label class="screen-reader-text" for="<?php echo esc_attr( $field_id ); ?>"><?php esc_html_e( 'Search for:', 'stax' ); ?></label>
 	<input type="search"
+		id="<?php echo esc_attr( $field_id ); ?>"
 		class="search-field"
 		placeholder="<?php echo esc_attr( $placeholder ); ?>"
-		value="<?php echo esc_html( $value ); ?>"
+		value="<?php echo esc_attr( $value ); ?>"
 		name="s"/>
 	<button type="submit"
 			class="search-submit"

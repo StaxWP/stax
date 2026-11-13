@@ -15,9 +15,9 @@
 				{ "slug": "background", "name": "Background", "color": "#ffffff" },
 				{ "slug": "light", "name": "Light", "color": "#eef8f9" },
 				{ "slug": "dark", "name": "Dark", "color": "#242424" },
-				{ "slug": "link", "name": "Link", "color": "#1aaaa0" },
+				{ "slug": "link", "name": "Link", "color": "#0e7c75" },
 				{ "slug": "border", "name": "Border", "color": "#ddebed" },
-				{ "slug": "meta", "name": "Meta", "color": "#90949c" },
+				{ "slug": "meta", "name": "Meta", "color": "#6a6e75" },
 				{ "slug": "very-light-gray", "name": "Very light gray", "color": "#eeeeee" },
 				{ "slug": "very-dark-gray", "name": "Very dark gray", "color": "#313131" }
 			]

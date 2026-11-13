@@ -31,6 +31,15 @@ class Component implements Component_Interface {
 	const NOTICE_OPTION = 'stax_show_2_0_notice';
 
 	/**
+	 * Customizer defaults that changed in 2.0 (for WCAG AA contrast), with their 1.x values.
+	 */
+	const CHANGED_DEFAULTS_2_0 = [
+		'primary-menu_active_color'            => '#1aaaa0',
+		'primary-menu_hover_color'             => '#1aaaa0',
+		'header_search_responsive_hover_color' => '#1aaaa0',
+	];
+
+	/**
 	 * Gets the unique identifier for the theme component.
 	 *
 	 * @return string Component slug.
@@ -89,13 +98,25 @@ class Component implements Component_Interface {
 	}
 
 	/**
-	 * 2.0.0: keep the 1.x look on updated sites and remove what the Appsero tracker stored.
+	 * 2.0.0: keep the 1.x look on updated sites (stylesheet and changed color defaults) and remove
+	 * what the Appsero tracker stored.
 	 */
 	protected function upgrade_2_0_0() {
 		// Keep the full 1.x stylesheet so nothing changes visually; the admin can switch to the lean one.
 		if ( null === get_theme_mod( Config::OPTION_PERF_LEGACY_CSS, null ) ) {
 			set_theme_mod( Config::OPTION_PERF_LEGACY_CSS, true );
 			update_option( self::NOTICE_OPTION, 1, false );
+		}
+
+		// Defaults changed in 2.0: store the 1.x values where the site relied on the default.
+		if ( null === get_theme_mod( Config::MODS_GLOBAL_COLORS, null ) ) {
+			set_theme_mod( Config::MODS_GLOBAL_COLORS, \Stax_Assets::instance()->get_global_colors_default( '1.x' ) );
+		}
+
+		foreach ( self::CHANGED_DEFAULTS_2_0 as $mod => $old_value ) {
+			if ( null === get_theme_mod( $mod, null ) ) {
+				set_theme_mod( $mod, $old_value );
+			}
 		}
 
 		// The Appsero usage tracker (bundled until 1.2.2) used the theme folder name as its prefix.

@@ -10,7 +10,7 @@ use Stax\Customizer\Config;
 	<?php if ( stax()->get_option( Config::OPTION_ARCHIVE_LIST_SHOW_AUTHOR_AVATAR ) ) : ?>
 		<div class="author-avatar">
 			<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
-				<?php echo get_avatar( $post->post_author, '60', '', '', [ 'class' => 'avatar-img' ] ); ?>
+				<?php echo get_avatar( $post->post_author, '60', '', get_the_author_meta( 'display_name', $post->post_author ), [ 'class' => 'avatar-img' ] ); ?>
 			</a>
 		</div>
 	<?php endif; ?>

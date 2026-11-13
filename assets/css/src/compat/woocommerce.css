@@ -1,0 +1,17 @@
+/* WooCommerce: prices and sale badges in theme colors with AA contrast (WooCommerce's default olive is 3.3:1). */
+.woocommerce ul.products li.product .price,
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+	color: var(--heading-color, #242424);
+}
+
+.woocommerce ul.products li.product .price del,
+.woocommerce div.product p.price del {
+	color: var(--text-color, #4b4f56);
+	opacity: 1;
+}
+
+.woocommerce span.onsale {
+	background-color: var(--primary-color, #6acfc9);
+	color: var(--primary-contrast-color, #000);
+}

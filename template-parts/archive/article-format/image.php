@@ -28,7 +28,7 @@ if ( ! isset( $overlay_classes ) ) {
 		<div class="svq-progressive">
 			<div class="aspect-ratio-placeholder-fill aspect-ratio-<?php echo esc_attr( $media_aspect_ratio ); ?>"></div>
 			<div class="svq-progressive__placeholder-image <?php echo esc_attr( $overlay_classes ); ?>">
-				<a href="<?php the_permalink(); ?>">
+				<a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
 					<?php
 
 					$image_url  = get_the_post_thumbnail_url();

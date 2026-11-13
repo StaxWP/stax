@@ -546,7 +546,7 @@ class Stax_Assets {
 	 *
 	 * @return array
 	 */
-	public function get_global_colors_default() {
+	public function get_global_colors_default( $version = '2.0' ) {
 		$vars = [
 			[
 				'label'    => __( 'Body Background', 'stax' ),
@@ -628,10 +628,18 @@ class Stax_Assets {
 		];
 
 		$colors = [
-			'light'  => [ '#ffffff', '#4b4f56', '#242424', '#6acfc9', '#eef8f9', '#242424', '#1aaaa0', '#ddebed', '#90949c', '#6ACFC9', '#EEF8F9' ],
+			// 2.0: link and meta colors darkened to reach WCAG AA contrast (4.5:1) on white.
+			'light'  => [ '#ffffff', '#4b4f56', '#242424', '#6acfc9', '#eef8f9', '#242424', '#0e7c75', '#ddebed', '#6a6e75', '#6ACFC9', '#EEF8F9' ],
 			'dark'   => [ '#121212', '#888888', '#d0d0d0', '#d86252', '#1a1a1a', '#e0e0e0', '#d86252', '#383838', '#888888', '#0c0b0b', '#0c0b0b' ],
-			'purple' => [ '#ffffff', '#4b4f56', '#242424', '#621aa5', '#fafafa', '#242424', '#8734d4', '#e5e5e5', '#90949c', '#6ACFC9', '#EEF8F9' ],
+			'purple' => [ '#ffffff', '#4b4f56', '#242424', '#621aa5', '#fafafa', '#242424', '#8734d4', '#e5e5e5', '#6a6e75', '#6ACFC9', '#EEF8F9' ],
 		];
+
+		// The 1.x defaults, saved on sites updated from 1.x so their colors do not change.
+		if ( '1.x' === $version ) {
+			$colors['light'][6]  = '#1aaaa0';
+			$colors['light'][8]  = '#90949c';
+			$colors['purple'][8] = '#90949c';
+		}
 
 		$palettes = [
 			'activePalette' => 'light',

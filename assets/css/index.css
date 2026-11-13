@@ -8190,6 +8190,16 @@ button.svq-gallery-control {
 	display: none;
 }
 
+/* Button blocks: text color follows the primary color's computed contrast color
+   (1.x used white on every primary, 1.85:1 on the default teal). */
+a.wp-block-button__link:not(.has-text-color):not(:hover):not(:focus) {
+	color: var(--primary-contrast-color, #000);
+}
+
+.is-style-outline a.wp-block-button__link:not(.has-text-color):not(:hover):not(:focus) {
+	color: inherit;
+}
+
 /* Stax block styles (registered in inc/Editor/Component.php). Loaded on the front end and in the editor. */
 .wp-block-button.is-style-stax-pill .wp-block-button__link {
 	border-radius: 999px;

@@ -645,8 +645,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'desktop-unit' => 'px',
 			],
 			'primary-menu_color'                          => '#2a2a68',
-			'primary-menu_active_color'                   => '#1aaaa0',
-			'primary-menu_hover_color'                    => '#1aaaa0',
+			'primary-menu_active_color'                   => '#0e7c75',
+			'primary-menu_hover_color'                    => '#0e7c75',
 			'primary-menu_component_font_family'          => '',
 			'header_search_responsive_component_padding'  => [
 				'mobile'       => [
@@ -749,7 +749,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'desktop-unit' => 'px',
 			],
 			'header_search_responsive_color'              => '#2a2a68',
-			'header_search_responsive_hover_color'        => '#1aaaa0',
+			'header_search_responsive_hover_color'        => '#0e7c75',
 			'nav-icon_menu_label'                         => '',
 			'nav-icon_component_padding'                  => [
 				'mobile'       => [

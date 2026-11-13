@@ -49,7 +49,7 @@ $container_type = $video_source === 'hosted' ? 'svq-media-video' : 'svq-media-im
 				</div>
 			<?php elseif ( $video_source === 'other' ) : ?>
 				<div class="svq-progressive__placeholder-image <?php echo esc_attr( $overlay_classes ); ?>">
-					<a href="<?php the_permalink(); ?>">
+					<a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
 						<?php if ( $external_video_img ) : ?>
 							<img src="<?php echo esc_url( $external_video_img ); ?>" loading="lazy" decoding="async"
 								class="svq-progressive__image" alt="<?php the_title_attribute(); ?>">

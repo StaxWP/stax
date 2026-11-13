@@ -17,6 +17,16 @@ $show_author  = stax()->get_post_data( 'show_meta_author', stax()->get_option( C
 $show_date    = stax()->get_post_data( 'show_meta_date', stax()->get_option( Config::OPTION_SINGLE_POST_META_POST_DATE ) );
 $show_reading = stax()->get_post_data( 'show_meta_reading', stax()->get_option( Config::OPTION_SINGLE_POST_META_READING_TIME ) );
 
+// Virtual pages (BuddyPress, bbPress directories) have no author or date.
+if ( empty( $post->post_author ) ) {
+	$show_avatar = false;
+	$show_author = false;
+}
+
+if ( empty( $post->ID ) ) {
+	$show_date = false;
+}
+
 ?>
 
 <div class="entry-meta <?php echo esc_attr( $meta_classes ); ?>"

@@ -73,13 +73,18 @@ function handleMobileDropdowns() {
 function openCarrets(e) {
 	e.preventDefault();
 	e.stopPropagation();
-	if (e.keyCode && ![9, 13].includes(e.keyCode)) {
+	// Tab (focus arrives), Enter and Space open the submenu.
+	if (e.keyCode && ![9, 13, 32].includes(e.keyCode)) {
 		return;
 	}
 
 	const caret = e.currentTarget;
 	const subMenu = caret.parentNode.parentNode.querySelector(".sub-menu");
 	toggleClass(caret, strings[0]);
+	caret.setAttribute(
+		"aria-expanded",
+		caret.classList.contains(strings[0]) ? "true" : "false"
+	);
 	toggleClass(subMenu, strings[0]);
 	createNavOverlay(document.querySelectorAll(`.${strings[0]}`), strings[0]);
 }
