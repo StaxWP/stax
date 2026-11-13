@@ -12,6 +12,7 @@ namespace Stax\Upgrades;
 
 use Stax\Component_Interface;
 use Stax\Customizer\Config;
+use Stax\Style_Switch\Migration;
 
 /**
  * Class Component
@@ -24,11 +25,6 @@ class Component implements Component_Interface {
 	 * Option holding the migrations that already ran, as version => true.
 	 */
 	const OPTION = 'stax-upgrades';
-
-	/**
-	 * Option set when the "updated to 2.0" notice should be shown.
-	 */
-	const NOTICE_OPTION = 'stax_show_2_0_notice';
 
 	/**
 	 * Customizer defaults that changed in 2.0 (for WCAG AA contrast), with their 1.x values.
@@ -53,8 +49,6 @@ class Component implements Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'init', [ $this, 'do_upgrades' ] );
-		add_action( 'admin_init', [ $this, 'maybe_dismiss_notice' ] );
-		add_action( 'admin_notices', [ $this, 'admin_notice_2_0' ] );
 	}
 
 	/**
@@ -102,10 +96,11 @@ class Component implements Component_Interface {
 	 * what the Appsero tracker stored.
 	 */
 	protected function upgrade_2_0_0() {
-		// Keep the full 1.x stylesheet so nothing changes visually; the admin can switch to the lean one.
+		// Keep the full 1.x stylesheet so nothing changes visually; the admin switches when they want
+		// (notice, Appearance > Stax style, Customizer > Stax style; see Stax\Style_Switch).
 		if ( null === get_theme_mod( Config::OPTION_PERF_LEGACY_CSS, null ) ) {
 			set_theme_mod( Config::OPTION_PERF_LEGACY_CSS, true );
-			update_option( self::NOTICE_OPTION, 1, false );
+			Migration::mark_offered();
 		}
 
 		// Defaults changed in 2.0: store the 1.x values where the site relied on the default.
@@ -127,40 +122,5 @@ class Component implements Component_Interface {
 		}
 
 		wp_clear_scheduled_hook( $slug . '_tracker_send_event' );
-	}
-
-	/**
-	 * Dismisses the 2.0 notice (link with a nonce).
-	 */
-	public function maybe_dismiss_notice() {
-		if ( ! isset( $_GET['stax-dismiss-notice'], $_GET['_wpnonce'] ) || ! current_user_can( 'edit_theme_options' ) ) {
-			return;
-		}
-
-		if ( wp_verify_nonce( sanitize_key( wp_unslash( $_GET['_wpnonce'] ) ), 'stax-dismiss-notice' ) ) {
-			delete_option( self::NOTICE_OPTION );
-		}
-	}
-
-	/**
-	 * One-time, dismissible notice after updating from 1.x.
-	 */
-	public function admin_notice_2_0() {
-		if ( ! get_option( self::NOTICE_OPTION ) || ! current_user_can( 'edit_theme_options' ) ) {
-			return;
-		}
-
-		$customize = add_query_arg( 'autofocus[control]', Config::OPTION_PERF_LEGACY_CSS, admin_url( 'customize.php' ) );
-		$dismiss   = wp_nonce_url( add_query_arg( 'stax-dismiss-notice', '1' ), 'stax-dismiss-notice' );
-
-		printf(
-			'<div class="notice notice-info"><p><strong>%1$s</strong> %2$s</p><p><a class="button button-primary" href="%3$s">%4$s</a> <a class="button" href="%5$s">%6$s</a></p></div>',
-			esc_html__( 'Stax 2.0 is installed.', 'stax' ),
-			esc_html__( 'Your site still uses the full 1.x stylesheet, so nothing changed visually. Stax 2.0 has a stylesheet about three times smaller; preview it in the Customizer and turn off "Load the full 1.x stylesheet" when you are happy with it.', 'stax' ),
-			esc_url( $customize ),
-			esc_html__( 'Preview the new stylesheet', 'stax' ),
-			esc_url( $dismiss ),
-			esc_html__( 'Dismiss', 'stax' )
-		);
 	}
 }

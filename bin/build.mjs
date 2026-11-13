@@ -12,6 +12,7 @@
  *   assets/js/index.js, assets/js/lightbox.js, assets/js/hfg/*.js (bundled to hfg/app.js)
  *
  * Outputs (do not edit): assets/css/index(.min).css, assets/css/compat/*.css, assets/css/legacy/stax-1x.min.css,
+ * assets/css/legacy/stax-1x-rules.json (1.x rules left out of the lean file, for the style switch compatibility CSS),
  * inc/Customizer/builder/assets/css/style(.min).css, assets/js/*.min.js.
  */
 import fs from 'node:fs';
@@ -104,6 +105,106 @@ function extract(rootNode, pattern) {
 	return out;
 }
 
+const norm = (s) => s.replace(/\s+/g, ' ').trim();
+const atChain = (node) => {
+	const chain = [];
+	for (let p = node.parent; p && p.type === 'atrule'; p = p.parent) {
+		chain.unshift(p);
+	}
+	return chain;
+};
+const chainKey = (node) => atChain(node).map((p) => `@${p.name} ${norm(p.params)}`).join('|');
+const classesOf = (selector) => [...new Set([...selector.matchAll(/\.(-?[_a-zA-Z][\w-]*)/g)].map((m) => m[1]))];
+
+/**
+ * Writes assets/css/legacy/stax-1x-rules.json: every 1.x rule the lean stylesheet left out, indexed by the
+ * classes that only those rules use (Bootstrap utilities such as row, col-md-6, btn, d-flex, ...).
+ * When a site switches from the 1.x stylesheet to the lean one, Stax\Style_Switch scans its content for
+ * these classes and keeps only the matching rules, so content built with 1.x classes looks the same.
+ */
+async function writeLegacyRules(legacy, leanCss) {
+	const kept = new Set();
+	const known = new Set();
+	const keptKeyframes = new Set();
+	postcss.parse(leanCss).walk((node) => {
+		if (node.type === 'atrule' && /keyframes$/i.test(node.name)) {
+			keptKeyframes.add(node.params);
+		}
+		if (node.type !== 'rule' || /keyframes$/i.test(node.parent.name || '')) {
+			return;
+		}
+		const key = chainKey(node);
+		node.selectors.forEach((sel) => {
+			kept.add(key + '##' + norm(sel));
+			classesOf(sel).forEach((c) => known.add(c));
+		});
+	});
+
+	// Dropped selectors with their @media/@supports wrappers; selectors without a class (a handful of
+	// Bootstrap reboot rules for rare elements) are left out.
+	const dropped = postcss.root();
+	const keyframes = {};
+	postcss.parse(legacy).walk((node) => {
+		if (node.type === 'atrule' && /keyframes$/i.test(node.name)) {
+			if (!keptKeyframes.has(node.params)) {
+				keyframes[node.params] = node.toString();
+			}
+			return;
+		}
+		if (node.type !== 'rule' || /keyframes$/i.test(node.parent.name || '')) {
+			return;
+		}
+		const key = chainKey(node);
+		const selectors = node.selectors.filter((sel) => !kept.has(key + '##' + norm(sel)) && classesOf(sel).length);
+		if (!selectors.length) {
+			return;
+		}
+		let target = dropped;
+		for (const at of atChain(node)) {
+			const params = norm(at.params);
+			let existing = target.nodes.find((n) => n.type === 'atrule' && n.name === at.name && norm(n.params) === params);
+			if (!existing) {
+				existing = at.clone({ nodes: [] });
+				target.append(existing);
+			}
+			target = existing;
+		}
+		target.append(node.clone({ selectors }));
+	});
+
+	const media = [''];
+	const decls = [];
+	const declIndex = new Map();
+	const rules = [];
+	const index = {};
+	postcss.parse(await minify(dropped.toString())).walkRules((rule) => {
+		const wrap = atChain(rule).map((p) => `@${p.name} ${p.params}`).join('|');
+		let m = media.indexOf(wrap);
+		if (m < 0) {
+			m = media.push(wrap) - 1;
+		}
+		const body = rule.nodes.map((n) => n.toString()).join(';');
+		if (!declIndex.has(body)) {
+			declIndex.set(body, decls.push(body) - 1);
+		}
+		for (const sel of rule.selectors) {
+			const id = rules.push([m, sel, declIndex.get(body)]) - 1;
+			for (const c of classesOf(sel)) {
+				if (!known.has(c)) {
+					(index[c] = index[c] || []).push(id);
+				}
+			}
+		}
+	});
+
+	const minKeyframes = {};
+	for (const [name, css] of Object.entries(keyframes)) {
+		minKeyframes[name] = await minify(css);
+	}
+
+	write('assets/css/legacy/stax-1x-rules.json', JSON.stringify({ version: 1, known: [...known].sort(), media, decls, rules, index, keyframes: minKeyframes }));
+}
+
 async function buildCss() {
 	const safelistTokens = read('bin/css-safelist.txt').split('\n').filter((l) => l && !l.startsWith('#'));
 	const content = globSync(['**/*.php', 'assets/js/index.js', 'assets/js/lightbox.js', 'assets/js/hfg/*.js'], { cwd: root, ignore: ['node_modules/**', 'dist/**'] }).map((f) => r(f));
@@ -125,6 +226,8 @@ async function buildCss() {
 		fontFace: true,
 		variables: false,
 	});
+
+	await writeLegacyRules(legacy, purged.css);
 
 	const core = postcss.parse(purged.css);
 	const compat = {};

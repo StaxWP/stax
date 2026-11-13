@@ -65,11 +65,15 @@ class Performance extends Base_Customizer {
 					'default'           => Config::OPTIONS[ Config::OPTION_PERF_LEGACY_CSS ]['default'],
 				],
 				[
-					'label'       => __( 'Load the full 1.x stylesheet', 'stax' ),
-					'description' => __( 'Stax 2.0 loads a much smaller stylesheet. Turn this on only if custom content relied on utility classes from Stax 1.x (for example Bootstrap classes such as "row" or "col-md-6").', 'stax' ),
-					'section'     => $this->section_id,
-					'type'        => 'stax_toggle_control',
-					'priority'    => 5,
+					'label'           => __( 'Load the full 1.x stylesheet', 'stax' ),
+					'description'     => __( 'Stax 2.0 loads a much smaller stylesheet. Turn this on only if custom content relied on utility classes from Stax 1.x (for example Bootstrap classes such as "row" or "col-md-6").', 'stax' ),
+					'section'         => $this->section_id,
+					'type'            => 'stax_toggle_control',
+					'priority'        => 5,
+					// Sites updated from 1.x switch in the "Stax style" section, which keeps a way back.
+					'active_callback' => function () {
+						return ! \Stax\Style_Switch\Migration::is_offered();
+					},
 				]
 			)
 		);

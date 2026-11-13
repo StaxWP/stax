@@ -143,6 +143,7 @@ class Theme {
 			new Localization\Component(),
 			new Config\Component(),
 			new Upgrades\Component(),
+			new Style_Switch\Component(),
 			new Base_Support\Component(),
 			new Required_Plugins\Component(),
 			new Panel\Component(),

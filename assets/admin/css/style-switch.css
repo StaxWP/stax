@@ -1,0 +1,60 @@
+/* Stax style switch: notice, Appearance > Stax style and the Customizer section. */
+.stax-style-actions .button-link {
+	margin-inline-start: 4px;
+	vertical-align: middle;
+}
+
+.stax-style-page .stax-style-panel {
+	max-width: 720px;
+}
+
+.stax-style-current {
+	font-weight: 600;
+}
+
+.stax-style-changes {
+	list-style: disc;
+	padding-inline-start: 20px;
+}
+
+.stax-style-changes ul {
+	list-style: none;
+	margin: 6px 0 0;
+	padding: 0;
+}
+
+.stax-style-changes code {
+	display: inline-block;
+	margin-top: 4px;
+	word-break: break-word;
+}
+
+.stax-style-swatch {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	vertical-align: -2px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 2px;
+}
+
+.stax-style-compare {
+	margin: 12px 0;
+}
+
+.stax-style-compare legend {
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.stax-style-message:focus {
+	outline: none;
+}
+
+.stax-style-message .notice {
+	margin: 0 0 12px;
+}
+
+#customize-notifications-area .stax-style-notice-c p {
+	margin: 0.5em 0;
+}
