@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T20:38:53+00:00\n"
+"POT-Creation-Date: 2026-11-13T21:05:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: stax\n"
@@ -225,11 +225,11 @@ msgctxt "weekly archives date format"
 msgid "W"
 msgstr ""
 
-#: inc/Builder_Integration/Component.php:135
+#: inc/Builder_Integration/Component.php:169
 msgid "Skip to content"
 msgstr ""
 
-#: inc/Builder_Integration/Component.php:193
+#: inc/Builder_Integration/Component.php:236
 msgid "Stax Builder"
 msgstr ""
 
@@ -247,12 +247,33 @@ msgstr ""
 
 #. translators: %s: plugin name, for example Stax Builder.
 #: inc/Builder_Integration/Managed_Control.php:59
+#: inc/Builder_Integration/Token_Note_Control.php:65
 #, php-format
 msgid "Edit in %s"
 msgstr ""
 
 #: inc/Builder_Integration/Managed_Control.php:63
 msgid "Your theme settings for this area are kept and come back if you deactivate the plugin."
+msgstr ""
+
+#. translators: %s: plugin name, for example Stax Builder.
+#: inc/Builder_Integration/Token_Note_Control.php:50
+#, php-format
+msgid "Set by your brand (%s)"
+msgstr ""
+
+#: inc/Builder_Integration/Token_Note_Control.php:51
+msgid "Set in the site's global styles"
+msgstr ""
+
+#. translators: 1: "Set by your brand (Stax Builder)" or "Set in the site's global styles", 2: comma-separated color names.
+#: inc/Builder_Integration/Token_Note_Control.php:55
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: inc/Builder_Integration/Token_Note_Control.php:70
+msgid "The value below is kept and applies again if that setting is removed."
 msgstr ""
 
 #: inc/class-stax-assets.php:157
@@ -2772,161 +2793,161 @@ msgstr ""
 msgid "Footer Column 4"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:297
+#: inc/Style_Switch/Component.php:305
 msgid "Stax 2.0 has a faster, lighter style."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:297
+#: inc/Style_Switch/Component.php:305
 msgid "See it side by side with your current look, then switch with one click."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:303
+#: inc/Style_Switch/Component.php:311
 msgid "Compare the styles"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:305
+#: inc/Style_Switch/Component.php:313
 msgid "Preview"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:306
+#: inc/Style_Switch/Component.php:314
 msgid "Switch now"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:309
+#: inc/Style_Switch/Component.php:317
 msgid "Not now"
 msgstr ""
 
 #. translators: %d: number of days.
-#: inc/Style_Switch/Component.php:340
+#: inc/Style_Switch/Component.php:348
 #, php-format
 msgid "Your site now uses the Stax 2.0 style. You can switch back for %d days in Appearance > Stax Panel."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:341
+#: inc/Style_Switch/Component.php:349
 msgid "Your site uses the Stax 1.x style again."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:342
+#: inc/Style_Switch/Component.php:350
 msgid "Your site keeps the Stax 2.0 style."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:343
+#: inc/Style_Switch/Component.php:351
 msgid "Nothing changed. Reload the page and try again."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:354
+#: inc/Style_Switch/Component.php:362
 msgid "Stax 2.0 style"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:370
+#: inc/Style_Switch/Component.php:378
 msgid "Your site uses the Stax 2.0 style."
 msgstr ""
 
 #. translators: %s: date.
-#: inc/Style_Switch/Component.php:375
+#: inc/Style_Switch/Component.php:383
 #, php-format
 msgid "Switch back to the 1.x look (until %s)"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:379
+#: inc/Style_Switch/Component.php:387
 msgid "Keep 2.0 and hide this"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:406
+#: inc/Style_Switch/Component.php:414
 msgid "Your site still uses the Stax 1.x stylesheet. The 2.0 style loads much less CSS, so pages show up faster. Your colors, fonts, layout, header and footer stay the same."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:410
+#: inc/Style_Switch/Component.php:418
 msgid "What changes when you switch"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:418
+#: inc/Style_Switch/Component.php:426
 msgid "Switch to the 2.0 style"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:421
+#: inc/Style_Switch/Component.php:429
 msgid "Open a full preview"
 msgstr ""
 
 #. translators: %d: number of days.
-#: inc/Style_Switch/Component.php:428
+#: inc/Style_Switch/Component.php:436
 #, php-format
 msgid "Nothing changes until you switch. You can switch back for %d days."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:440
+#: inc/Style_Switch/Component.php:448
 msgid "Now: Stax 1.x"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:441
+#: inc/Style_Switch/Component.php:449
 msgid "After the switch: Stax 2.0"
 msgstr ""
 
 #. translators: %s: style name.
-#: inc/Style_Switch/Component.php:459
+#: inc/Style_Switch/Component.php:467
 #, php-format
 msgid "Home page preview, %s"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:472
+#: inc/Style_Switch/Component.php:480
 msgid "Stax 1.x (current)"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:473
+#: inc/Style_Switch/Component.php:481
 msgid "Stax 2.0"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:476
+#: inc/Style_Switch/Component.php:484
 msgid "Show in the preview"
 msgstr ""
 
 #. translators: 1: new size in KB, 2: old size in KB.
-#: inc/Style_Switch/Component.php:515
+#: inc/Style_Switch/Component.php:523
 #, php-format
 msgid "Theme stylesheet: %1$d KB instead of %2$d KB."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:526
+#: inc/Style_Switch/Component.php:534
 msgid "Colors: no change needed, your colors are easy to read."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:531
+#: inc/Style_Switch/Component.php:539
 msgid "Colors that were too light to read easily become just dark enough:"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:538
+#: inc/Style_Switch/Component.php:546
 msgid "becomes"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:553
+#: inc/Style_Switch/Component.php:561
 msgid "Content: none of your content uses old Stax 1.x classes."
 msgstr ""
 
 #. translators: %d: number of CSS classes.
-#: inc/Style_Switch/Component.php:565
+#: inc/Style_Switch/Component.php:573
 #, php-format
 msgid "Content: %d class from Stax 1.x is used, so its styles are kept:"
 msgid_plural "Content: %d classes from Stax 1.x are used, so their styles are kept:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/Style_Switch/Component.php:570
+#: inc/Style_Switch/Component.php:578
 msgid " and more."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:643
+#: inc/Style_Switch/Component.php:651
 msgid "Sorry, you are not allowed to change the theme style."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:731
+#: inc/Style_Switch/Component.php:739
 msgid "Stax style"
 msgstr ""
 
-#: inc/Style_Switch/Component.php:801
+#: inc/Style_Switch/Component.php:809
 msgid "Publish or discard your Customizer changes first, then switch."
 msgstr ""
 
-#: inc/Style_Switch/Component.php:802
+#: inc/Style_Switch/Component.php:810
 msgid "Working..."
 msgstr ""
 

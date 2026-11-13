@@ -73,6 +73,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'stax_header', [ $this, 'action_takeover_skip_link' ], 0 );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'action_drop_shared_assets' ], 20 );
+		add_action( 'customize_register', [ $this, 'action_customize_token_notes' ], 1000 );
 	}
 
 	/**
@@ -229,7 +230,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		 * Filters the name shown in the Customizer when a plugin manages an area.
 		 *
 		 * @param string $name  Plugin name.
-		 * @param string $area  "header" or "footer".
+		 * @param string $area  "header", "footer" or "tokens".
 		 * @param string $owner Owner id.
 		 */
 		return (string) apply_filters( 'stax_theme_area_owner_name', __( 'Stax Builder', 'stax' ), $area, $owner );
@@ -248,10 +249,80 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		 * Filters the link shown in the Customizer when a plugin manages an area.
 		 *
 		 * @param string $url   Admin URL (default: the Stax Builder admin page, slug "stax-builder").
-		 * @param string $area  "header" or "footer".
+		 * @param string $area  "header", "footer" or "tokens".
 		 * @param string $owner Owner id.
 		 */
 		return (string) apply_filters( 'stax_theme_area_owner_url', admin_url( 'admin.php?page=stax-builder' ), $area, $owner );
+	}
+
+	/**
+	 * Who set the design tokens found in global styles: an owner id (for example "stax-builder") when a plugin
+	 * manages the site brand, or an empty string when they come from plain global styles.
+	 *
+	 * @return string
+	 */
+	public static function tokens_owner() {
+		/**
+		 * Filters who manages the design tokens saved in global styles. Return a non-empty owner id
+		 * when the plugin writes them, so the Customizer can say where they are set.
+		 *
+		 * @param string $owner Owner id, empty for plain global styles.
+		 */
+		$owner = apply_filters( 'stax_theme_tokens_owner', '' );
+
+		return is_string( $owner ) ? sanitize_key( $owner ) : '';
+	}
+
+	/**
+	 * Adds a short note to the Customizer Colors, Typography and Site Container sections when global styles
+	 * override one of their values. The controls and their saved values stay; they apply again once the
+	 * global styles value is removed.
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer.
+	 */
+	public function action_customize_token_notes( WP_Customize_Manager $wp_customize ) {
+		$tokens = \Stax\Editor\Component::get_global_styles_tokens();
+
+		if ( ! $tokens['colors'] && ! $tokens['fonts'] && '' === $tokens['wideSize'] ) {
+			return;
+		}
+
+		$owner = self::tokens_owner();
+
+		// Palette names as the theme declares them (translated by core).
+		$names = [];
+
+		foreach ( (array) ( \WP_Theme_JSON_Resolver::get_theme_data()->get_settings()['color']['palette']['theme'] ?? [] ) as $entry ) {
+			$names[ $entry['slug'] ?? '' ] = $entry['name'] ?? '';
+		}
+
+		$notes = [
+			'colors'   => [ 'stax_colors', 5, array_map( fn( $slug ) => $names[ $slug ] ?? $slug, array_keys( $tokens['colors'] ) ) ],
+			'body'     => [ 'stax_typography_body', 5, isset( $tokens['fonts']['body'] ) ],
+			'heading'  => [ 'stax_typography_headings', 5, isset( $tokens['fonts']['heading'] ) ],
+			'wideSize' => [ 'stax_general_container', 19, '' !== $tokens['wideSize'] ],
+		];
+
+		foreach ( $notes as $token => list( $section, $priority, $items ) ) {
+			if ( ! $items || ! $wp_customize->get_section( $section ) ) {
+				continue;
+			}
+
+			$wp_customize->add_control(
+				new Token_Note_Control(
+					$wp_customize,
+					'stax_token_note_' . $token,
+					[
+						'section'  => $section,
+						'priority' => $priority,
+						'settings' => [],
+						'items'    => is_array( $items ) ? $items : [],
+						'name'     => $owner ? self::owner_name( 'tokens', $owner ) : '',
+						'url'      => $owner ? self::owner_url( 'tokens', $owner ) : '',
+					]
+				)
+			);
+		}
 	}
 
 	/**
