@@ -69,6 +69,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			);
 		}
 
+		// Same priority, added later: runs after the yield above and before Elementor Pro locations (5) and plugin headers (10).
+		add_action( 'stax_header', [ $this, 'action_takeover_skip_link' ], 0 );
+
 		add_action( 'wp_enqueue_scripts', [ $this, 'action_drop_shared_assets' ], 20 );
 	}
 
@@ -151,26 +154,43 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	/**
-	 * Prints the theme skip link (same markup the theme header prints).
+	 * Prints the theme skip link to the main content, once per request (the theme header prints it too).
 	 */
 	public function skip_link() {
+		static $printed = false;
+
+		if ( $printed ) {
+			return;
+		}
+
+		$printed = true;
+
 		echo '<a class="skip-link screen-reader-text" href="#primary">' . esc_html__( 'Skip to content', 'stax' ) . '</a>';
 	}
 
 	/**
-	 * Runs first on the area action: when a plugin owns the area, removes the theme output and,
-	 * for the header, keeps the skip link as the first focusable element.
+	 * Runs first on the area action: when a plugin owns the area, removes the theme output.
 	 *
 	 * @param string $area Area.
 	 */
 	public function action_yield_area( $area ) {
-		if ( ! $this->area_owner( $area ) ) {
-			return;
+		if ( $this->area_owner( $area ) ) {
+			remove_action( self::AREAS[ $area ], self::THEME_CALLBACKS[ $area ] );
 		}
+	}
 
-		remove_action( self::AREAS[ $area ], self::THEME_CALLBACKS[ $area ] );
+	/**
+	 * When anything else renders the header (Stax Builder, an Elementor Pro header location, Header Footer
+	 * Elementor, Beaver Themer, a `stax_header_callback`), prints the theme skip link first, so it stays the
+	 * first focusable element. The theme header prints it itself.
+	 */
+	public function action_takeover_skip_link() {
+		$theme_header = has_action( self::AREAS['header'], self::THEME_CALLBACKS['header'] );
 
-		if ( 'header' === $area ) {
+		// Elementor Pro removes the theme callback only after printing its header location (priority 5).
+		$elementor_header = function_exists( 'elementor_location_exits' ) && elementor_location_exits( 'header', true );
+
+		if ( ! $theme_header || $elementor_header ) {
 			$this->skip_link();
 		}
 	}
