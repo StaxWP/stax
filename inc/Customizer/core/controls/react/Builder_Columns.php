@@ -4,6 +4,8 @@ namespace Stax\Customizer\Core\Controls\React;
 
 class Builder_Columns extends \WP_Customize_Control {
 
+	use Renders_In_Script;
+
 	/**
 	 * Type of this section.
 	 *

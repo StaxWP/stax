@@ -154,7 +154,7 @@ abstract class Base_Customizer {
 				$this->wpc->add_control( new $control->custom_control( $this->wpc, $control->id, $control->control_args ) );
 				$control_type = $control->custom_control;
 			} else {
-				$new_control  = $this->wpc->add_control( $control->id, $control->control_args );
+				$new_control  = $this->wpc->add_control( Controls\React\Script_Control::create( $this->wpc, $control->id, $control->control_args ) );
 				$control_type = isset( $control->control_args['type'] ) ? $control->control_args['type'] : $new_control->type;
 			}
 

@@ -4,6 +4,8 @@ namespace Stax\Customizer\Core\Controls\React;
 
 class Responsive_Range extends \WP_Customize_Control {
 
+	use Renders_In_Script;
+
 	/**
 	 * Control type.
 	 *

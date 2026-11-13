@@ -147,10 +147,7 @@ class Manager {
 
 			if ( ! is_subclass_of( $type, '\WP_Customize_Control' ) ) {
 				$control_args['type'] = $type;
-				$customize_manager->add_control(
-					$id,
-					$control_args
-				);
+				$customize_manager->add_control( \Stax\Customizer\Core\Controls\React\Script_Control::create( $customize_manager, $id, $control_args ) );
 			} else {
 				$customize_manager->add_control(
 					new $type(

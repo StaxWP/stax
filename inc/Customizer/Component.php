@@ -71,6 +71,8 @@ class Component implements Component_Interface {
 			'customize_register',
 			static function() {
 				// React controls.
+				require_once get_template_directory() . '/inc/Customizer/core/controls/react/Renders_In_Script.php';
+				require_once get_template_directory() . '/inc/Customizer/core/controls/react/Script_Control.php';
 				require_once get_template_directory() . '/inc/Customizer/core/controls/react/Builder_Columns.php';
 				require_once get_template_directory() . '/inc/Customizer/core/controls/react/Builder_Section.php';
 				require_once get_template_directory() . '/inc/Customizer/core/controls/react/Builder.php';
