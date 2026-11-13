@@ -52,7 +52,8 @@ if ( ! isset( $overlay_classes ) ) {
 		</div>
 		<figcaption class="svq-figcaption will-animate" data-cssanimate="fadeIn">
 			<?php if ( $image_post && $image_post->post_excerpt ) : ?>
-				<span class="media-caption--text"><?php echo wp_kses_post( $image_post->post_excerpt ); ?></span>
+				<?php // The excerpt is shown under the media by the article template; 1.x never printed it here either. ?>
+				<span class="media-caption--text"></span>
 			<?php endif; ?>
 		</figcaption>
 	</figure>
