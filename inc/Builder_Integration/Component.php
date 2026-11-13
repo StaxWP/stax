@@ -94,8 +94,30 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'version' => self::VERSION,
 				'header'  => self::AREAS['header'],
 				'footer'  => self::AREAS['footer'],
+				'tokens'  => self::token_slugs(),
 			]
 		);
+	}
+
+	/**
+	 * Design token names a plugin should write to global styles, read from the theme's theme.json
+	 * (the single source): palette slugs, font family slugs and layout size keys.
+	 *
+	 * @return array {
+	 *     @type string[] $color      settings.color.palette slugs, for example "primary", "link", "text".
+	 *     @type string[] $fontFamily settings.typography.fontFamilies slugs, for example "body", "heading".
+	 *     @type string[] $layout     settings.layout keys, "contentSize" and "wideSize".
+	 * }
+	 */
+	public static function token_slugs() {
+		$file     = get_template_directory() . '/theme.json';
+		$settings = is_readable( $file ) ? ( wp_json_file_decode( $file, [ 'associative' => true ] )['settings'] ?? [] ) : [];
+
+		return [
+			'color'      => array_values( array_filter( wp_list_pluck( (array) ( $settings['color']['palette'] ?? [] ), 'slug' ) ) ),
+			'fontFamily' => array_values( array_filter( wp_list_pluck( (array) ( $settings['typography']['fontFamilies'] ?? [] ), 'slug' ) ) ),
+			'layout'     => array_keys( array_filter( (array) ( $settings['layout'] ?? [] ), 'is_string' ) ),
+		];
 	}
 
 	/**
@@ -205,11 +227,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		/**
 		 * Filters the link shown in the Customizer when a plugin manages an area.
 		 *
-		 * @param string $url   Admin URL.
+		 * @param string $url   Admin URL (default: the Stax Builder admin page, slug "stax-builder").
 		 * @param string $area  "header" or "footer".
 		 * @param string $owner Owner id.
 		 */
-		return (string) apply_filters( 'stax_theme_area_owner_url', admin_url( 'admin.php?page=stax' ), $area, $owner );
+		return (string) apply_filters( 'stax_theme_area_owner_url', admin_url( 'admin.php?page=stax-builder' ), $area, $owner );
 	}
 
 	/**
