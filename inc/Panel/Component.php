@@ -79,8 +79,6 @@ class Component implements Component_Interface {
 		add_filter( 'stax_addons_columns', '__return_zero' );
 		add_action( 'stax_addons_page_content', array( $this, 'tpl_main_addons_page_content' ) );
 
-		add_filter( 'http_request_args', array( $this, 'stop_update_theme' ), 5, 2 );
-
 		if ( ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'sq_do_plugin_action' ) || ( isset( $_GET['page'] ) && strpos( $_GET['page'], stax()->get_config( 'slug' ) ) === 0 ) ) {
 			add_action( 'admin_init', array( $this, 'config_addons' ), 12 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'panel_scripts' ) );
@@ -466,27 +464,6 @@ class Component implements Component_Interface {
 			</div>
 		</div>
 		<?php
-	}
-
-	/**
-	 * @param $r
-	 * @param $url
-	 *
-	 * @return mixed
-	 */
-	public function stop_update_theme(
-		$r, $url
-	) {
-		if ( 0 !== strpos( $url, 'https://api.wordpress.org/themes/update-check/1.1/' ) ) {
-			return $r; // Not a theme update request. Bail immediately.
-		}
-
-		$themes = json_decode( $r['body']['themes'] );
-		$theme  = get_template();
-		unset( $themes->themes->$theme );
-		$r['body']['themes'] = json_encode( $themes );
-
-		return $r;
 	}
 
 	/**
