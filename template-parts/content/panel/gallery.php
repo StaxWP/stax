@@ -8,7 +8,6 @@ if ( ! stax()->get_option( Config::OPTION_SINGLE_POST_GALLERY_PANEL ) ) {
 	return;
 }
 
-\Stax_Assets::instance()->enqueue_swiper();
 
 $gallery = [];
 
@@ -104,7 +103,6 @@ if ( $title_position === 'title-over' && in_array( stax()->get_option( Config::O
 							false,
 							[
 								'class'           => 'svq-gallery__image',
-								'data-object-fit' => 'cover',
 							]
 						)
 
@@ -130,6 +128,6 @@ if ( $title_position === 'title-over' && in_array( stax()->get_option( Config::O
 
 	<div class="swiper-pagination"></div>
 
-	<div class="svq-gallery-control svq-gallery-control-prev <?php echo esc_attr( $nav_class ); ?>"></div>
-	<div class="svq-gallery-control svq-gallery-control-next <?php echo esc_attr( $nav_class ); ?>"></div>
+	<button type="button" class="svq-gallery-control svq-gallery-control-prev <?php echo esc_attr( $nav_class ); ?>" aria-label="<?php esc_attr_e( 'Previous images', 'stax' ); ?>"></button>
+	<button type="button" class="svq-gallery-control svq-gallery-control-next <?php echo esc_attr( $nav_class ); ?>" aria-label="<?php esc_attr_e( 'Next images', 'stax' ); ?>"></button>
 </div>

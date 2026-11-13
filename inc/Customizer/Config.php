@@ -250,6 +250,7 @@ class Config {
 
 	const OPTION_PERF_CSS_PRELOAD = 'stax_perf_css_preload';
 	const OPTION_LAZY_LOAD_IMAGES = 'stax_lazy_load_images';
+	const OPTION_PERF_LEGACY_CSS  = 'stax_perf_legacy_css';
 	const OPTION_404_FOOTER       = 'stax_404_footer';
 
 	const OPTION_TYPE_VAR = 'var';
@@ -625,6 +626,9 @@ class Config {
 		],
 		self::OPTION_LAZY_LOAD_IMAGES                      => [
 			'default' => true,
+		],
+		self::OPTION_PERF_LEGACY_CSS                       => [
+			'default' => false,
 		],
 		self::OPTION_404_FOOTER                            => [
 			'default' => false,

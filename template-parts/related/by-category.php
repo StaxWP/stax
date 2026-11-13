@@ -51,8 +51,6 @@ $the_query = new \WP_Query( $args );
 
 	<?php if ( $the_query->have_posts() ) : ?>
 
-		<?php \Stax_Assets::instance()->enqueue_swiper(); ?>
-
 	<div class="svq-media-slider svq-post-related">
 		<div class="heading-title">
 			<div class="heading-title-content">
@@ -62,7 +60,7 @@ $the_query = new \WP_Query( $args );
 			</div>
 		</div>
 
-		<div class="svq-slider-articles svq-article--list-card">
+		<div class="svq-slider-articles svq-article--list-card swiper-container-horizontal">
 			<div class="swiper-wrapper">
 				<?php
 
@@ -90,13 +88,13 @@ $the_query = new \WP_Query( $args );
 
 			<?php if ( $the_query->post_count > 1 ) : ?>
 				<div class="svq-article-btn">
-					<a href="#" class="btn btn-light btn-sm button-ripple slide-to--back">
+					<button type="button" class="btn btn-light btn-sm button-ripple slide-to--back" aria-label="<?php esc_attr_e( 'Previous', 'stax' ); ?>">
 						<?php echo stax()->load_icon( 'long-arrow-left', 18 ); ?>
-					</a>
-					<a href="#" class="btn btn-light btn-sm button-ripple btn-icon--right slide-to--next">
+					</button>
+					<button type="button" class="btn btn-light btn-sm button-ripple btn-icon--right slide-to--next">
 						<?php esc_html_e( 'Next', 'stax' ); ?>
 						<?php echo stax()->load_icon( 'long-arrow-right', 18 ); ?>
-					</a>
+					</button>
 				</div>
 			<?php endif; ?>
 

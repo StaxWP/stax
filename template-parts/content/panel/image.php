@@ -41,7 +41,6 @@ $overlay_classes = implode( ' ', $overlay_classes );
 				'full',
 				[
 					'class'           => 'svq-progressive__image',
-					'data-object-fit' => 'cover',
 				]
 			)
 			?>

@@ -243,11 +243,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 												</span>
 												<span class="btn--loading-state">' . stax()->load_icon( 'loading icon-is-loading', 18 ) . esc_html__( 'Loading', 'stax' ) . '</span>
 								              </button>',
-					'submit_field'        => '<p class="form-submit text-center mb-0"><input type="hidden" name="action" value="post_comment">%1$s %2$s</p>',
+					'submit_field'        => '<p class="form-submit text-center mb-0">%1$s %2$s</p>',
 					'must_log_in'         => '<p class="must-log-in">' . sprintf( wp_kses_post( 'You must be <a href="%s">logged in</a> to post a comment.', 'stax' ), wp_login_url( apply_filters( 'the_permalink', get_permalink() ) ) ) . '</p>',
 					'id_form'             => 'sqv-comment-form',
 					'class_form'          => 'comment-form svq-form',
-					'action'              => admin_url( 'admin-ajax.php' ),
 				];
 
 				if ( have_comments() ) {

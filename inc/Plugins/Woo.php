@@ -1,21 +1,20 @@
 <?php
+/**
+ * WooCommerce integration (kept for 1.x child themes that reference Stax\Plugins\Woo).
+ * The integration itself lives in Stax\Compat\WooCommerce since 2.0.
+ *
+ * @package stax
+ */
 
 namespace Stax\Plugins;
 
+/**
+ * Class Woo
+ */
 class Woo {
-	public function __construct() {
 
-		add_filter( 'stax_css_files', [$this, 'add_css_file'] );
-	}
-
-	public function add_css_file( $files ) {
-
-		$files['stax-woo'] = [
-			'file' => 'assets/css/woocommerce.css',
-			'global' => true,
-		];
-
-		return $files;
-
-	}
+	/**
+	 * Constructor. The compatibility stylesheet is loaded by Stax_Assets.
+	 */
+	public function __construct() {}
 }

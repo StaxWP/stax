@@ -40,7 +40,6 @@ if ( ! isset( $overlay_classes ) ) {
 						$image_size,
 						[
 							'class'           => 'svq-progressive__image',
-							'data-object-fit' => 'cover',
 						]
 					);
 					?>

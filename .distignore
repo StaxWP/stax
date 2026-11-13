@@ -1,0 +1,11 @@
+.git
+.gitignore
+.distignore
+.DS_Store
+node_modules
+dist
+bin
+package.json
+package-lock.json
+phpcs.xml.dist
+assets/css/src

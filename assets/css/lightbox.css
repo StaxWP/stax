@@ -1,0 +1,15 @@
+/* Stax lightbox (native <dialog>). */
+.stax-lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:3rem 4rem;border:0;background:rgba(0,0,0,.92);color:#fff;display:none;align-items:center;justify-content:center}
+.stax-lightbox[open]{display:flex}
+.stax-lightbox::backdrop{background:rgba(0,0,0,.6)}
+.stax-lightbox figure{margin:0;text-align:center;max-width:100%;max-height:100%}
+.stax-lightbox img{display:block;max-width:100%;max-height:calc(100vh - 8rem);width:auto;height:auto;margin:0 auto}
+.stax-lightbox figcaption{margin-top:.75rem;font-size:.9rem;color:#ddd}
+.stax-lightbox button{position:absolute;display:flex;align-items:center;justify-content:center;width:3rem;height:3rem;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:2rem;line-height:1;cursor:pointer}
+.stax-lightbox button:hover,.stax-lightbox button:focus-visible{background:rgba(255,255,255,.28)}
+.stax-lightbox button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.stax-lightbox__close{top:1rem;inset-inline-end:1rem}
+.stax-lightbox__prev{inset-inline-start:1rem;top:50%;transform:translateY(-50%)}
+.stax-lightbox__next{inset-inline-end:1rem;top:50%;transform:translateY(-50%)}
+.stax-lightbox.is-single .stax-lightbox__prev,.stax-lightbox.is-single .stax-lightbox__next{display:none}
+@media (max-width:600px){.stax-lightbox{padding:3.5rem .5rem}}

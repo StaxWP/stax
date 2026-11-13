@@ -329,11 +329,6 @@ class Component implements Component_Interface {
 			true
 		);
 
-		add_image_size(
-			'stax-lazy',
-			45,
-			9999
-		);
 	}
 
 	/**
@@ -355,7 +350,6 @@ class Component implements Component_Interface {
 				'stax-img-md'       => esc_html__( 'Stax medium image', 'stax' ),
 				'stax-img-sm'       => esc_html__( 'Stax small image', 'stax' ),
 				'stax-img-xs'       => esc_html__( 'Stax extra small image', 'stax' ),
-				'stax-lazy'         => esc_html__( 'Stax for lazy load', 'stax' ),
 			]
 		);
 	}

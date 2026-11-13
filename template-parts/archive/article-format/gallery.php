@@ -2,6 +2,8 @@
 
 namespace Stax;
 
+\Stax_Assets::instance()->enqueue_lightbox();
+
 $gallery = [];
 
 foreach ( stax()->get_gallery_from_content() as $id ) {
@@ -81,7 +83,6 @@ if ( $media_size === 'auto' ) {
 							false,
 							[
 								'class'           => 'svq-gallery__image',
-								'data-object-fit' => 'cover',
 							]
 						)
 

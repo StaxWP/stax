@@ -32,29 +32,27 @@ $swiper_slide_class = ! empty( $categories ) && count( $categories ) > 1 ? 'svq-
 
 	<?php if ( $the_query->have_posts() ) : ?>
 
-		<?php \Stax_Assets::instance()->enqueue_swiper(); ?>
 
 	<div class="svq-media-slider svq-author-related">
 		<div class="heading-title">
 			<div class="heading-title-content">
 				<h4 class="heading-title-text">
-					<?php echo sprintf( esc_html__( 'More from %s', 'stax' ), get_the_author_meta( 'display_name' ) ); ?>
+					<?php
+					/* translators: %s: author display name */
+					printf( esc_html__( 'More from %s', 'stax' ), esc_html( get_the_author_meta( 'display_name' ) ) );
+					?>
 				</h4>
 			</div>
 		</div>
 
 		<?php if ( ! empty( $categories ) && count( $categories ) > 1 ) : ?>
-			<?php
-			$categoriesArr = [];
-			foreach ( $categories as $cat ) {
-				$categoriesArr[] = get_cat_name( $cat );
-			}
-			$categoriesArr = json_encode( $categoriesArr );
-			?>
-
-			<nav class="svq-slider-nav nav-button-style svq-master-carousel"
-				 data-slider-categories="<?php echo esc_attr( $categoriesArr ); ?>">
+			<nav class="svq-slider-nav nav-button-style svq-master-carousel" aria-label="<?php esc_attr_e( 'Categories', 'stax' ); ?>">
 				<ul class="svq-nav-list swiper-wrapper svq-nav-pagination" role="tablist">
+					<?php foreach ( array_values( $categories ) as $stax_index => $stax_cat ) : ?>
+						<li class="svq-list-item swiper-slide <?php echo 0 === $stax_index ? 'svq-list-item-active' : ''; ?>" role="presentation">
+							<a href="#" class="svq-item-link svq-slider-nav-btn" role="tab" aria-selected="<?php echo 0 === $stax_index ? 'true' : 'false'; ?>" data-go-to-slide="<?php echo esc_attr( $stax_index ); ?>"><?php echo esc_html( get_cat_name( $stax_cat ) ); ?></a>
+						</li>
+					<?php endforeach; ?>
 				</ul>
 			</nav>
 		<?php endif; ?>
@@ -74,7 +72,7 @@ $swiper_slide_class = ! empty( $categories ) && count( $categories ) > 1 ? 'svq-
 
 					?>
 					<div class="svq-slider-item swiper-slide <?php echo esc_attr( $swiper_slide_class ); ?> <?php echo esc_attr( $extra_slider_class ); ?>">
-						<div class="svq-slider-articles svq-article--list-card svq-nested">
+						<div class="svq-slider-articles svq-article--list-card svq-nested swiper-container-horizontal">
 							<div class="swiper-wrapper">
 								<?php
 
@@ -116,13 +114,13 @@ $swiper_slide_class = ! empty( $categories ) && count( $categories ) > 1 ? 'svq-
 			</div>
 
 			<div class="svq-article-btn carousel-navigation">
-				<a href="#" class="btn btn-light btn-sm button-ripple slide-to--back">
+				<button type="button" class="btn btn-light btn-sm button-ripple slide-to--back" aria-label="<?php esc_attr_e( 'Previous', 'stax' ); ?>">
 					<?php echo stax()->load_icon( 'long-arrow-left', 18 ); ?>
-				</a>
-				<a href="#" class="btn btn-light btn-sm button-ripple btn-icon--right slide-to--next">
+				</button>
+				<button type="button" class="btn btn-light btn-sm button-ripple btn-icon--right slide-to--next">
 					<?php esc_html_e( 'Next', 'stax' ); ?>
 					<?php echo stax()->load_icon( 'long-arrow-right', 18 ); ?>
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>

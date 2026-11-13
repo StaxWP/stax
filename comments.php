@@ -17,7 +17,6 @@ if ( post_password_required() ) {
 }
 
 \Stax_Assets::instance()->enqueue_comments_reply();
-\Stax_Assets::instance()->enqueue_lightbox();
 ?>
 
 <div id="comments-post-<?php echo esc_attr( get_the_ID() ); ?>"
@@ -35,18 +34,18 @@ if ( post_password_required() ) {
 				data-first="<?php esc_attr_e( 'People reacted to this story.', 'stax' ); ?>">
 				<?php esc_html_e( 'No Comments', 'stax' ); ?>
 			</h5>
-			<a class="btn btn-sm btn-primary btn-glow button-ripple"
+			<button type="button" class="btn btn-sm btn-primary btn-glow button-ripple" aria-expanded="false"
 				data-action="btn-comments-trigger" data-post-id="<?php echo esc_attr( get_the_ID() ); ?>">
 				<span class="btn--default-state"><?php esc_html_e( 'Leave a comment', 'stax' ); ?></span>
 				<span class="btn--active-state"><?php esc_html_e( 'Cancel', 'stax' ); ?></span>
-			</a>
+			</button>
 		<?php else : ?>
 			<h5 class="comments-stat-info"><?php esc_html_e( 'People reacted to this story.', 'stax' ); ?></h5>
-			<a class="btn btn-sm btn-primary btn-glow button-ripple"
+			<button type="button" class="btn btn-sm btn-primary btn-glow button-ripple" aria-expanded="false"
 				data-action="btn-comments-trigger" data-post-id="<?php echo esc_attr( get_the_ID() ); ?>">
 				<span class="btn--default-state"><?php esc_html_e( 'Show comments', 'stax' ); ?></span>
 				<span class="btn--active-state"><?php esc_html_e( 'Hide comments', 'stax' ); ?></span>
-			</a>
+			</button>
 		<?php endif; ?>
 	</div>
 

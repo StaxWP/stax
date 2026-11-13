@@ -33,9 +33,7 @@ $link = wp_get_attachment_url( $audio );
 ?>
 
 <?php if ( $link ) : ?>
-	<?php \Stax_Assets::instance()->enqueue_plyr(); ?>
-
 	<figure class="svq-media-audio">
-		<audio class="audio-plyr audio-plyr-alone" src="<?php echo esc_url( $link ); ?>" controls></audio>
+		<audio class="audio-plyr audio-plyr-alone" src="<?php echo esc_url( $link ); ?>" controls preload="metadata"></audio>
 	</figure>
 <?php endif; ?>

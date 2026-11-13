@@ -17,31 +17,13 @@ if ( ! $data['video'] ) {
 $video        = $data['video'];
 $video_source = $data['source'];
 
-$player_id     = '';
-$player_type   = '';
 $media_classes = [];
+$embed_html    = '';
 
 if ( $video_source === 'hosted' ) {
 	$video = wp_get_attachment_url( $video );
 } else {
-	if ( strpos( $video, 'youtube.com' ) > 0 || strpos( $video, 'youtu.be' ) > 0 ) {
-		preg_match( "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $video, $matches );
-		if ( isset( $matches[0] ) && $matches[0] ) {
-			$player_id = $matches[0];
-		}
-
-		$player_type = 'youtube';
-	} elseif ( strpos( $video, 'vimeo.com' ) > 0 ) {
-		preg_match( '%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)([a-z0-9#=]+)(?:$|\/|\?)(?:[?]?.*)$%im', $video, $matches );
-
-		if ( isset( $matches[3] ) && $matches[3] ) {
-			$player_id = $matches[3];
-			$player_id = explode( '#', $player_id );
-			$player_id = $player_id[0];
-		}
-
-		$player_type = 'vimeo';
-	}
+	$embed_html = stax_get_video_embed_html( $video );
 }
 
 $media_classes[] = sprintf( 'svq--%s', stax()->get_option( Config::OPTION_SINGLE_POST_VIDEO_WIDTH ) );
@@ -60,26 +42,16 @@ $overlay_classes = implode( ' ', $overlay_classes );
 ?>
 
 <?php if ( $video ) : ?>
-	<?php \Stax_Assets::instance()->enqueue_plyr(); ?>
-
 	<figure class="svq-media-video video-reveal <?php echo esc_attr( $media_classes ); ?>">
 		<div class="svq-progressive">
 			<div class="aspect-ratio-1-1"></div>
 			<div class="svq-progressive__placeholder-video <?php echo esc_attr( $overlay_classes ); ?>">
 				<?php if ( $video_source === 'hosted' ) : ?>
-					<video class="video-plyr lazy-video">
-						<source src="<?php echo esc_url( get_parent_theme_file_uri( 'assets/img/placeholder.mp4' ) ); ?>"
-								data-src="<?php echo esc_url( $video ); ?>" type="video/mp4">
-					</video>
-					<noscript>
-						<video class="video-plyr">
-							<source src="<?php echo esc_url( $video ); ?>" type="video/mp4">
-						</video>
-					</noscript>
-				<?php elseif ( $video_source === 'other' && $player_id && $player_type ) : ?>
-					<div class="video-plyr video-plyr-alone"
-						 data-plyr-provider="<?php echo esc_attr( $player_type ); ?>"
-						 data-plyr-embed-id="<?php echo esc_attr( $player_id ); ?>"></div>
+					<video class="video-plyr" controls playsinline preload="metadata" src="<?php echo esc_url( $video ); ?>"></video>
+				<?php elseif ( $embed_html ) : ?>
+					<div class="video-plyr video-embed">
+						<?php echo $embed_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- oEmbed HTML from core, filtered by wp_filter_oembed_result(). ?>
+					</div>
 				<?php endif; ?>
 			</div>
 		</div>
