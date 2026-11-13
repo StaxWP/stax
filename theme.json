@@ -1,20 +1,56 @@
 {
-	"version": 2,
+	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+	"version": 3,
 	"settings": {
-        "appearanceTools": true,
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": false,
+		"color": {
+			"defaultPalette": true,
+			"defaultGradients": true,
+			"defaultDuotone": false,
+			"palette": [
+				{ "slug": "primary", "name": "Primary", "color": "#6acfc9" },
+				{ "slug": "text", "name": "Text", "color": "#4b4f56" },
+				{ "slug": "heading", "name": "Heading", "color": "#242424" },
+				{ "slug": "background", "name": "Background", "color": "#ffffff" },
+				{ "slug": "light", "name": "Light", "color": "#eef8f9" },
+				{ "slug": "dark", "name": "Dark", "color": "#242424" },
+				{ "slug": "link", "name": "Link", "color": "#1aaaa0" },
+				{ "slug": "border", "name": "Border", "color": "#ddebed" },
+				{ "slug": "meta", "name": "Meta", "color": "#90949c" },
+				{ "slug": "very-light-gray", "name": "Very light gray", "color": "#eeeeee" },
+				{ "slug": "very-dark-gray", "name": "Very dark gray", "color": "#313131" }
+			]
+		},
+		"layout": {
+			"contentSize": "740px",
+			"wideSize": "1140px"
+		},
 		"spacing": {
-            "padding": true,
-            "margin": true,
-                "units": [ "px", "em", "rem", "vh", "vw" ]
-        },
-        "layout": {
-			"contentSize": "var(--container-width)",
-			"wideSize": "var(--container-xl)"
+			"units": [ "px", "em", "rem", "%", "vh", "vw" ]
+		},
+		"typography": {
+			"fontFamilies": [
+				{ "slug": "body", "name": "Body", "fontFamily": "Mukta, sans-serif" },
+				{ "slug": "heading", "name": "Headings", "fontFamily": "Heebo, sans-serif" },
+				{ "slug": "system", "name": "System", "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif" }
+			],
+			"fontSizes": [
+				{ "slug": "xx-large", "name": "Huge", "size": "clamp(2.25rem, 4vw, 3rem)" }
+			]
+		},
+		"blocks": {
+			"core/image": {
+				"lightbox": { "allowEditing": true }
+			},
+			"core/button": {
+				"border": { "radius": true }
+			}
 		}
 	},
-    "styles": {
-        "spacing": {
-            "blockGap": "var(--el-spacing)"
-        }
-    }
+	"styles": {
+		"spacing": {
+			"blockGap": "var(--el-spacing, 2rem)"
+		}
+	}
 }

@@ -85,6 +85,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'comment-list',
 			'gallery',
 			'caption',
+			'script',
+			'style',
+			'navigation-widgets',
 		];
 
 		// Ensure WordPress theme features render in HTML5 markup.
@@ -110,6 +113,60 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
+
+		// Content shown in the Customizer on a fresh site.
+		add_theme_support( 'starter-content', $this->get_starter_content() );
+	}
+
+	/**
+	 * Starter content for new sites: a home page built from the theme patterns, a blog page,
+	 * a menu and footer widgets. WordPress only applies it to sites with no content yet.
+	 *
+	 * @return array
+	 */
+	public function get_starter_content() {
+		$starter = [
+			'posts'       => [
+				'home'    => [
+					'post_type'    => 'page',
+					'post_title'   => _x( 'Home', 'Starter content page title', 'stax' ),
+					'post_content' => '<!-- wp:pattern {"slug":"stax/hero"} /--><!-- wp:pattern {"slug":"stax/features"} /--><!-- wp:pattern {"slug":"stax/latest-posts"} /--><!-- wp:pattern {"slug":"stax/call-to-action"} /-->',
+					'template'     => 'page-templates/a-page-builder.php',
+				],
+				'about',
+				'contact',
+				'blog',
+			],
+			'options'     => [
+				'show_on_front'  => 'page',
+				'page_on_front'  => '{{home}}',
+				'page_for_posts' => '{{blog}}',
+			],
+			'nav_menus'   => [
+				'primary' => [
+					'name'  => __( 'Primary Menu', 'stax' ),
+					'items' => [
+						'link_home',
+						'page_about',
+						'page_blog',
+						'page_contact',
+					],
+				],
+			],
+			'widgets'     => [
+				'footer-one-widgets'   => [ 'text_about' ],
+				'footer-two-widgets'   => [ 'recent-posts' ],
+				'footer-three-widgets' => [ 'search' ],
+			],
+			'attachments' => [],
+		];
+
+		/**
+		 * Filters the Stax starter content.
+		 *
+		 * @param array $starter Starter content definition.
+		 */
+		return apply_filters( 'stax_starter_content', $starter );
 	}
 
 	/**

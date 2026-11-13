@@ -790,6 +790,14 @@ h6, .h6 {
   font-weight: 600;
 }
 
+.hero {
+  font-family: var(--heading-font-family);
+  font-size: var(--hero-font-size-sm);
+  line-height: var(--hero-line-height-sm);
+  font-weight: var(--hero-font-weight);
+  letter-spacing: var(--hero-letter-spacing);
+}
+
 body {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-sm);
@@ -830,6 +838,11 @@ body {
     font-size: var(--h6-font-size-md);
     line-height: var(--h6-line-height-md);
   }
+
+  .hero {
+    font-size: var(--hero-font-size-md);
+    line-height: var(--hero-line-height-md);
+  }
 }
 @media (min-width: 992px) {
   body {
@@ -865,6 +878,12 @@ body {
   h6, .h6 {
     font-size: var(--h6-font-size-lg);
     line-height: var(--h6-line-height-lg);
+  }
+}
+@media (min-width: 1200px) {
+  .hero {
+    font-size: var(--hero-font-size-lg);
+    line-height: var(--hero-line-height-lg);
   }
 }
 
@@ -1284,17 +1303,6 @@ select {
 .svq-form input[type=checkbox]:focus + label::before {
   border-color: var(--dark-color);
   box-shadow: 0 0 0 3px var(--color-shadow);
-}
-
-.primary-color input[type=radio] + label::before,
-.primary-color input[type=checkbox] + label::before {
-  border-color: var(--svq-color-primary);
-}
-
-.primary-color input[type=radio]:checked + label::before,
-.primary-color input[type=checkbox]:checked + label::before {
-  background-color: var(--svq-color-primary);
-  border-color: var(--svq-color-primary);
 }
 
 /* Buttons */
@@ -3533,6 +3541,20 @@ body .svq-comments .comment-respond {
   }
 }
 
+.attachments .comment-attachments {
+  display: flex;
+  flex-wrap: wrap;
+}
+.attachments .comment-attachments li {
+  max-width: 33.33333%;
+}
+.attachments .comment-attachments li .svq-gallery__image {
+  border-radius: 3px;
+}
+.attachments .comment-attachments li > div {
+  margin: 2px 2px 10px;
+}
+
 .comment-form-notifications ul {
   list-style: none;
   padding: 0;
@@ -4280,10 +4302,6 @@ input[type=radio] + label::after {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
-}
-
-.primary-color input[type=radio]:checked + label::after {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg class='nc-icon-wrapper' stroke-width='2' fill='%23ffffff' stroke='%23ffffff'%3E%3Cpolyline fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='1,9 5,13 15,3 ' data-cap='butt'%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E");
 }
 
 .switch {
@@ -8170,4 +8188,58 @@ button.svq-gallery-control {
 
 .svq-gallery-slider .swiper-pagination {
 	display: none;
+}
+
+/* Stax block styles (registered in inc/Editor/Component.php). Loaded on the front end and in the editor. */
+.wp-block-button.is-style-stax-pill .wp-block-button__link {
+	border-radius: 999px;
+	padding-inline: 1.75em;
+}
+
+.wp-block-image.is-style-stax-shadow img {
+	border-radius: 8px;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+.wp-block-group.is-style-stax-card {
+	padding: clamp(1.25rem, 3vw, 2rem);
+	border: 1px solid var(--border-color, #ddebed);
+	border-radius: 10px;
+	background: var(--body-bg-color, #fff);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+.wp-block-list.is-style-stax-checklist {
+	list-style: none;
+	padding-inline-start: 0;
+}
+
+.wp-block-list.is-style-stax-checklist li {
+	position: relative;
+	padding-inline-start: 1.75em;
+	margin-bottom: 0.5em;
+}
+
+.wp-block-list.is-style-stax-checklist li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	top: 0.45em;
+	width: 1em;
+	height: 0.55em;
+	border-inline-start: 2px solid var(--primary-color, currentColor);
+	border-bottom: 2px solid var(--primary-color, currentColor);
+	transform: rotate(-45deg);
+}
+
+[dir="rtl"] .wp-block-list.is-style-stax-checklist li::before {
+	transform: rotate(45deg);
+}
+
+.wp-block-heading.is-style-stax-eyebrow {
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--link-color, inherit);
 }

@@ -1,0 +1,11 @@
+/* Base text styles for the block editor canvas (WordPress scopes "body" to .editor-styles-wrapper). */
+body {
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--body-bg-color);
+	-webkit-font-smoothing: antialiased;
+}
+
+body a {
+	color: var(--link-color);
+}

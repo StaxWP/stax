@@ -1,7 +1,9 @@
 <?php
-
 /**
  * Stax\Editor\Component class
+ *
+ * Block editor integration: theme.json data from the Customizer, editor styles that match
+ * the front end inside the editor iframe, block styles and block patterns.
  *
  * @package stax
  */
@@ -9,9 +11,10 @@
 namespace Stax\Editor;
 
 use Stax\Component_Interface;
+use Stax\Customizer\Config;
+use Stax\Customizer\Dynamic_Css;
 use function add_action;
 use function add_theme_support;
-use function Stax\stax;
 
 /**
  * Class for integrating with the block editor.
@@ -20,6 +23,20 @@ use function Stax\stax;
  */
 class Component implements Component_Interface {
 
+	/**
+	 * Customizer palette variables mapped to theme.json palette slugs.
+	 */
+	const PALETTE_SLUGS = [
+		'primary'    => Config::VAR_PRIMARY_COLOR,
+		'text'       => Config::VAR_TEXT_COLOR,
+		'heading'    => Config::VAR_HEADING_COLOR,
+		'background' => Config::VAR_BODY_BG,
+		'light'      => Config::VAR_LIGHT_COLOR,
+		'dark'       => Config::VAR_DARK_COLOR,
+		'link'       => Config::VAR_LINK_COLOR,
+		'border'     => Config::VAR_BORDER_COLOR,
+		'meta'       => Config::VAR_TEXT_META_COLOR,
+	];
 
 	/**
 	 * Gets the unique identifier for the theme component.
@@ -35,16 +52,10 @@ class Component implements Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_support' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
-	}
-
-	public function enqueue_editor_assets() {
-		wp_enqueue_style(
-			'stax-root',
-			get_theme_file_uri( 'assets/css/root-vars.css' ),
-			[],
-			stax()->get_version()
-		);
+		add_filter( 'wp_theme_json_data_theme', [ $this, 'filter_theme_json' ] );
+		add_filter( 'block_editor_settings_all', [ $this, 'filter_editor_settings' ] );
+		add_action( 'init', [ $this, 'action_register_block_styles' ] );
+		add_action( 'init', [ $this, 'action_register_block_patterns' ] );
 	}
 
 	/**
@@ -53,8 +64,8 @@ class Component implements Component_Interface {
 	public function action_add_editor_support() {
 		add_theme_support( 'editor-styles' );
 
-		// This theme styles the visual editor with editor-style.css to match the theme style.
-		add_editor_style( [ 'assets/css/style-editor.css' ] );
+		// Loaded inside the editor iframe and scoped to it by WordPress.
+		add_editor_style( [ 'assets/css/root-vars.css', 'assets/css/style-editor.min.css' ] );
 
 		// Add support for default block styles.
 		add_theme_support( 'wp-block-styles' );
@@ -63,119 +74,155 @@ class Component implements Component_Interface {
 		add_theme_support( 'align-wide' );
 
 		add_theme_support( 'custom-spacing' );
+	}
 
-		// Add support for color palettes.
-		add_theme_support(
-			'editor-color-palette',
+	/**
+	 * Puts the Customizer colors and fonts into theme.json, so the editor palette, the
+	 * has-*-color classes and the font family presets always match the Customizer.
+	 *
+	 * @param \WP_Theme_JSON_Data $theme_json Theme JSON data.
+	 *
+	 * @return \WP_Theme_JSON_Data
+	 */
+	public function filter_theme_json( $theme_json ) {
+		$data    = $theme_json->get_data();
+		$palette = $data['settings']['color']['palette']['theme'] ?? ( $data['settings']['color']['palette'] ?? [] );
+		$colors  = self::get_customizer_colors();
+
+		foreach ( $palette as $index => $entry ) {
+			if ( isset( $entry['slug'], $colors[ $entry['slug'] ] ) ) {
+				$palette[ $index ]['color'] = $colors[ $entry['slug'] ];
+			}
+		}
+
+		$families = $data['settings']['typography']['fontFamilies']['theme'] ?? ( $data['settings']['typography']['fontFamilies'] ?? [] );
+
+		foreach ( $families as $index => $family ) {
+			if ( 'body' === ( $family['slug'] ?? '' ) ) {
+				$families[ $index ]['fontFamily'] = (string) get_theme_mod( Config::MODS_FONT_GENERAL, 'Mukta, sans-serif' );
+			} elseif ( 'heading' === ( $family['slug'] ?? '' ) ) {
+				$families[ $index ]['fontFamily'] = (string) get_theme_mod( Config::MODS_FONT_HEADINGS, 'Heebo, sans-serif' );
+			}
+		}
+
+		return $theme_json->update_with(
 			[
-				[
-					'name'  => esc_html__( 'Primary theme color', 'stax' ),
-					'slug'  => 'primary',
-					'color' => stax()->get_option( 'primary-color' ),
-				],
-				[
-					'name'  => esc_html__( 'Pale pink', 'stax' ),
-					'slug'  => 'pale-pink',
-					'color' => '#f78da7',
-				],
-				[
-					'name'  => esc_html__( 'Vivid red', 'stax' ),
-					'slug'  => 'vivid-red',
-					'color' => '#cf2e2e',
-				],
-				[
-					'name'  => esc_html__( 'Luminous vivid orange', 'stax' ),
-					'slug'  => 'luminous-vivid-orange',
-					'color' => '#ff6900',
-				],
-				[
-					'name'  => esc_html__( 'Luminous vivid amber', 'stax' ),
-					'slug'  => 'luminous-vivid-amber',
-					'color' => '#fcb900',
-				],
-				[
-					'name'  => esc_html__( 'Light green cyan', 'stax' ),
-					'slug'  => 'light-green-cyan',
-					'color' => '#7bdcb5',
-				],
-				[
-					'name'  => esc_html__( 'Vivid green cyan', 'stax' ),
-					'slug'  => 'vivid-green-cyan',
-					'color' => '#00d084',
-				],
-				[
-					'name'  => esc_html__( 'Pale cyan blue', 'stax' ),
-					'slug'  => 'pale-cyan-blue',
-					'color' => '#8ed1fc',
-				],
-				[
-					'name'  => esc_html__( 'Vivid cyan blue', 'stax' ),
-					'slug'  => 'vivid-cyan-blue',
-					'color' => '#0693e3',
-				],
-				[
-					'name'  => esc_html__( 'Very light gray', 'stax' ),
-					'slug'  => 'very-light-gray',
-					'color' => '#eeeeee',
-				],
-				[
-					'name'  => esc_html__( 'Cyan bluish gray', 'stax' ),
-					'slug'  => 'cyan-bluish-gray',
-					'color' => '#abb8c3',
-				],
-				[
-					'name'  => esc_html__( 'Very dark gray', 'stax' ),
-					'slug'  => 'very-dark-gray',
-					'color' => '#313131',
+				'version'  => 3,
+				'settings' => [
+					'color'      => [ 'palette' => $palette ],
+					'typography' => [ 'fontFamilies' => $families ],
 				],
 			]
 		);
+	}
 
-		/*
-		* Optional: Disable custom colors in color palettes.
-		*
-		* Uncomment the line below to disable the custom color picker in the editor.
-		*
-		* add_theme_support( 'disable-custom-colors' );
-		*/
+	/**
+	 * Hex colors of the active Customizer palette, keyed by theme.json slug.
+	 *
+	 * @return array
+	 */
+	public static function get_customizer_colors() {
+		$global = get_theme_mod( Config::MODS_GLOBAL_COLORS, \Stax_Assets::instance()->get_global_colors_default() );
+		$active = $global['activePalette'] ?? 'light';
+		$items  = $global['palettes'][ $active ]['colors'] ?? [];
+		$colors = [];
 
-		// Add support for font sizes.
-		add_theme_support(
-			'editor-font-sizes',
+		foreach ( $items as $item ) {
+			$slug = array_search( $item['vars'] ?? null, self::PALETTE_SLUGS, true );
+			$hex  = self::to_hex( $item['color'] ?? '' );
+
+			if ( false !== $slug && $hex ) {
+				$colors[ $slug ] = $hex;
+			}
+		}
+
+		return $colors;
+	}
+
+	/**
+	 * Normalizes #rgb, #rrggbb and rgb()/rgba() colors to #rrggbb.
+	 *
+	 * @param string $color Color value.
+	 *
+	 * @return string Hex color, or an empty string.
+	 */
+	public static function to_hex( $color ) {
+		$color = trim( (string) $color );
+
+		if ( preg_match( '/^#([0-9a-f]{3}){1,2}$/i', $color ) ) {
+			return strtolower( $color );
+		}
+
+		if ( preg_match( '/^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i', $color, $m ) ) {
+			return sprintf( '#%02x%02x%02x', min( 255, (int) $m[1] ), min( 255, (int) $m[2] ), min( 255, (int) $m[3] ) );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Adds the Customizer CSS (colors, fonts, sizes) to the editor iframe.
+	 *
+	 * @param array $settings Editor settings.
+	 *
+	 * @return array
+	 */
+	public function filter_editor_settings( $settings ) {
+		if ( class_exists( Dynamic_Css::class ) ) {
+			$settings['styles'][] = [
+				'css' => ( new Dynamic_Css() )->get_style(),
+			];
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Block styles: small, opt-in variations that fit the theme design.
+	 */
+	public function action_register_block_styles() {
+		$styles = [
+			'core/button'  => [
+				'stax-pill' => __( 'Pill', 'stax' ),
+			],
+			'core/image'   => [
+				'stax-shadow' => __( 'Shadow', 'stax' ),
+			],
+			'core/group'   => [
+				'stax-card' => __( 'Card', 'stax' ),
+			],
+			'core/list'    => [
+				'stax-checklist' => __( 'Checklist', 'stax' ),
+			],
+			'core/heading' => [
+				'stax-eyebrow' => __( 'Eyebrow', 'stax' ),
+			],
+		];
+
+		foreach ( $styles as $block => $variations ) {
+			foreach ( $variations as $name => $label ) {
+				register_block_style(
+					$block,
+					[
+						'name'  => $name,
+						'label' => $label,
+					]
+				);
+			}
+		}
+	}
+
+	/**
+	 * Registers the theme's block patterns (files in /patterns are registered by core too;
+	 * this adds the category).
+	 */
+	public function action_register_block_patterns() {
+		register_block_pattern_category(
+			'stax',
 			[
-				[
-					'name'      => __( 'small', 'stax' ),
-					'shortName' => __( 'S', 'stax' ),
-					'size'      => 16,
-					'slug'      => 'small',
-				],
-				[
-					'name'      => __( 'regular', 'stax' ),
-					'shortName' => __( 'M', 'stax' ),
-					'size'      => 20,
-					'slug'      => 'regular',
-				],
-				[
-					'name'      => __( 'large', 'stax' ),
-					'shortName' => __( 'L', 'stax' ),
-					'size'      => 36,
-					'slug'      => 'large',
-				],
-				[
-					'name'      => __( 'larger', 'stax' ),
-					'shortName' => __( 'XL', 'stax' ),
-					'size'      => 48,
-					'slug'      => 'larger',
-				],
+				'label'       => __( 'Stax', 'stax' ),
+				'description' => __( 'Sections designed for the Stax theme.', 'stax' ),
 			]
 		);
-
-		/*
-		* Optional: Disable custom font sizes in block text settings.
-		*
-		* Uncomment the line below to disable the custom custom font sizes in the editor.
-		*
-		* add_theme_support( 'disable-custom-font-sizes' );
-		*/
 	}
 }

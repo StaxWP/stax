@@ -19,6 +19,9 @@ const Sidebar = compose(
 				character: "s",
 			},
 		});
+
+		// withDispatch must return an object (current @wordpress/data throws on undefined).
+		return {};
 	}),
 	withSelect((selectHandler) => {
 		return {

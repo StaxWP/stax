@@ -8,7 +8,6 @@ class Dynamic_Css {
 	 * Register actions.
 	 */
 	public function init() {
-		add_action( 'enqueue_block_editor_assets', [ $this, 'print_guntenberg_style' ], 100 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'print_builder_style' ], 100 );
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'add_customize_vars_tag' ] );
 
@@ -83,6 +82,9 @@ class Dynamic_Css {
 		wp_add_inline_style( 'stax-header', $this->get_style() );
 	}
 
+	/**
+	 * Kept for child themes. The editor gets this CSS through block_editor_settings_all (Stax\Editor\Component).
+	 */
 	public function print_guntenberg_style() {
 		wp_add_inline_style( 'stax-root', $this->get_style() );
 	}

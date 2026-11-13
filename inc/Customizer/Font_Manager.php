@@ -60,8 +60,24 @@ class Font_Manager {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_google_fonts' ], 200 );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'register_google_fonts' ], 200 );
+		add_action( 'enqueue_block_assets', [ $this, 'register_editor_fonts' ], 200 );
 		add_action( 'customize_save_after', [ __CLASS__, 'flush_failures' ] );
+	}
+
+	/**
+	 * Fonts inside the block editor iframe (enqueue_block_assets also runs on the front end).
+	 */
+	public function register_editor_fonts() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		// The editor collects iframe assets before the dynamic CSS ran; generate it to know the fonts.
+		if ( empty( self::$font_families ) && class_exists( Dynamic_Css::class ) ) {
+			( new Dynamic_Css() )->get_style();
+		}
+
+		$this->register_google_fonts();
 	}
 
 	/**

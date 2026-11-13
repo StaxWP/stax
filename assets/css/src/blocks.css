@@ -1,0 +1,53 @@
+/* Stax block styles (registered in inc/Editor/Component.php). Loaded on the front end and in the editor. */
+.wp-block-button.is-style-stax-pill .wp-block-button__link {
+	border-radius: 999px;
+	padding-inline: 1.75em;
+}
+
+.wp-block-image.is-style-stax-shadow img {
+	border-radius: 8px;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+.wp-block-group.is-style-stax-card {
+	padding: clamp(1.25rem, 3vw, 2rem);
+	border: 1px solid var(--border-color, #ddebed);
+	border-radius: 10px;
+	background: var(--body-bg-color, #fff);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+.wp-block-list.is-style-stax-checklist {
+	list-style: none;
+	padding-inline-start: 0;
+}
+
+.wp-block-list.is-style-stax-checklist li {
+	position: relative;
+	padding-inline-start: 1.75em;
+	margin-bottom: 0.5em;
+}
+
+.wp-block-list.is-style-stax-checklist li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	top: 0.45em;
+	width: 1em;
+	height: 0.55em;
+	border-inline-start: 2px solid var(--primary-color, currentColor);
+	border-bottom: 2px solid var(--primary-color, currentColor);
+	transform: rotate(-45deg);
+}
+
+[dir="rtl"] .wp-block-list.is-style-stax-checklist li::before {
+	transform: rotate(45deg);
+}
+
+.wp-block-heading.is-style-stax-eyebrow {
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--link-color, inherit);
+}
