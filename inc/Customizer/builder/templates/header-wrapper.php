@@ -10,7 +10,8 @@ $classes = apply_filters( 'hfg_header_wrapper_class', '' );
 ?>
 
 <header class="header" role="banner">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'stax' ); ?></a>
+	<?php stax()->skip_link(); ?>
+
 
 	<?php if ( is_single() && stax()->get_option( Config::OPTION_SINGLE_POST_TOP_READING_BAR ) ) : ?>
 		<div class="svq-progress-bar">

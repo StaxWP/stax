@@ -140,6 +140,67 @@ class Component implements Component_Interface {
 	}
 
 	/**
+	 * Design tokens saved in the site's global styles (the user layer of theme.json, what the Site Editor
+	 * or a plugin such as Stax Builder writes to `wp_global_styles`) for the slugs the theme knows.
+	 *
+	 * Precedence: global styles > Customizer > theme defaults. theme.json already merges the user layer
+	 * over the theme layer (which this class feeds from the Customizer); these values are also applied
+	 * to the theme's own CSS variables (Stax\Customizer\Dynamic_Css), so the whole theme follows them.
+	 *
+	 * @return array {
+	 *     @type string[] $colors   Hex colors keyed by palette slug (see PALETTE_SLUGS).
+	 *     @type string[] $fonts    Font family stacks keyed by "body" / "heading".
+	 *     @type string   $wideSize Layout wide size, or an empty string.
+	 * }
+	 */
+	public static function get_global_styles_tokens() {
+		static $tokens = null;
+
+		if ( null !== $tokens && ! is_customize_preview() ) {
+			return $tokens;
+		}
+
+		$tokens = [
+			'colors'   => [],
+			'fonts'    => [],
+			'wideSize' => '',
+		];
+
+		if ( ! class_exists( '\WP_Theme_JSON_Resolver' ) || ! wp_theme_has_theme_json() ) {
+			return $tokens;
+		}
+
+		$settings = \WP_Theme_JSON_Resolver::get_user_data()->get_settings();
+
+		// User palettes: "theme" (the theme palette edited) then "custom" (added colors) win in that order.
+		foreach ( [ 'theme', 'custom' ] as $origin ) {
+			foreach ( (array) ( $settings['color']['palette'][ $origin ] ?? [] ) as $entry ) {
+				$hex = self::to_hex( $entry['color'] ?? '' );
+
+				if ( isset( $entry['slug'], self::PALETTE_SLUGS[ $entry['slug'] ] ) && $hex ) {
+					$tokens['colors'][ $entry['slug'] ] = $hex;
+				}
+			}
+
+			foreach ( (array) ( $settings['typography']['fontFamilies'][ $origin ] ?? [] ) as $entry ) {
+				$family = trim( preg_replace( '/[^\w\s\-,\'"]/u', '', (string) ( $entry['fontFamily'] ?? '' ) ) );
+
+				if ( in_array( $entry['slug'] ?? '', [ 'body', 'heading' ], true ) && '' !== $family ) {
+					$tokens['fonts'][ $entry['slug'] ] = $family;
+				}
+			}
+		}
+
+		$wide = (string) ( $settings['layout']['wideSize'] ?? '' );
+
+		if ( preg_match( '/^[\w.%()+\-*\/ ,]+$/', $wide ) ) {
+			$tokens['wideSize'] = $wide;
+		}
+
+		return $tokens;
+	}
+
+	/**
 	 * Normalizes #rgb, #rrggbb and rgb()/rgba() colors to #rrggbb.
 	 *
 	 * @param string $color Color value.

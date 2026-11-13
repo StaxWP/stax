@@ -92,6 +92,10 @@ class Customizer {
 			$classes[] = 'customize-previewing';
 		}
 
+		if ( \Stax\stax()->area_owner( 'header' ) ) {
+			return $classes;
+		}
+
 		$sidebar_class = 'menu_sidebar_' . get_theme_mod( 'hfg_header_layout_sidebar_layout', 'slide_left' );
 
 		$classes[] = $sidebar_class;
@@ -175,6 +179,14 @@ class Customizer {
 		 * @var Builder $builder
 		 */
 		foreach ( $this->builders as $builder ) {
+			$owner = \Stax\stax()->area_owner( $builder->get_id(), 'customizer' );
+
+			if ( $owner ) {
+				// A plugin manages this area: a note instead of the controls (saved settings are kept).
+				$builder->customize_register_managed( $wp_customize, $owner );
+				continue;
+			}
+
 			$builder->customize_register( $wp_customize );
 		}
 

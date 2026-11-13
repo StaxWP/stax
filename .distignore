@@ -9,3 +9,4 @@ package.json
 package-lock.json
 phpcs.xml.dist
 assets/css/src
+docs

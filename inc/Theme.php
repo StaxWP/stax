@@ -165,6 +165,7 @@ class Theme {
 			new Load_Icon\Component(),
 			new Plugins\Component(),
 			new Compat\Component(),
+			new Builder_Integration\Component(),
 		];
 
 		if ( defined( 'JETPACK__VERSION' ) ) {

@@ -115,7 +115,15 @@ class Dynamic_Css {
 	 * @return string
 	 */
 	public function get_root_css() {
-		return self::minify_css( ':root{' . $this->get_css_vars() . '}' );
+		$css  = ':root{' . $this->get_css_vars() . '}';
+		$wide = \Stax\Editor\Component::get_global_styles_tokens()['wideSize'];
+
+		// The global styles wide size also sets the theme container on large screens.
+		if ( $wide ) {
+			$css .= '@media (min-width:1200px){.container{max-width:' . $wide . '}}';
+		}
+
+		return self::minify_css( $css );
 	}
 
 	/**
@@ -251,15 +259,17 @@ class Dynamic_Css {
 			}
 		}
 
+		$tokens = \Stax\Editor\Component::get_global_styles_tokens();
+
 		$body_font_family = get_theme_mod( 'stax_body_font_family', 'Mukta, sans-serif' );
-		$css             .= '--font-family:' . $body_font_family . ';';
+		$css             .= '--font-family:' . ( $tokens['fonts']['body'] ?? $body_font_family ) . ';';
 
 		foreach ( explode( ',', $body_font_family ) as $font ) {
 			Font_Manager::add_google_font( trim( $font ), '400' );
 		}
 
 		$heading_font_family = get_theme_mod( 'stax_headings_font_family', 'Heebo, sans-serif' );
-		$css                .= '--heading-font-family:' . $heading_font_family . ';';
+		$css                .= '--heading-font-family:' . ( $tokens['fonts']['heading'] ?? $heading_font_family ) . ';';
 
 		foreach ( explode( ',', $heading_font_family ) as $font ) {
 			foreach ( [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] as $weight ) {
@@ -282,7 +292,16 @@ class Dynamic_Css {
 				$palette = $global_colors['palettes'][ $active ];
 
 				if ( isset( $palette['colors'] ) ) {
+					// Global styles colors win over the Customizer palette (see Stax\Editor\Component::get_global_styles_tokens()).
+					$overrides = \Stax\Editor\Component::get_global_styles_tokens()['colors'];
+
 					foreach ( $palette['colors'] as $data ) {
+						$slug = array_search( $data['vars'] ?? null, \Stax\Editor\Component::PALETTE_SLUGS, true );
+
+						if ( false !== $slug && isset( $overrides[ $slug ] ) ) {
+							$data['color'] = $overrides[ $slug ];
+						}
+
 						if ( $data['output'] === 'hsl' ) {
 							$hexColor = $this->rgb_to_hex( $data['color'] );
 							$color    = $this->hex_to_hsl( $hexColor );

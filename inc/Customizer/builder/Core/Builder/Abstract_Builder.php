@@ -589,40 +589,9 @@ abstract class Abstract_Builder implements Builder {
 			$component->customize_register( $wp_customize );
 		}
 
-		/** @var \WP_Customize_Panel|null $panel */
-		$panel = $wp_customize->get_panel( $this->panel );
-
-		if ( null !== $panel ) {
+		if ( ! $this->add_panel( $wp_customize ) ) {
 			return $wp_customize;
 		}
-
-		$title = ( isset( $this->title ) && ! empty( $this->title ) )
-			? $this->title
-			: __( 'Header', 'stax' );
-
-		$description = ( isset( $this->description ) && ! empty( $this->description ) )
-			? $this->description
-			: '';
-
-		$wp_customize->add_panel(
-			$this->panel,
-			[
-				'priority'       => 25,
-				'capability'     => 'edit_theme_options',
-				'theme_supports' => Settings\Config::get_support(),
-				'title'          => $title,
-				'description'    => $description,
-			]
-		);
-
-		$wp_customize->add_section(
-			$this->section,
-			[
-				'title'    => $title,
-				'priority' => 299,
-				'panel'    => $this->panel,
-			]
-		);
 
 		if ( ! empty( $this->instructions_array ) ) {
 			$wp_customize->add_section(
@@ -655,6 +624,62 @@ abstract class Abstract_Builder implements Builder {
 		$wp_customize = apply_filters( 'hfg_after_builder_' . $this->get_id() . '_registered', $wp_customize, $this );
 
 		return $wp_customize;
+	}
+
+	/**
+	 * Registers the builder panel and its main section.
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return bool False when the panel was already registered.
+	 */
+	private function add_panel( WP_Customize_Manager $wp_customize ) {
+		if ( null !== $wp_customize->get_panel( $this->panel ) ) {
+			return false;
+		}
+
+		$title = ( isset( $this->title ) && ! empty( $this->title ) )
+			? $this->title
+			: __( 'Header', 'stax' );
+
+		$description = ( isset( $this->description ) && ! empty( $this->description ) )
+			? $this->description
+			: '';
+
+		$wp_customize->add_panel(
+			$this->panel,
+			[
+				'priority'       => 25,
+				'capability'     => 'edit_theme_options',
+				'theme_supports' => Settings\Config::get_support(),
+				'title'          => $title,
+				'description'    => $description,
+			]
+		);
+
+		$wp_customize->add_section(
+			$this->section,
+			[
+				'title'    => $title,
+				'priority' => 299,
+				'panel'    => $this->panel,
+			]
+		);
+
+		return true;
+	}
+
+	/**
+	 * Registers the panel with a "managed by" note instead of the builder, when a plugin owns this area.
+	 * Nothing else is registered, so the saved settings stay untouched.
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 * @param string               $owner        Owner id.
+	 */
+	public function customize_register_managed( WP_Customize_Manager $wp_customize, $owner ) {
+		if ( $this->add_panel( $wp_customize ) ) {
+			\Stax\Builder_Integration\Component::add_managed_control( $wp_customize, $this->get_id(), $owner, $this->section );
+		}
 	}
 
 	/**

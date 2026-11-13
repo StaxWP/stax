@@ -171,6 +171,10 @@ class Main {
 		 * @var Abstract_Builder $builder
 		 */
 		foreach ( $this->get_builders() as $builder ) {
+			if ( \Stax\stax()->area_owner( $builder->get_id() ) ) {
+				continue;
+			}
+
 			$css_array = $builder->add_style( $css_array );
 		}
 
