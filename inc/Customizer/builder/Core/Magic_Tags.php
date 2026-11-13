@@ -210,7 +210,7 @@ class Magic_Tags {
 			$blog_page_id = get_option( 'page_for_posts' );
 			return get_the_title( $blog_page_id );
 		}
-		return html_entity_decode( get_the_archive_title() );
+		return html_entity_decode( get_the_archive_title(), ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401 );
 	}
 
 	/**

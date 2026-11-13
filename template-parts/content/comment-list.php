@@ -23,7 +23,7 @@ $comments_container_class .= ' for-post-id-' . get_the_ID();
 				<div class="heading-title-action">
 					<button type="button" class="btn btn-link close-responses">
 						<span class="btn--default-state">
-							<?php echo stax()->load_icon( 'close', 18 ); ?>
+							<?php echo stax()->load_icon( 'close', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted theme SVG icon markup. ?>
 						</span>
 					</button>
 				</div>

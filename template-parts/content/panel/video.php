@@ -33,7 +33,7 @@ $overlay_classes  = [];
 $overlay_color    = stax()->get_option( Config::OPTION_SINGLE_POST_VIDEO_OVERLAY );
 $overlay_location = stax()->get_option( Config::OPTION_SINGLE_POST_VIDEO_OVERLAY_LOCATION );
 
-if ( $overlay_color !== 'none' && in_array( $overlay_location, [ 'single', 'both' ] ) ) {
+if ( $overlay_color !== 'none' && in_array( $overlay_location, [ 'single', 'both' ], true ) ) {
 	$overlay_classes[] = 'svq-overlay svq-overlay--' . $overlay_color;
 }
 

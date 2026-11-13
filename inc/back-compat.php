@@ -77,7 +77,7 @@ add_action( 'load-customize.php', 'stax_customize' );
  * Prevents the Theme Preview from being loaded when requirements are not met.
  */
 function stax_preview() {
-	if ( isset( $_GET['preview'] ) ) {
+	if ( isset( $_GET['preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview flag check.
 		wp_die( esc_html( stax_get_insufficient_requirements_message() ) );
 	}
 }

@@ -17,8 +17,8 @@ if ( has_block( 'gallery', get_the_content() ) ) {
 	foreach ( $post_blocks as $block ) {
 		if ( ( $block['blockName'] ?? '' ) === 'core/gallery' ) {
 			if ( empty( $block['innerBlocks'] ) && isset( $block['attrs']['ids'] ) ) {
-				foreach ( $block['attrs']['ids'] as $id ) {
-					$gallery[] = $id;
+				foreach ( $block['attrs']['ids'] as $image_id ) {
+					$gallery[] = $image_id;
 				}
 			} else {
 				foreach ( $block['innerBlocks'] as $inner_block ) {
@@ -43,7 +43,7 @@ $overlay_classes  = [];
 $overlay_color    = stax()->get_option( Config::OPTION_SINGLE_POST_GALLERY_OVERLAY );
 $overlay_location = stax()->get_option( Config::OPTION_SINGLE_POST_GALLERY_OVERLAY_LOCATION );
 
-if ( $overlay_color !== 'none' && in_array( $overlay_location, [ 'single', 'both' ] ) ) {
+if ( $overlay_color !== 'none' && in_array( $overlay_location, [ 'single', 'both' ], true ) ) {
 	$overlay_classes[] = 'svq-overlay svq-overlay--' . $overlay_color;
 }
 
@@ -77,7 +77,7 @@ $slider_classes   = implode( ' ', $slider_classes );
 $nav_class      = '';
 $title_position = stax()->get_option( Config::OPTION_SINGLE_POST_TITLE_POSITION );
 
-if ( $title_position === 'title-over' && in_array( stax()->get_option( Config::OPTION_SINGLE_POST_TITLE_ALIGN ), [ 'middle', 'middle-center' ] ) ) {
+if ( $title_position === 'title-over' && in_array( stax()->get_option( Config::OPTION_SINGLE_POST_TITLE_ALIGN ), [ 'middle', 'middle-center' ], true ) ) {
 	$nav_class = 'svq-control-bottom';
 }
 

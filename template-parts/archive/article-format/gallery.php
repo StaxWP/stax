@@ -6,10 +6,10 @@ namespace Stax;
 
 $gallery = [];
 
-foreach ( stax()->get_gallery_from_content() as $id ) {
+foreach ( stax()->get_gallery_from_content() as $image_id ) {
 	$gallery[] = [
 		'size' => '',
-		'img'  => $id,
+		'img'  => $image_id,
 	];
 }
 

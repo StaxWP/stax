@@ -38,11 +38,13 @@ class Component implements Component_Interface {
 		$theme_slug = stax()->get_config( 'slug' ) . '-';
 		$current_slug = 'welcome';
 
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin page detection.
 		if ( isset( $_GET['page'] ) && $_GET['page'] === 'stax' ) {
 			if ( isset( $_GET['sub-page'] ) ) {
-				$current_slug = sanitize_text_field( $_GET['sub-page'] );
+				$current_slug = sanitize_text_field( wp_unslash( $_GET['sub-page'] ) );
 			}
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		$this->current_slug = str_replace( '-', '_', $current_slug );
 	}
@@ -79,7 +81,8 @@ class Component implements Component_Interface {
 		add_filter( 'stax_addons_columns', '__return_zero' );
 		add_action( 'stax_addons_page_content', array( $this, 'tpl_main_addons_page_content' ) );
 
-		if ( ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'sq_do_plugin_action' ) || ( isset( $_GET['page'] ) && strpos( $_GET['page'], stax()->get_config( 'slug' ) ) === 0 ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request detection; the AJAX handler verifies its own nonce.
+		if ( ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'sq_do_plugin_action' ) || ( isset( $_GET['page'] ) && strpos( sanitize_text_field( wp_unslash( $_GET['page'] ) ), stax()->get_config( 'slug' ) ) === 0 ) ) {
 			add_action( 'admin_init', array( $this, 'config_addons' ), 12 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'panel_scripts' ) );
 		}
@@ -134,7 +137,7 @@ class Component implements Component_Interface {
 								src="<?php echo esc_url( get_parent_theme_file_uri( 'assets/img/staxwp_logo.png' ) ); ?>"
 								class="sqp-border-0 sqp-w-32" alt="Stax">
 							<span
-								class="sqp-bg-gray-300 sqp-text-gray-600 sqp-ml-4 sqp-px-2 sqp-py-1 sqp-text-xs sqp-rounded sqp-no-underline"><?php echo stax()->get_version(); ?></span>
+								class="sqp-bg-gray-300 sqp-text-gray-600 sqp-ml-4 sqp-px-2 sqp-py-1 sqp-text-xs sqp-rounded sqp-no-underline"><?php echo esc_html( stax()->get_version() ); ?></span>
 
 							<?php do_action( 'stax_welcome_page_header_title' ); ?>
 						</a>
@@ -271,7 +274,7 @@ class Component implements Component_Interface {
 						$anchor_target = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? "target='_blank' rel='noopener'" : '';
 
 						echo '<li id="' . esc_attr( $addon ) . '"  class="' . esc_attr( $info['class'] ) . ' sqp_box_list_item">' .
-							 '<a class="sqp-mx-4 sqp-no-underline focus:sqp-outline-none"' . $title_url . $anchor_target . ' >' .
+							 '<a class="sqp-mx-4 sqp-no-underline focus:sqp-outline-none"' . $title_url . $anchor_target . ' >' . // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $title_url is built with esc_url(), $anchor_target is a static string.
 							 esc_html( $info['title'] ) . '</a>' .
 							 '<div class="stax-addon-link-wrapper">';
 

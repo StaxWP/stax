@@ -235,7 +235,7 @@ class Sanitizer {
 		}
 
 		foreach ( $input as $device => $alignment ) {
-			if ( ! in_array( $alignment, $allowed ) ) {
+			if ( ! in_array( $alignment, $allowed, true ) ) {
 				$input[ $device ] = 'left';
 			}
 		}
@@ -279,7 +279,7 @@ class Sanitizer {
 			if ( in_array( $variant, $allowed, true ) ) {
 				continue;
 			}
-			$key = array_search( $variant, $value );
+			$key = array_search( $variant, $value, true );
 			unset( $value[ $key ] );
 		}
 

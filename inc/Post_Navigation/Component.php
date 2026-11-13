@@ -158,9 +158,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					}
 
 					if ( $type === 'previous' ) {
+						/* translators: %s: arrow icon markup. */
 						$item_label = sprintf( __( 'Previous story %s', 'stax' ), $label_ending );
 						previous_post_link( '%link', '<span class="heading-title-label ' . esc_attr( $label_class ) . '">' . $item_label . '</span>' . $title, $cat );
 					} else {
+						/* translators: %s: arrow icon markup. */
 						$item_label = sprintf( __( 'Next story %s', 'stax' ), $label_ending );
 						next_post_link( '%link', '<span class="heading-title-label ' . esc_attr( $label_class ) . '">' . $item_label . '</span>' . $title, $cat );
 					}

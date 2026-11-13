@@ -6,7 +6,7 @@ if ( ! stax()->has_post_thumbnail() ) {
 	return;
 }
 
-$post = get_post();
+$image_post = get_post();
 
 if ( ! isset( $show_thumbnail_block ) ) {
 	$show_thumbnail_block = false;
@@ -51,8 +51,8 @@ if ( ! isset( $overlay_classes ) ) {
 			</div>
 		</div>
 		<figcaption class="svq-figcaption will-animate" data-cssanimate="fadeIn">
-			<?php if ( $post && $post->post_excerpt ) : ?>
-				<span class="media-caption--text"><?php wp_kses_post( $post->post_excerpt ); ?></span>
+			<?php if ( $image_post && $image_post->post_excerpt ) : ?>
+				<span class="media-caption--text"><?php wp_kses_post( $image_post->post_excerpt ); ?></span>
 			<?php endif; ?>
 		</figcaption>
 	</figure>

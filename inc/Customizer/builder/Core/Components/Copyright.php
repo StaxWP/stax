@@ -47,6 +47,7 @@ class Copyright extends Abstract_Component {
 					apply_filters(
 						'stax_copyright',
 						sprintf(
+							/* translators: 1: Stax Theme link, 2: StaxWP link. */
 							esc_html__( '%1$s | Made with ❤️ by %2$s', 'stax' ),
 							wp_kses_post( '<p><a href="https://staxwp.com/stax-theme/" rel="nofollow">Stax Theme</a>' ),
 							wp_kses_post( '<a href="https://staxwp.com/" rel="nofollow">StaxWP</a></p>' )

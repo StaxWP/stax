@@ -56,7 +56,7 @@ $components = [
 		}
 
 		if ( isset( $show_navigation ) && is_bool( $show_navigation ) && $show_navigation ) {
-			echo stax()->get_the_posts_navigation();
+			echo stax()->get_the_posts_navigation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup built from escaped parts in Base_Support\Component::get_the_posts_navigation().
 		}
 	} else {
 		stax()->get_template_part( 'template-parts/content/error/index' );

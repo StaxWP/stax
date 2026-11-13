@@ -52,11 +52,13 @@ class Theme {
 			// Bail if a component is invalid.
 			if ( ! $component instanceof Component_Interface ) {
 				throw new InvalidArgumentException(
-					sprintf(
-					/* translators: 1: classname/type of the variable, 2: interface name */
-						__( 'The theme component %1$s does not implement the %2$s interface.', 'stax' ),
-						gettype( $component ),
-						Component_Interface::class
+					esc_html(
+						sprintf(
+						/* translators: 1: classname/type of the variable, 2: interface name */
+							__( 'The theme component %1$s does not implement the %2$s interface.', 'stax' ),
+							gettype( $component ),
+							Component_Interface::class
+						)
 					)
 				);
 			}
@@ -116,10 +118,12 @@ class Theme {
 	public function component( $slug ) {
 		if ( ! isset( $this->components[ $slug ] ) ) {
 			throw new InvalidArgumentException(
-				sprintf(
-				/* translators: %s: slug */
-					__( 'No theme component with the slug %s exists.', 'stax' ),
-					$slug
+				esc_html(
+					sprintf(
+					/* translators: %s: slug */
+						__( 'No theme component with the slug %s exists.', 'stax' ),
+						$slug
+					)
 				)
 			);
 		}

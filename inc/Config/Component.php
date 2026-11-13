@@ -148,7 +148,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				if ( isset( Config::OPTIONS[ $option ]['metabox']['dependency'] ) ) {
 					$dependency_value = get_post_meta( get_the_ID(), Config::OPTIONS[ $option ]['metabox']['dependency']['option'], true );
 
-					if ( ! in_array( $dependency_value, Config::OPTIONS[ $option ]['metabox']['dependency']['values'] ) ) {
+					if ( ! in_array( $dependency_value, Config::OPTIONS[ $option ]['metabox']['dependency']['values'], true ) ) {
 						$passed_dependency = false;
 					}
 				}

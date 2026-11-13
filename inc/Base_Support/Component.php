@@ -317,29 +317,30 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function get_the_posts_navigation() {
 		global $paged, $wp_query;
-		$max_page = (int) $wp_query->max_num_pages;
+		$max_page     = (int) $wp_query->max_num_pages;
+		$current_page = $paged;
 
 		if ( $max_page === 1 ) {
 			return '';
 		}
 
 		if ( $max_page > 1 ) {
-			if ( ! $paged ) {
-				$paged = 1;
+			if ( ! $current_page ) {
+				$current_page = 1;
 			}
 		}
 
 		$nav = '';
 
-		if ( $paged > 1 ) {
+		if ( $current_page > 1 ) {
 			$nav .= '<div class="nav-previous">';
-			$nav .= '<a class="btn btn-light btn-sm button-ripple btn-icon--left nav-previous" href="' . get_pagenum_link( $paged - 1 ) . '">' . stax()->load_icon( 'long-arrow-left' ) . esc_html__( 'Newer posts', 'stax' ) . ' </a>';
+			$nav .= '<a class="btn btn-light btn-sm button-ripple btn-icon--left nav-previous" href="' . get_pagenum_link( $current_page - 1 ) . '">' . stax()->load_icon( 'long-arrow-left' ) . esc_html__( 'Newer posts', 'stax' ) . ' </a>';
 			$nav .= '</div>';
 		}
 
-		if ( $paged + 1 <= $max_page ) {
+		if ( $current_page + 1 <= $max_page ) {
 			$nav .= '<div class="nav-next">';
-			$nav .= '<a class="btn btn-light btn-sm button-ripple btn-icon--right nav-next" href="' . get_pagenum_link( $paged + 1 ) . '">' . stax()->load_icon( 'long-arrow-right' ) . esc_html__( 'Older posts', 'stax' ) . ' </a>';
+			$nav .= '<a class="btn btn-light btn-sm button-ripple btn-icon--right nav-next" href="' . get_pagenum_link( $current_page + 1 ) . '">' . stax()->load_icon( 'long-arrow-right' ) . esc_html__( 'Older posts', 'stax' ) . ' </a>';
 			$nav .= '</div>';
 		}
 

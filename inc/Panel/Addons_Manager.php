@@ -80,8 +80,8 @@ class Addons_Manager {
 	public function do_plugin_action() {
 		check_ajax_referer( 'sq_plugins_nonce', 'security' );
 
-		$action = ! empty( $_POST['plugin_action'] ) ? $_POST['plugin_action'] : false;
-		$slug   = ! empty( $_POST['slug'] ) ? $_POST['slug'] : false;
+		$action = ! empty( $_POST['plugin_action'] ) ? sanitize_key( wp_unslash( $_POST['plugin_action'] ) ) : false;
+		$slug   = ! empty( $_POST['slug'] ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : false;
 
 		// Perform plugin actions here
 		switch ( $action ) {
@@ -177,11 +177,11 @@ class Addons_Manager {
 				return;
 			}
 
-			if ( ! isset( $_GET['svq_nonce'] ) || ! wp_verify_nonce( $_GET['svq_nonce'], 'activate_plugin' ) ) {
+			if ( ! isset( $_GET['svq_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['svq_nonce'] ) ), 'activate_plugin' ) ) {
 				return;
 			}
 
-			$plugin = $_GET['plugin'];
+			$plugin = isset( $_GET['plugin'] ) ? sanitize_text_field( wp_unslash( $_GET['plugin'] ) ) : '';
 
 			if ( ! $this->is_plugin_installed( $plugin ) ) {
 				$install = $this->do_plugin_install( $plugin, false );
@@ -192,7 +192,7 @@ class Addons_Manager {
 			}
 
 			if ( isset( $_GET['redirect'] ) ) {
-				wp_safe_redirect( $_GET['redirect'] );
+				wp_safe_redirect( esc_url_raw( wp_unslash( $_GET['redirect'] ) ) );
 			} else {
 				wp_safe_redirect( $this->get_full_url() );
 			}

@@ -210,7 +210,7 @@ class Layout_General extends Base_Customizer {
 	 * @return void
 	 */
 	public function if_has_no_sidebar() {
-		return in_array( get_theme_mod( Config::OPTION_LAYOUT_GENERAL, Config::OPTIONS[ Config::OPTION_LAYOUT_GENERAL ]['default'] ), [ 'no-side' ] );
+		return in_array( get_theme_mod( Config::OPTION_LAYOUT_GENERAL, Config::OPTIONS[ Config::OPTION_LAYOUT_GENERAL ]['default'] ), [ 'no-side' ], true );
 	}
 
 	/**
@@ -219,7 +219,7 @@ class Layout_General extends Base_Customizer {
 	 * @return bool
 	 */
 	public function if_has_one_sidebar() {
-		return in_array( get_theme_mod( Config::OPTION_LAYOUT_GENERAL, Config::OPTIONS[ Config::OPTION_LAYOUT_GENERAL ]['default'] ), [ 'sl', 'sr', 'sll', 'srr', 'slr' ] );
+		return in_array( get_theme_mod( Config::OPTION_LAYOUT_GENERAL, Config::OPTIONS[ Config::OPTION_LAYOUT_GENERAL ]['default'] ), [ 'sl', 'sr', 'sll', 'srr', 'slr' ], true );
 	}
 
 	/**
@@ -228,7 +228,7 @@ class Layout_General extends Base_Customizer {
 	 * @return bool
 	 */
 	public function if_has_two_sidebars() {
-		return in_array( get_theme_mod( Config::OPTION_LAYOUT_GENERAL, Config::OPTIONS[ Config::OPTION_LAYOUT_GENERAL ]['default'] ), [ 'sll', 'srr', 'slr' ] );
+		return in_array( get_theme_mod( Config::OPTION_LAYOUT_GENERAL, Config::OPTIONS[ Config::OPTION_LAYOUT_GENERAL ]['default'] ), [ 'sll', 'srr', 'slr' ], true );
 	}
 
 	/**

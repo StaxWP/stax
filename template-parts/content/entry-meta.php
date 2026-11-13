@@ -35,9 +35,10 @@ $show_reading = stax()->get_post_data( 'show_meta_reading', stax()->get_option( 
 			<span class="by-line">
 				<span class="author">
 					 <?php
-						$author_link = '<a href="' . get_author_posts_url( $post->post_author ) . '" rel="author">' .
-									get_the_author_meta( 'display_name', $post->post_author ) . '</a>';
-						printf( esc_html__( 'Written by %s', 'stax' ), $author_link );
+						$author_link = '<a href="' . esc_url( get_author_posts_url( $post->post_author ) ) . '" rel="author">' .
+									esc_html( get_the_author_meta( 'display_name', $post->post_author ) ) . '</a>';
+						/* translators: %s: author posts link. */
+						printf( esc_html__( 'Written by %s', 'stax' ), $author_link ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $author_link is built from escaped parts.
 						?>
 				</span>
 			</span>
@@ -46,7 +47,7 @@ $show_reading = stax()->get_post_data( 'show_meta_reading', stax()->get_option( 
 		<span class="posted-on">
 			<?php if ( $show_date ) : ?>
 				<?php esc_html_e( 'Posted on ', 'stax' ); ?>
-				<?php echo stax()->get_the_date(); ?>
+				<?php echo stax()->get_the_date(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup built from escaped parts in Date\Component::get_the_date(). ?>
 			<?php endif; ?>
 			<?php if ( $show_reading ) : ?>
 				<span class="entry-meta__text">

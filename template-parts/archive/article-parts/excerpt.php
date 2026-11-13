@@ -22,7 +22,7 @@ use function Stax\stax;
 
 	<?php if ( ! $quote ) : ?>
 		<div class="screen-reader-link">
-			<?php echo stax()->get_excerpt(); ?>
+			<?php echo wp_kses_post( stax()->get_excerpt() ); ?>
 		</div>
 	<?php endif; ?>
 </div>

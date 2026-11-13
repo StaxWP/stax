@@ -211,7 +211,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			return false;
 		}
 
-		if ( in_array( $this->get_layout(), [ 'srr', 'sll', 'slr' ] ) ) {
+		if ( in_array( $this->get_layout(), [ 'srr', 'sll', 'slr' ], true ) ) {
 			return true;
 		}
 

@@ -29,11 +29,11 @@ if ( is_singular( 'post' ) ) {
 	$categories = get_object_taxonomies( $post );
 
 	if ( ! empty( $categories ) ) {
-		foreach ( $categories as $tax ) {
-			$terms = wp_get_object_terms( $post->ID, $tax, [ 'fields' => 'ids' ] );
+		foreach ( $categories as $tax_name ) {
+			$terms = wp_get_object_terms( $post->ID, $tax_name, [ 'fields' => 'ids' ] );
 
 			$args['tax_query'][] = [
-				'taxonomy' => $tax,
+				'taxonomy' => $tax_name,
 				'field'    => 'id',
 				'terms'    => $terms,
 			];
@@ -89,11 +89,11 @@ $the_query = new \WP_Query( $args );
 			<?php if ( $the_query->post_count > 1 ) : ?>
 				<div class="svq-article-btn">
 					<button type="button" class="btn btn-light btn-sm button-ripple slide-to--back" aria-label="<?php esc_attr_e( 'Previous', 'stax' ); ?>">
-						<?php echo stax()->load_icon( 'long-arrow-left', 18 ); ?>
+						<?php echo stax()->load_icon( 'long-arrow-left', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted theme SVG icon markup. ?>
 					</button>
 					<button type="button" class="btn btn-light btn-sm button-ripple btn-icon--right slide-to--next">
 						<?php esc_html_e( 'Next', 'stax' ); ?>
-						<?php echo stax()->load_icon( 'long-arrow-right', 18 ); ?>
+						<?php echo stax()->load_icon( 'long-arrow-right', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted theme SVG icon markup. ?>
 					</button>
 				</div>
 			<?php endif; ?>

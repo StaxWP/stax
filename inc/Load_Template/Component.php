@@ -75,7 +75,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 		if ( is_array( $vars ) ) {
-			extract( $vars, EXTR_SKIP );
+			extract( $vars, EXTR_SKIP ); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- Core of this API: passes caller variables into the template scope; EXTR_SKIP prevents overwriting existing locals.
 		}
 		$templates = [];
 		$name      = (string) $name;

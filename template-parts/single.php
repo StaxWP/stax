@@ -38,7 +38,7 @@ while ( have_posts() ) :
 
 	?>
 
-	<main id="primary" class="svq-main-page" <?php echo $attributes; ?>>
+	<main id="primary" class="svq-main-page" <?php echo $attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute values are escaped above. ?>>
 		<?php stax()->get_template_part( 'template-parts/content/entry', get_post_type() ); ?>
 	</main><!-- #primary -->
 

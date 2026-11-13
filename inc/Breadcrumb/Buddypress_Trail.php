@@ -35,10 +35,10 @@ class Buddypress_Trail extends Trail {
 
 		if ( ! empty( $bp->displayed_user->fullname ) ) { // looking at a user or self
 			$this->items[] = '<a href="' . bp_get_members_directory_permalink() . '">' . get_the_title( $bp->pages->members->id ) . '</a>';
-			$this->items[] = '<a href="' . $bp->displayed_user->domain . '" title="' . strip_tags( $bp->displayed_user->userdata->display_name ) . '">' . strip_tags( $bp->displayed_user->userdata->display_name ) . '</a>';
+			$this->items[] = '<a href="' . $bp->displayed_user->domain . '" title="' . wp_strip_all_tags( $bp->displayed_user->userdata->display_name ) . '">' . wp_strip_all_tags( $bp->displayed_user->userdata->display_name ) . '</a>';
 
 		} elseif ( $bp->is_single_item ) { // we're on a single item page
-			$this->items[] = '<a href="' . get_permalink( $bp->pages->{$bp->current_component}->id ) . '" title="' . esc_attr( strip_tags( get_the_title( $bp->pages->{$bp->current_component}->id ) ) ) . '">' . get_the_title( $bp->pages->{$bp->current_component}->id ) . '</a>';
+			$this->items[] = '<a href="' . get_permalink( $bp->pages->{$bp->current_component}->id ) . '" title="' . esc_attr( wp_strip_all_tags( get_the_title( $bp->pages->{$bp->current_component}->id ) ) ) . '">' . get_the_title( $bp->pages->{$bp->current_component}->id ) . '</a>';
 			$this->items[] = '<a href="' . get_permalink() . '" title="' . esc_attr( $bp->bp_options_title ) . '">' . $bp->bp_options_title . '</a>';
 
 		} elseif ( $bp->is_directory ) { // this is a top level directory page

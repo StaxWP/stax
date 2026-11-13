@@ -79,7 +79,7 @@ $masonry_classes = implode( ' ', $masonry_classes );
 		}
 
 		if ( $nav ) {
-			echo stax()->get_the_posts_navigation();
+			echo stax()->get_the_posts_navigation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup built from escaped parts in Base_Support\Component::get_the_posts_navigation().
 		}
 
 		?>

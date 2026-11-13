@@ -29,7 +29,7 @@ if ( in_array( $post_format, $allowed_post_formats, true ) ) {
 		$overlay_location = stax()->get_option( Config::OPTION_SINGLE_POST_GALLERY_OVERLAY_LOCATION );
 	}
 
-	if ( $overlay_color !== 'none' && in_array( $overlay_location, [ 'listing', 'both' ] ) ) {
+	if ( $overlay_color !== 'none' && in_array( $overlay_location, [ 'listing', 'both' ], true ) ) {
 		$overlay_classes .= 'svq-overlay svq-overlay--' . $overlay_color;
 	}
 

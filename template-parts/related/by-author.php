@@ -115,11 +115,11 @@ $swiper_slide_class = ! empty( $categories ) && count( $categories ) > 1 ? 'svq-
 
 			<div class="svq-article-btn carousel-navigation">
 				<button type="button" class="btn btn-light btn-sm button-ripple slide-to--back" aria-label="<?php esc_attr_e( 'Previous', 'stax' ); ?>">
-					<?php echo stax()->load_icon( 'long-arrow-left', 18 ); ?>
+					<?php echo stax()->load_icon( 'long-arrow-left', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted theme SVG icon markup. ?>
 				</button>
 				<button type="button" class="btn btn-light btn-sm button-ripple btn-icon--right slide-to--next">
 					<?php esc_html_e( 'Next', 'stax' ); ?>
-					<?php echo stax()->load_icon( 'long-arrow-right', 18 ); ?>
+					<?php echo stax()->load_icon( 'long-arrow-right', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted theme SVG icon markup. ?>
 				</button>
 			</div>
 		</div>

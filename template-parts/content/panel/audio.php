@@ -28,12 +28,12 @@ if ( ! $audio ) {
 	return;
 }
 
-$link = wp_get_attachment_url( $audio );
+$audio_url = wp_get_attachment_url( $audio );
 
 ?>
 
-<?php if ( $link ) : ?>
+<?php if ( $audio_url ) : ?>
 	<figure class="svq-media-audio">
-		<audio class="audio-plyr audio-plyr-alone" src="<?php echo esc_url( $link ); ?>" controls preload="metadata"></audio>
+		<audio class="audio-plyr audio-plyr-alone" src="<?php echo esc_url( $audio_url ); ?>" controls preload="metadata"></audio>
 	</figure>
 <?php endif; ?>

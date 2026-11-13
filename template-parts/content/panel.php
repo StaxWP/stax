@@ -89,7 +89,7 @@ $content_classes = implode( ' ', $content_classes );
 	<?php
 	if ( ! get_post_format() && stax()->get_option( Config::OPTION_SINGLE_POST_IMAGE_FOR_STANDARD ) ) {
 		stax()->get_template_part( 'template-parts/content/panel/image' );
-	} elseif ( in_array( get_post_format(), [ 'quote', 'audio', 'image' ] ) ) {
+	} elseif ( in_array( get_post_format(), [ 'quote', 'audio', 'image' ], true ) ) {
 		stax()->get_template_part( 'template-parts/content/panel/image' );
 	} elseif ( get_post_format() === 'video' ) {
 		stax()->get_template_part( 'template-parts/content/panel/video' );
@@ -108,7 +108,8 @@ $content_classes = implode( ' ', $content_classes );
 				[
 					'category',
 					'category-breadcrumb',
-				]
+				],
+				true
 			) ) {
 				stax()->get_categories_nav();
 			}
@@ -118,7 +119,8 @@ $content_classes = implode( ' ', $content_classes );
 				[
 					'breadcrumbv',
 					'category-breadcrumb',
-				]
+				],
+				true
 			) ) {
 				stax()->get_breadcrumbs();
 			}

@@ -71,11 +71,13 @@ class Template_Tags {
 			// Bail if a templating component is invalid.
 			if ( ! $component instanceof Templating_Component_Interface ) {
 				throw new InvalidArgumentException(
-					sprintf(
-					/* translators: 1: classname/type of the variable, 2: interface name */
-						__( 'The theme templating component %1$s does not implement the %2$s interface.', 'stax' ),
-						gettype( $component ),
-						Templating_Component_Interface::class
+					esc_html(
+						sprintf(
+						/* translators: 1: classname/type of the variable, 2: interface name */
+							__( 'The theme templating component %1$s does not implement the %2$s interface.', 'stax' ),
+							gettype( $component ),
+							Templating_Component_Interface::class
+						)
 					)
 				);
 			}
@@ -99,10 +101,12 @@ class Template_Tags {
 	public function __call( $method, array $args ) {
 		if ( ! isset( $this->template_tags[ $method ] ) ) {
 			throw new BadMethodCallException(
-				sprintf(
-				/* translators: %s: template tag name */
-					__( 'The template tag %s does not exist.', 'stax' ),
-					'stax()->' . $method . '()'
+				esc_html(
+					sprintf(
+					/* translators: %s: template tag name */
+						__( 'The template tag %s does not exist.', 'stax' ),
+						'stax()->' . $method . '()'
+					)
 				)
 			);
 		}
@@ -128,22 +132,26 @@ class Template_Tags {
 
 			if ( ! is_array( $callback ) || ! isset( $callback['callback'] ) ) {
 				throw new InvalidArgumentException(
-					sprintf(
-					/* translators: 1: template tag method name, 2: component class name */
-						__( 'The template tag method %1$s registered by theme component %2$s must either be a callable or an array.', 'stax' ),
-						$method_name,
-						get_class( $component )
+					esc_html(
+						sprintf(
+						/* translators: 1: template tag method name, 2: component class name */
+							__( 'The template tag method %1$s registered by theme component %2$s must either be a callable or an array.', 'stax' ),
+							$method_name,
+							get_class( $component )
+						)
 					)
 				);
 			}
 
 			if ( isset( $this->template_tags[ $method_name ] ) ) {
 				throw new RuntimeException(
-					sprintf(
-					/* translators: 1: template tag method name, 2: component class name */
-						__( 'The template tag method %1$s registered by theme component %2$s conflicts with an already registered template tag of the same name.', 'stax' ),
-						$method_name,
-						get_class( $component )
+					esc_html(
+						sprintf(
+						/* translators: 1: template tag method name, 2: component class name */
+							__( 'The template tag method %1$s registered by theme component %2$s conflicts with an already registered template tag of the same name.', 'stax' ),
+							$method_name,
+							get_class( $component )
+						)
 					)
 				);
 			}

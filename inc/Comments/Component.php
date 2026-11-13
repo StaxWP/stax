@@ -97,10 +97,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			return;
 		}
 
-		// Enqueue comment script on singular post/page views only.
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			// wp_enqueue_script( 'comment-reply' );
-		}
+		// The core 'comment-reply' script is intentionally not enqueued: the theme handles replies in its own JS.
 	}
 
 	/**
@@ -185,7 +182,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( null === $post_id ) {
 			$post_id = $id;
 		} else {
-			$id = $post_id;
+			$id = $post_id; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Intentional: keeps the core $id global in sync with the requested post.
 		}
 
 		if ( comments_open( $post_id ) ) :
@@ -225,10 +222,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					'logged_in_as'        => '<p class="logged-in-as">' .
 											wp_kses_post(
 												sprintf(
+													/* translators: 1: profile URL, 2: user display name, 3: logout URL. */
 													__( 'Logged in as <a href="%1$s" class="user-link">%2$s</a>. <a href="%3$s" class="logout-link" title="Log out of this account">Log out?</a>', 'stax' ),
-													$profile_link,
-													$user_identity,
-													wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) )
+													esc_url( $profile_link ),
+													esc_html( $user_identity ),
+													esc_url( wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ) )
 												)
 											) .
 											 '</p>',
@@ -244,7 +242,13 @@ class Component implements Component_Interface, Templating_Component_Interface {
 												<span class="btn--loading-state">' . stax()->load_icon( 'loading icon-is-loading', 18 ) . esc_html__( 'Loading', 'stax' ) . '</span>
 								              </button>',
 					'submit_field'        => '<p class="form-submit text-center mb-0">%1$s %2$s</p>',
-					'must_log_in'         => '<p class="must-log-in">' . sprintf( wp_kses_post( 'You must be <a href="%s">logged in</a> to post a comment.', 'stax' ), wp_login_url( apply_filters( 'the_permalink', get_permalink() ) ) ) . '</p>',
+					'must_log_in'         => '<p class="must-log-in">' . wp_kses_post(
+						sprintf(
+							/* translators: %s: login URL. */
+							__( 'You must be <a href="%s">logged in</a> to post a comment.', 'stax' ),
+							esc_url( wp_login_url( apply_filters( 'the_permalink', get_permalink() ) ) )
+						)
+					) . '</p>',
 					'id_form'             => 'sqv-comment-form',
 					'class_form'          => 'comment-form svq-form',
 				];
@@ -254,6 +258,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 						$comments_args,
 						[
 							'title_reply'    => esc_html__( 'Write a response', 'stax' ),
+							/* translators: %s: name of the comment author being replied to. */
 							'title_reply_to' => esc_html__( 'Write a response to %s', 'stax' ),
 						]
 					);
@@ -316,11 +321,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param $depth
 	 */
 	public function single_comment( $comment, $args, $depth ) {
-		$GLOBALS['comment'] = $comment;
+		$GLOBALS['comment'] = $comment; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Intentional: comment template tags read the current comment from this global, like core's Walker_Comment.
 
 		global $comment_depth;
 		$old_comment_depth = $comment_depth;
-		$comment_depth     = $depth;
+		$comment_depth     = $depth; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Intentional: set for the comment template tags, restored at the end of the method.
 
 		$comment_class = '';
 
@@ -359,10 +364,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 							<button class="btn btn-link btn-toggle-state" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false" data-action="btn-toggle-state">
 								<span class="btn--default-state">
-									<?php echo stax()->load_icon( 'ellipsis-v', 24 ); ?>
+									<?php echo stax()->load_icon( 'ellipsis-v', 24 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted theme SVG icon markup. ?>
 								</span>
 								<span class="btn--active-state">
-									<?php echo stax()->load_icon( 'close', 24 ); ?>
+									<?php echo stax()->load_icon( 'close', 24 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted theme SVG icon markup. ?>
 								</span>
 							</button>
 
@@ -412,7 +417,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		<?php
 
-		$comment_depth = $old_comment_depth;
+		$comment_depth = $old_comment_depth; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Restores the value saved above.
 	}
 
 	/**
@@ -465,7 +470,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Handle post comment request
 	 */
 	public function post_comment_handler() {
-		if ( ! isset( $_POST['action'] ) || $_POST['action'] !== 'post_comment' ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Mirrors core wp-comments-post.php: the comment form has no nonce, wp_handle_comment_submission() runs core's own checks.
+		if ( ! isset( $_POST['action'] ) || 'post_comment' !== $_POST['action'] ) {
 			return wp_send_json(
 				[
 					'status' => 'error',
@@ -474,7 +480,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			);
 		}
 
-		$comment = wp_handle_comment_submission( $_POST );
+		$comment = wp_handle_comment_submission( wp_unslash( $_POST ) );
 
 		if ( ! is_wp_error( $comment ) ) {
 			ob_start();
@@ -486,12 +492,14 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				[
 					'status'         => 'success',
 					'data'           => $comment_html,
-					'reply_to'       => $_POST['comment_parent'],
+					'reply_to'       => isset( $_POST['comment_parent'] ) ? absint( $_POST['comment_parent'] ) : 0,
 					'comment_id'     => $comment->comment_ID,
 					'comment_status' => wp_get_comment_status( $comment ),
 				]
 			);
 		}
+
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 		$error_list = '<ul>';
 		foreach ( $comment->errors as $pack ) {

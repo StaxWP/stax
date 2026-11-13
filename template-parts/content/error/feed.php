@@ -17,6 +17,7 @@ $user = fup_get_user( get_current_user_id() );
 		<?php
 		wp_kses_post(
 			sprintf(
+				/* translators: %s: URL of the interest categories profile page. */
 				__( 'Try following authors or <a href="%s">customize your interest categories</a> from your profile', 'stax' ),
 				esc_url( $user->pages['interests']['url'] )
 			)

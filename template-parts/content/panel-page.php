@@ -20,34 +20,35 @@ if ( ! $render_panel ) {
  * Title classes
  */
 
-$title       = '';
-$description = '';
+$panel_title       = '';
+$panel_description = '';
 
 if ( is_404() ) {
-	$title = __( 'Oops! That page can&rsquo;t be found.', 'stax' );
+	$panel_title = __( 'Oops! That page can&rsquo;t be found.', 'stax' );
 } elseif ( is_home() ) {
 	if ( ! have_posts() ) {
-		$title = __( 'Nothing Found', 'stax' );
+		$panel_title = __( 'Nothing Found', 'stax' );
 	} elseif ( ! is_front_page() ) {
-		$title = single_post_title();
+		$panel_title = single_post_title();
 	}
 } elseif ( is_search() ) {
-	$title = sprintf(
+	$panel_title = sprintf(
+		/* translators: %s: search query. */
 		esc_html__( 'Search results for: "%s"', 'stax' ),
 		get_search_query()
 	);
 } elseif ( is_archive() ) {
 	if ( is_category() ) {
-		$title = single_cat_title( '', false );
+		$panel_title = single_cat_title( '', false );
 	} elseif ( is_tag() ) {
-		$title = single_tag_title( '', false );
+		$panel_title = single_tag_title( '', false );
 	} else {
-		$title = get_the_archive_title();
+		$panel_title = get_the_archive_title();
 	}
 
-	$description = get_the_archive_description();
+	$panel_description = get_the_archive_description();
 } elseif ( is_page() ) {
-	$title = get_the_title();
+	$panel_title = get_the_title();
 }
 
 $header_classes = 'entry-header--' . stax()->get_option( Config::OPTION_SINGLE_PAGE_TITLE_SIZE );
@@ -68,10 +69,10 @@ if ( stax()->get_option( Config::OPTION_SINGLE_PAGE_TITLE_ALIGN ) === 'center' )
 			?>
 
 			<h1 class="entry-title">
-				<?php echo wp_kses_post( $title ); ?>
+				<?php echo wp_kses_post( $panel_title ); ?>
 			</h1>
-			<?php if ( $description ) : ?>
-				<div class="archive-description"><?php echo wp_kses_post( $description ); ?></div>
+			<?php if ( $panel_description ) : ?>
+				<div class="archive-description"><?php echo wp_kses_post( $panel_description ); ?></div>
 			<?php endif; ?>
 		</div>
 	</header>

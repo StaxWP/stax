@@ -1107,7 +1107,8 @@ abstract class Abstract_Builder implements Builder {
 				'right',
 				'center',
 				'justify',
-			]
+			],
+			true
 		) ) ? $alignment : 'left';
 
 		return [
@@ -1770,7 +1771,7 @@ abstract class Abstract_Builder implements Builder {
 			'center-two-thirds',
 		];
 
-		if ( ! in_array( $value, $allowed ) ) {
+		if ( ! in_array( $value, $allowed, true ) ) {
 			return 'equal';
 		}
 

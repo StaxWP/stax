@@ -139,6 +139,7 @@ class Main extends Controls_Base {
 		);
 	}
 
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only edit screen detection, no data is changed.
 	/**
 	 * Hide content width.
 	 *
@@ -252,5 +253,6 @@ class Main extends Controls_Base {
 
 		return false;
 	}
+	// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 }
