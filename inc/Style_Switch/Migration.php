@@ -271,6 +271,23 @@ class Migration {
 	}
 
 	/**
+	 * "Keep 2.0 and hide this": ends the switch back window now (drops the backup).
+	 *
+	 * @return bool False when there is nothing to switch back to.
+	 */
+	public static function end_switch_back() {
+		if ( ! self::switch_back_until() ) {
+			return false;
+		}
+
+		$state           = self::get_state();
+		$state['backup'] = null;
+		self::save_state( $state );
+
+		return true;
+	}
+
+	/**
 	 * Drops the saved 1.x values once the switch back window has passed.
 	 */
 	public static function maybe_expire_backup() {

@@ -43,7 +43,7 @@ Use it as a clean canvas for Elementor, Beaver Builder, Divi Builder, Spectra, K
 
 = I updated from 1.x. Will my site look different? =
 
-No. Sites updated from 1.x keep the full 1.x stylesheet and their colors until an administrator switches. Go to Appearance > Stax style (or Appearance > Customize > Stax style) to preview the new, much smaller stylesheet and switch with one click. Your colors, fonts, layout, header and footer are kept; a color changes only when it is too light to read (just enough to pass WCAG AA), and the styles of any Stax 1.x classes your content uses are kept. You can switch back for 30 days.
+No. Sites updated from 1.x keep the full 1.x stylesheet and their colors until an administrator switches. Go to Appearance > Stax Panel to compare the new, much smaller stylesheet with your current look and switch with one click (Appearance > Customize > Stax style shows a full live preview). Your colors, fonts, layout, header and footer are kept; a color changes only when it is too light to read (just enough to pass WCAG AA), and the styles of any Stax 1.x classes your content uses are kept. You can switch back for 30 days.
 
 = Does Stax load anything from external servers? =
 
@@ -64,7 +64,7 @@ Full refactor. Existing settings, menus, widgets, page templates, hooks and temp
 * Performance: no jQuery on the front end. Removed Modernizr, the CSS variables ponyfill, object-fit and IntersectionObserver polyfills, hc-sticky, Plyr, the jQuery lightbox and parallax plugins and the JavaScript lazy loader (replaced by CSS sticky, native media players, a 2 KB dialog lightbox and native lazy loading). Related posts and galleries scroll natively instead of loading Swiper. Main stylesheet from 539 KB to 176 KB, single post JavaScript from 483 KB to 41 KB (theme only).
 * Accessibility: WCAG AA default link and meta colors, button text contrast, labelled search fields, submenu toggles with roles and states, accessible names for image and avatar links, visible focus, reduced motion support.
 * Fixed: the theme no longer blocks its own updates from WordPress.org.
-* Updated sites keep the 1.x look until an administrator switches in Appearance > Stax style or Customizer > Stax style: live before/after preview, one-click switch, switch back for 30 days. The switch keeps the site's own colors, fonts, layout, header and footer, darkens only the colors that fail WCAG AA contrast (just enough), and keeps the 1.x styles for the 1.x classes found in content, widgets, menus and Additional CSS.
+* Updated sites keep the 1.x look until an administrator switches in Appearance > Stax Panel (or Customizer > Stax style): before/after preview, one-click switch, switch back for 30 days. The switch keeps the site's own colors, fonts, layout, header and footer, darkens only the colors that fail WCAG AA contrast (just enough), and keeps the 1.x styles for the 1.x classes found in content, widgets, menus and Additional CSS.
 * Fixed: RTL sites (the html tag carried a hard-coded dir="ltr").
 * Fixed: the block editor showed default fonts and colors; the Stax page settings sidebar crashed in the editor.
 * Fixed: breadcrumbs were doubled on some pages; Yoast breadcrumbs were echoed in the wrong place.
@@ -108,7 +108,7 @@ Full refactor. Existing settings, menus, widgets, page templates, hooks and temp
 == Upgrade Notice ==
 
 = 2.0.0 =
-Major update: no jQuery, much smaller CSS, theme.json and block patterns, better plugin compatibility. Updated sites keep the 1.x look until you switch in Appearance > Stax style (preview first, switch back for 30 days).
+Major update: no jQuery, much smaller CSS, theme.json and block patterns, better plugin compatibility. Updated sites keep the 1.x look until you switch in Appearance > Stax Panel (preview first, switch back for 30 days).
 
 == Copyright ==
 

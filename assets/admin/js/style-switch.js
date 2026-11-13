@@ -1,7 +1,8 @@
 /**
  * Stax style switch.
  *
- * Admin screens: dismissing the notice with its close button remembers "Not now".
+ * Admin screens: dismissing the notice with its close button remembers "Not now"; the Stax Panel
+ * thumbnails are scaled to their box.
  * Customizer: the notice as a notification, the preview toggle (a cookie read only by the preview)
  * and the switch buttons of the "Stax style" section.
  */
@@ -23,18 +24,48 @@
 		});
 	}
 
-	// Admin screens: the close button of the notice means "Not now".
-	if (!window.wp || !window.wp.customize || !settings.section) {
+	var api = window.wp && window.wp.customize;
+
+	// Customizer right after a switch: no section any more, the result is a notification.
+	if (api && settings.resultMessage) {
+		api.bind('ready', function () {
+			api.notifications.add(new api.Notification('stax_style_result', {
+				type: 'success',
+				dismissible: true,
+				message: settings.resultMessage
+			}));
+		});
+
+		return;
+	}
+
+	// Admin screens.
+	if (!api || !settings.section) {
+		// The close button of the notice means "Not now".
 		document.addEventListener('click', function (event) {
 			if (event.target.closest('.stax-style-notice .notice-dismiss')) {
 				post('dismiss');
 			}
 		});
 
+		// Stax Panel thumbnails: a 1280 px wide page scaled down to the box.
+		var frames = document.querySelectorAll('.stax-style-frame');
+
+		if (frames.length && window.ResizeObserver) {
+			var observer = new ResizeObserver(function (entries) {
+				entries.forEach(function (entry) {
+					entry.target.style.setProperty('--stax-style-scale', entry.contentRect.width / 1280);
+				});
+			});
+
+			frames.forEach(function (frame) {
+				observer.observe(frame);
+			});
+		}
+
 		return;
 	}
 
-	var api = window.wp.customize;
 	var code = 'stax_style_notice';
 	var removingNotice = false;
 

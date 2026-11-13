@@ -70,7 +70,7 @@ class Performance extends Base_Customizer {
 					'section'         => $this->section_id,
 					'type'            => 'stax_toggle_control',
 					'priority'        => 5,
-					// Sites updated from 1.x switch in the "Stax style" section, which keeps a way back.
+					// Sites updated from 1.x switch in the Stax Panel, which keeps a way back.
 					'active_callback' => function () {
 						return ! \Stax\Style_Switch\Migration::is_offered();
 					},

@@ -3,9 +3,10 @@
  * Stax\Style_Switch\Component class
  *
  * Lets the administrator of a site updated from Stax 1.x move to the lean 2.0 stylesheet when they
- * choose to: a notice on the Dashboard, Appearance > Themes and in the Customizer, a permanent
- * "Stax style" screen (Appearance > Stax style and a Customizer section with a live before/after
- * preview), and "Switch back" for 30 days. Nothing changes on the front end until they switch.
+ * choose to: a notice on the Dashboard, Appearance > Themes and in the Customizer, a "Stax 2.0 style"
+ * section in the Stax Panel (live before/after thumbnails) and a Customizer section with a live preview
+ * toggle while the site is on 1.x. After the switch only a "Switch back" line stays in the Stax Panel
+ * for 30 days; then nothing is left. New installs never see any of it.
  *
  * @package stax
  */
@@ -22,9 +23,19 @@ use function Stax\stax;
 class Component implements Component_Interface {
 
 	/**
-	 * Admin page, Customizer section and request action name.
+	 * Request action name (and the result query arg).
 	 */
 	const SLUG = 'stax-style';
+
+	/**
+	 * Anchor of the section in the Stax Panel.
+	 */
+	const ANCHOR = 'stax-style';
+
+	/**
+	 * Query arg that renders a thumbnail of the other style (admins only, nonce-checked).
+	 */
+	const THUMB = 'stax-style-thumb';
 
 	/**
 	 * Customizer section ID.
@@ -68,7 +79,9 @@ class Component implements Component_Interface {
 		add_action( 'customize_preview_init', [ $this, 'action_preview' ] );
 		add_action( 'save_post', [ $this, 'action_save_post' ], 10, 2 );
 		add_action( 'admin_init', [ Migration::class, 'maybe_expire_backup' ] );
-		add_action( 'admin_menu', [ $this, 'action_admin_menu' ] );
+		add_action( 'admin_page_access_denied', [ $this, 'action_redirect_old_page' ] );
+		add_action( 'wp', [ $this, 'action_thumbnail' ] );
+		add_action( 'stax_welcome_page_content', [ $this, 'action_render_panel_section' ], 5 );
 		add_action( 'admin_notices', [ $this, 'action_admin_notices' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'action_admin_assets' ] );
 		add_action( 'admin_post_' . self::SLUG, [ $this, 'handle_request' ] );
@@ -86,6 +99,66 @@ class Component implements Component_Interface {
 	 */
 	public static function is_available() {
 		return current_user_can( self::CAPABILITY ) && Migration::is_offered() && ( Migration::is_legacy() || Migration::switch_back_until() );
+	}
+
+	/**
+	 * Whether the full switch UI shows (Stax Panel section, Customizer section): updated site still on 1.x.
+	 *
+	 * @return bool
+	 */
+	public static function is_offering() {
+		return self::is_available() && Migration::is_legacy();
+	}
+
+	/**
+	 * The Stax Panel section URL.
+	 *
+	 * @return string
+	 */
+	public static function get_panel_url() {
+		return admin_url( 'themes.php?page=stax#' . self::ANCHOR );
+	}
+
+	/**
+	 * The former Appearance > Stax style screen now lives in the Stax Panel.
+	 */
+	public function action_redirect_old_page() {
+		if ( isset( $_GET['page'] ) && self::SLUG === $_GET['page'] && current_user_can( self::CAPABILITY ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Redirect only.
+			wp_safe_redirect( self::get_panel_url() );
+			exit;
+		}
+	}
+
+	/**
+	 * Thumbnail request from the Stax Panel: the other style for this admin only, without the admin bar.
+	 */
+	public function action_thumbnail() {
+		if ( ! $this->get_thumbnail_mode() ) {
+			return;
+		}
+
+		add_filter( 'show_admin_bar', '__return_false' );
+		nocache_headers();
+		$this->action_preview();
+	}
+
+	/**
+	 * Style asked for by a valid thumbnail request ("new" or "old"), or an empty string.
+	 *
+	 * @return string
+	 */
+	protected function get_thumbnail_mode() {
+		if ( is_admin() || ! isset( $_GET[ self::THUMB ], $_GET['_wpnonce'] ) || ! current_user_can( self::CAPABILITY ) ) {
+			return '';
+		}
+
+		if ( ! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['_wpnonce'] ) ), self::THUMB ) ) {
+			return '';
+		}
+
+		$mode = sanitize_key( wp_unslash( $_GET[ self::THUMB ] ) );
+
+		return in_array( $mode, [ 'new', 'old' ], true ) ? $mode : '';
 	}
 
 	/**
@@ -109,11 +182,15 @@ class Component implements Component_Interface {
 	 * @return string
 	 */
 	protected function get_preview_mode() {
-		if ( ! is_customize_preview() || ! isset( $_COOKIE[ self::COOKIE ] ) || ! current_user_can( self::CAPABILITY ) ) {
-			return '';
-		}
+		$mode = $this->get_thumbnail_mode();
 
-		$mode = sanitize_key( wp_unslash( $_COOKIE[ self::COOKIE ] ) );
+		if ( ! $mode ) {
+			if ( ! is_customize_preview() || ! isset( $_COOKIE[ self::COOKIE ] ) || ! current_user_can( self::CAPABILITY ) ) {
+				return '';
+			}
+
+			$mode = sanitize_key( wp_unslash( $_COOKIE[ self::COOKIE ] ) );
+		}
 
 		if ( 'new' === $mode && Migration::is_legacy() ) {
 			return 'new';
@@ -191,32 +268,6 @@ class Component implements Component_Interface {
 	}
 
 	/**
-	 * Appearance > Stax style.
-	 */
-	public function action_admin_menu() {
-		if ( ! self::is_available() ) {
-			return;
-		}
-
-		add_theme_page(
-			__( 'Stax style', 'stax' ),
-			__( 'Stax style', 'stax' ),
-			self::CAPABILITY,
-			self::SLUG,
-			[ $this, 'render_admin_page' ]
-		);
-	}
-
-	/**
-	 * Admin page: the same panel as the Customizer section, with plain forms.
-	 */
-	public function render_admin_page() {
-		echo '<div class="wrap stax-style-page"><h1>' . esc_html__( 'Stax style', 'stax' ) . '</h1>';
-		$this->render_panel( 'page' );
-		echo '</div>';
-	}
-
-	/**
 	 * Notice on the Dashboard and Appearance > Themes, plus the result of an action.
 	 */
 	public function action_admin_notices() {
@@ -243,18 +294,18 @@ class Component implements Component_Interface {
 	 * @param string $context "page" or "customizer".
 	 */
 	protected function render_notice_body( $context ) {
-		echo '<p><strong>' . esc_html__( 'Stax 2.0 has a faster, lighter style.', 'stax' ) . '</strong> ' . esc_html__( 'Preview it, then switch with one click.', 'stax' ) . '</p>';
+		echo '<p><strong>' . esc_html__( 'Stax 2.0 has a faster, lighter style.', 'stax' ) . '</strong> ' . esc_html__( 'See it side by side with your current look, then switch with one click.', 'stax' ) . '</p>';
 
 		$this->open_form( $context );
 		echo '<p class="stax-style-actions">';
 
 		if ( 'page' === $context ) {
-			printf( '<a class="button" href="%s">%s</a> ', esc_url( $this->get_customize_url( 'new' ) ), esc_html__( 'Preview', 'stax' ) );
+			printf( '<a class="button button-primary" href="%s">%s</a> ', esc_url( self::get_panel_url() ), esc_html__( 'Compare the styles', 'stax' ) );
 		} else {
 			$this->render_button( $context, 'preview', __( 'Preview', 'stax' ), 'button' );
+			$this->render_button( $context, 'switch', __( 'Switch now', 'stax' ), 'button button-primary' );
 		}
 
-		$this->render_button( $context, 'switch', __( 'Switch now', 'stax' ), 'button button-primary' );
 		$this->render_button( $context, 'dismiss', __( 'Not now', 'stax' ), 'button-link' );
 		echo '</p>';
 		$this->close_form( $context );
@@ -286,22 +337,63 @@ class Component implements Component_Interface {
 	protected function get_result_messages() {
 		return [
 			/* translators: %d: number of days. */
-			'switched' => sprintf( __( 'Your site now uses the new Stax style. You can switch back for %d days in Appearance > Stax style.', 'stax' ), (int) ( Migration::WINDOW / DAY_IN_SECONDS ) ),
-			'restored' => __( 'Your site uses the classic Stax style again.', 'stax' ),
+			'switched' => sprintf( __( 'Your site now uses the Stax 2.0 style. You can switch back for %d days in Appearance > Stax Panel.', 'stax' ), (int) ( Migration::WINDOW / DAY_IN_SECONDS ) ),
+			'restored' => __( 'Your site uses the Stax 1.x style again.', 'stax' ),
+			'kept'     => __( 'Your site keeps the Stax 2.0 style.', 'stax' ),
 			'failed'   => __( 'Nothing changed. Reload the page and try again.', 'stax' ),
 		];
 	}
 
 	/**
-	 * The "Stax style" panel: current style, live comparison, what changes, switch buttons.
+	 * Stax Panel: the full section while the site is on 1.x, one "switch back" line during the
+	 * 30-day window, nothing otherwise.
+	 */
+	public function action_render_panel_section() {
+		if ( self::is_offering() ) {
+			echo '<section id="' . esc_attr( self::ANCHOR ) . '" class="sqp_box stax-style-box" aria-labelledby="stax-style-title" tabindex="-1">';
+			echo '<h2 class="sqp_box_title" id="stax-style-title">' . esc_html__( 'Stax 2.0 style', 'stax' ) . '</h2>';
+			echo '<div class="stax-style-body">';
+			$this->render_panel( 'page' );
+			echo '</div></section>';
+
+			return;
+		}
+
+		$until = self::is_available() ? Migration::switch_back_until() : 0;
+
+		if ( ! $until ) {
+			return;
+		}
+
+		echo '<div id="' . esc_attr( self::ANCHOR ) . '" class="stax-style-line">';
+		$this->open_form( 'page' );
+		echo '<p>' . esc_html__( 'Your site uses the Stax 2.0 style.', 'stax' ) . ' ';
+		$this->render_button(
+			'page',
+			'switch_back',
+			/* translators: %s: date. */
+			sprintf( __( 'Switch back to the 1.x look (until %s)', 'stax' ), wp_date( get_option( 'date_format' ), $until ) ),
+			'button-link'
+		);
+		echo '<span aria-hidden="true">&middot;</span> ';
+		$this->render_button( 'page', 'keep', __( 'Keep 2.0 and hide this', 'stax' ), 'button-link' );
+		echo '</p>';
+		$this->close_form( 'page' );
+		echo '</div>';
+	}
+
+	/**
+	 * The switch panel while the site is on 1.x: comparison, what changes, one switch button.
 	 *
-	 * @param string $context "page" (Appearance > Stax style) or "customizer" (Customizer section).
+	 * @param string $context "page" (Stax Panel) or "customizer" (Customizer section).
 	 */
 	public function render_panel( $context ) {
-		$legacy  = Migration::is_legacy();
-		$until   = Migration::switch_back_until();
-		$classes = $legacy ? Migration::get_used_classes() : (array) Migration::get_state()['classes'];
-		$changes = $legacy ? Migration::get_new_values( $classes ) : null;
+		if ( ! Migration::is_legacy() ) {
+			return;
+		}
+
+		$classes = Migration::get_used_classes();
+		$changes = Migration::get_new_values( $classes );
 
 		echo '<div class="stax-style-panel" data-context="' . esc_attr( $context ) . '">';
 
@@ -311,67 +403,74 @@ class Component implements Component_Interface {
 			echo '</div>';
 		}
 
-		echo '<p class="stax-style-current">' . ( $legacy
-			? esc_html__( 'Your site uses the classic Stax 1.x style.', 'stax' )
-			: esc_html__( 'Your site uses the new Stax 2.0 style.', 'stax' ) ) . '</p>';
+		echo '<p class="stax-style-lead">' . esc_html__( 'Your site still uses the Stax 1.x stylesheet. The 2.0 style loads much less CSS, so pages show up faster. Your colors, fonts, layout, header and footer stay the same.', 'stax' ) . '</p>';
 
-		echo '<p>' . esc_html__( 'The new style loads a much smaller stylesheet, so pages load faster. Your colors, fonts, layout, header and footer stay the same.', 'stax' ) . '</p>';
+		$this->render_compare( $context );
 
-		$this->render_compare( $context, $legacy );
-
-		if ( $legacy ) {
-			echo '<h3>' . esc_html__( 'What changes when you switch', 'stax' ) . '</h3><ul class="stax-style-changes">';
-			$this->render_size_change();
-			$this->render_color_changes( $changes['colors'] );
-			$this->render_class_changes( $classes );
-			echo '</ul>';
-		}
+		echo '<details class="stax-style-details"><summary>' . esc_html__( 'What changes when you switch', 'stax' ) . '</summary><ul class="stax-style-changes">';
+		$this->render_size_change();
+		$this->render_color_changes( $changes['colors'] );
+		$this->render_class_changes( $classes );
+		echo '</ul></details>';
 
 		$this->open_form( $context );
 		echo '<p class="stax-style-actions">';
+		$this->render_button( $context, 'switch', __( 'Switch to the 2.0 style', 'stax' ), 'button button-primary' );
 
-		if ( $legacy ) {
-			$this->render_button( $context, 'switch', __( 'Switch to the new style', 'stax' ), 'button button-primary' );
-		} elseif ( $until ) {
-			$this->render_button( $context, 'switch_back', __( 'Switch back to the old style', 'stax' ), 'button' );
+		if ( 'page' === $context ) {
+			printf( '<a class="button-link" href="%1$s">%2$s</a>', esc_url( $this->get_customize_url( 'new' ) ), esc_html__( 'Open a full preview', 'stax' ) );
 		}
 
 		echo '</p>';
 		$this->close_form( $context );
 
-		if ( $legacy ) {
-			echo '<p class="description">' . esc_html__( 'Nothing changes until you switch. You can switch back for 30 days.', 'stax' ) . '</p>';
-		} elseif ( $until ) {
-			/* translators: %s: date. */
-			echo '<p class="description">' . esc_html( sprintf( __( 'Switching back restores your previous style settings. Available until %s.', 'stax' ), wp_date( get_option( 'date_format' ), $until ) ) ) . '</p>';
-		}
-
+		/* translators: %d: number of days. */
+		echo '<p class="description">' . esc_html( sprintf( __( 'Nothing changes until you switch. You can switch back for %d days.', 'stax' ), (int) ( Migration::WINDOW / DAY_IN_SECONDS ) ) ) . '</p>';
 		echo '</div>';
 	}
 
 	/**
-	 * Before/after: preview toggle in the Customizer, a link to it on the admin page.
+	 * Before/after: live thumbnails of the home page in the Stax Panel, a preview toggle in the Customizer.
 	 *
 	 * @param string $context Context.
-	 * @param bool   $legacy  Whether the site uses the 1.x stylesheet.
 	 */
-	protected function render_compare( $context, $legacy ) {
+	protected function render_compare( $context ) {
 		if ( 'page' === $context ) {
-			printf(
-				'<p><a class="button" href="%1$s">%2$s</a></p>',
-				esc_url( $this->get_customize_url( $legacy ? 'new' : 'old' ) ),
-				$legacy ? esc_html__( 'Preview the new style', 'stax' ) : esc_html__( 'Preview the old style', 'stax' )
-			);
+			$thumbs = [
+				'old' => __( 'Now: Stax 1.x', 'stax' ),
+				'new' => __( 'After the switch: Stax 2.0', 'stax' ),
+			];
+
+			echo '<div class="stax-style-thumbs">';
+
+			foreach ( $thumbs as $mode => $label ) {
+				$url = add_query_arg(
+					[
+						self::THUMB => $mode,
+						'_wpnonce'  => wp_create_nonce( self::THUMB ),
+					],
+					home_url( '/' )
+				);
+
+				printf(
+					'<figure class="stax-style-thumb"><div class="stax-style-frame" inert><iframe src="%1$s" title="%2$s" loading="lazy" tabindex="-1" width="1280" height="800"></iframe></div><figcaption>%3$s</figcaption></figure>',
+					esc_url( $url ),
+					/* translators: %s: style name. */
+					esc_attr( sprintf( __( 'Home page preview, %s', 'stax' ), $label ) ),
+					esc_html( $label )
+				);
+			}
+
+			echo '</div>';
 
 			return;
 		}
 
-		$current = $legacy ? 'old' : 'new';
 		$preview = isset( $_COOKIE[ self::COOKIE ] ) ? sanitize_key( wp_unslash( $_COOKIE[ self::COOKIE ] ) ) : '';
-		$checked = in_array( $preview, [ 'old', 'new' ], true ) ? $preview : $current;
+		$checked = in_array( $preview, [ 'old', 'new' ], true ) ? $preview : 'old';
 		$options = [
-			'old' => __( 'Classic style', 'stax' ),
-			'new' => __( 'New style', 'stax' ),
+			'old' => __( 'Stax 1.x (current)', 'stax' ),
+			'new' => __( 'Stax 2.0', 'stax' ),
 		];
 
 		echo '<fieldset class="stax-style-compare"><legend>' . esc_html__( 'Show in the preview', 'stax' ) . '</legend>';
@@ -381,8 +480,8 @@ class Component implements Component_Interface {
 				'<label><input type="radio" name="stax-style-preview" value="%1$s"%2$s data-current="%3$s"> %4$s</label><br>',
 				esc_attr( $value ),
 				checked( $value, $checked, false ),
-				$value === $current ? '1' : '0',
-				esc_html( $value === $current ? sprintf( /* translators: %s: style name. */ __( '%s (current)', 'stax' ), $label ) : $label )
+				'old' === $value ? '1' : '0',
+				esc_html( $label )
 			);
 		}
 
@@ -553,6 +652,8 @@ class Component implements Component_Interface {
 			$result = 'switched';
 		} elseif ( 'switch_back' === $action && Migration::switch_back() ) {
 			$result = 'restored';
+		} elseif ( 'keep' === $action && Migration::end_switch_back() ) {
+			$result = 'kept';
 		} elseif ( 'dismiss' === $action && Migration::is_offered() ) {
 			Migration::dismiss_notice();
 			$result = 'dismissed';
@@ -584,7 +685,7 @@ class Component implements Component_Interface {
 		$screen = get_current_screen();
 		$notice = $screen && in_array( $screen->id, self::NOTICE_SCREENS, true ) && Migration::should_show_notice() && current_user_can( self::CAPABILITY );
 
-		if ( 'appearance_page_' . self::SLUG !== $hook_suffix && ! $notice ) {
+		if ( 'appearance_page_stax' !== $hook_suffix && ! $notice ) {
 			return;
 		}
 
@@ -620,7 +721,7 @@ class Component implements Component_Interface {
 	 * @param \WP_Customize_Manager $wp_customize Customizer.
 	 */
 	public function action_customize_register( $wp_customize ) {
-		if ( ! self::is_available() ) {
+		if ( ! self::is_offering() ) {
 			return;
 		}
 
@@ -651,7 +752,7 @@ class Component implements Component_Interface {
 	 * page), otherwise the saved one. Also refreshes the content scan for the panel.
 	 */
 	public function action_customize_init() {
-		if ( ! self::is_available() ) {
+		if ( ! self::is_offering() ) {
 			return;
 		}
 
@@ -670,7 +771,14 @@ class Component implements Component_Interface {
 	 * Customizer script: notification, preview toggle, switch buttons.
 	 */
 	public function action_customize_assets() {
-		if ( ! self::is_available() ) {
+		$result = isset( $_GET[ self::SLUG ] ) ? sanitize_key( wp_unslash( $_GET[ self::SLUG ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display only.
+
+		if ( ! self::is_offering() ) {
+			// Just switched from the Customizer: the section is gone, the result shows as a notification.
+			if ( 'switched' === $result && current_user_can( self::CAPABILITY ) ) {
+				$this->enqueue_assets( [ 'customize-controls' ], [ 'resultMessage' => $this->get_result_messages()['switched'] ] );
+			}
+
 			return;
 		}
 
@@ -686,7 +794,7 @@ class Component implements Component_Interface {
 				'cookie'       => self::COOKIE,
 				'cookiePath'   => COOKIEPATH,
 				'preview'      => $preview,
-				'result'       => isset( $_GET[ self::SLUG ] ) ? sanitize_key( wp_unslash( $_GET[ self::SLUG ] ) ) : '', // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display only.
+				'result'       => $result,
 				// Opened with "Preview" from the notice: the section is already open, no need to repeat the notice.
 				'showNotice'   => ! $preview && Migration::should_show_notice(),
 				'noticeHtml'   => $notice,

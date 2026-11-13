@@ -97,7 +97,7 @@ class Component implements Component_Interface {
 	 */
 	protected function upgrade_2_0_0() {
 		// Keep the full 1.x stylesheet so nothing changes visually; the admin switches when they want
-		// (notice, Appearance > Stax style, Customizer > Stax style; see Stax\Style_Switch).
+		// (notice, Stax Panel section, Customizer section; see Stax\Style_Switch).
 		if ( null === get_theme_mod( Config::OPTION_PERF_LEGACY_CSS, null ) ) {
 			set_theme_mod( Config::OPTION_PERF_LEGACY_CSS, true );
 			Migration::mark_offered();
