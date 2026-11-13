@@ -7,12 +7,6 @@
 	border-radius: var(--border-radius, 4px);
 }
 
-.buddypress-wrap .bp-navs li.current a,
-.buddypress-wrap .bp-navs li.selected a,
-.buddypress-wrap .bp-navs li a:focus-visible {
-	color: var(--link-color);
-}
-
 .buddypress-wrap .activity-list .activity-item,
 .buddypress-wrap .item-list > li {
 	border-color: var(--border-color);

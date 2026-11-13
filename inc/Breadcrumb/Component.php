@@ -84,9 +84,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		} else {
 			$breadcrumb = new Trail( $args );
 		}
+		// trail() is not idempotent (it appends items), so call it once.
 		$this->cached_data = $breadcrumb->trail();
 
-		return $breadcrumb->trail();
+		return $this->cached_data;
 	}
 
 }
