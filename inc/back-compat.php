@@ -1,8 +1,6 @@
 <?php
 /**
- * Backward-compatibility functions for when theme requirements are not met
- *
- * This file must be parseable by PHP 5.2.
+ * Backward-compatibility functions for when theme requirements are not met.
  *
  * @package stax
  */
@@ -22,7 +20,7 @@ function stax_get_insufficient_requirements_message() {
 
 	if ( $insufficient_wp && $insufficient_php ) {
 		/* translators: 1: required WP version number, 2: required PHP version number, 3: available WP version number, 4: available PHP version number */
-		return sprintf( __( 'Stax requires at least WordPress version %1$s and PHP version %2$s. You are running versions %3$s and %3$s respectively. Please update and try again.', 'stax' ), STAX_MINIMUM_WP_VERSION, STAX_MINIMUM_PHP_VERSION, $wp_version, phpversion() );
+		return sprintf( __( 'Stax requires at least WordPress version %1$s and PHP version %2$s. You are running versions %3$s and %4$s respectively. Please update and try again.', 'stax' ), STAX_MINIMUM_WP_VERSION, STAX_MINIMUM_PHP_VERSION, $wp_version, phpversion() );
 	}
 
 	if ( $insufficient_wp ) {

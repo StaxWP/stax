@@ -2,8 +2,6 @@
 /**
  * Stax functions and definitions
  *
- * This file must be parseable by PHP 5.2.
- *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package stax
@@ -12,8 +10,8 @@
 use function Stax\stax;
 use Stax\Customizer\Config;
 
-define( 'STAX_MINIMUM_WP_VERSION', '5.0' );
-define( 'STAX_MINIMUM_PHP_VERSION', '7.0' );
+define( 'STAX_MINIMUM_WP_VERSION', '6.6' );
+define( 'STAX_MINIMUM_PHP_VERSION', '7.4' );
 
 // Bail if requirements are not met.
 if ( version_compare( $GLOBALS['wp_version'], STAX_MINIMUM_WP_VERSION, '<' ) || version_compare( PHP_VERSION, STAX_MINIMUM_PHP_VERSION, '<' ) ) {
