@@ -25,6 +25,7 @@ class Defaults implements \ArrayAccess {
 	 *
 	 * @return bool Is set?
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetExists( $offset ) {
 		return isset( self::$defaults_schema[ $offset ] );
 	}
@@ -36,6 +37,7 @@ class Defaults implements \ArrayAccess {
 	 *
 	 * @return mixed Value.
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetGet( $offset ) {
 		return self::$defaults_schema[ $offset ];
 	}
@@ -46,6 +48,7 @@ class Defaults implements \ArrayAccess {
 	 * @param mixed $offset Default key.
 	 * @param mixed $value Default value.
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetSet( $offset, $value ) {
 		self::$defaults_schema[ $offset ] = $value;
 	}
@@ -55,6 +58,7 @@ class Defaults implements \ArrayAccess {
 	 *
 	 * @param mixed $offset Offset key.
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetUnset( $offset ) {
 		unset( self::$defaults_schema[ $offset ] );
 	}

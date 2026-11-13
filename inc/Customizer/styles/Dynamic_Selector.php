@@ -35,6 +35,13 @@ class Dynamic_Selector {
 	protected $device = null;
 
 	/**
+	 * Context of the selector being built.
+	 *
+	 * @var mixed
+	 */
+	private $current_context = null;
+
+	/**
 	 * Used to flag the shorthand tag to css selector transformations.
 	 *
 	 * @var bool Flag shorthand transformation.
