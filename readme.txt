@@ -67,7 +67,7 @@ Stax WordPress Theme, Copyright 2022 StaxWP https://staxwp.com
 Stax is licensed and distributed under the GPLv3 or later.
 
 ## Privacy Policy
-Stax collects no usage data and sends nothing to StaxWP. Google Fonts chosen in the Customizer are loaded from fonts.googleapis.com. The usage tracker (Appsero) bundled until version 1.2.2 was removed, and what it stored is deleted on update.
+Stax collects no usage data and sends nothing to StaxWP. Google Fonts chosen in the Customizer are downloaded once by your server and then served from your own site (uploads/fonts/stax), so visitors' browsers never contact Google. The usage tracker (Appsero) bundled until version 1.2.2 was removed, and what it stored is deleted on update.
 
 == Resources ==
 
