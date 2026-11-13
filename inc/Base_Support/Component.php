@@ -368,7 +368,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			}
 		}
 
-		apply_filters( 'stax_html_classes', $classes );
+		$classes = apply_filters( 'stax_html_classes', $classes );
 
 		return $classes;
 	}

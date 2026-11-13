@@ -235,7 +235,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	/**
-	 * Get frist gallery from content
+	 * Get first gallery from content
 	 *
 	 * @param int|null $post_id
 	 * @return array

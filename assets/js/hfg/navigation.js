@@ -50,7 +50,7 @@ export const repositionDropdowns = () => {
 /**
  * Handle links that link to the current page.
  *
- * When we click on a link which refference a section inside the current page,
+ * When we click on a link which references a section inside the current page,
  * we close the sidebar if is open.
  */
 function handleScrollLinks() {

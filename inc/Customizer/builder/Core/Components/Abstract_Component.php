@@ -42,7 +42,7 @@ abstract class Abstract_Component implements Component {
 	public static $should_show_css = true;
 
 	/**
-	 * Default alignament value for the component.
+	 * Default alignment value for the component.
 	 *
 	 * @since   1.0.0
 	 * @access  public

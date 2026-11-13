@@ -17,7 +17,7 @@ trait Css_Vars {
 	/**
 	 * Get the common typography rules
 	 *
-	 * @retun array
+	 * @return array
 	 */
 	public function get_typography_rules() {
 		$headings = [

@@ -36,7 +36,7 @@ class Manager {
 	/**
 	 * Save group mappings.
 	 *
-	 * @var array Array of registered grups.
+	 * @var array Array of registered groups.
 	 */
 	private static $groups = [];
 	/**

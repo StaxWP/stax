@@ -15,7 +15,7 @@ $user = fup_get_user( get_current_user_id() );
 	<h6 class="alert-heading"><?php esc_html_e( 'There is no feed available for you right now.', 'stax' ); ?></h6>
 	<div>
 		<?php
-		wp_kses_post(
+		echo wp_kses_post(
 			sprintf(
 				/* translators: %s: URL of the interest categories profile page. */
 				__( 'Try following authors or <a href="%s">customize your interest categories</a> from your profile', 'stax' ),

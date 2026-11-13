@@ -193,7 +193,7 @@ class Single_Post_General extends Base_Customizer {
 					'sanitize_callback' => [ $this, 'sanitize_panel_breadcrumbs_type' ],
 				],
 				[
-					'label'    => __( 'Cateory & Breadcrumbs Style', 'stax' ),
+					'label'    => __( 'Category & Breadcrumbs Style', 'stax' ),
 					'section'  => $this->section_id,
 					'priority' => 41,
 					'choices'  => [
@@ -354,7 +354,7 @@ class Single_Post_General extends Base_Customizer {
 							'image' => get_template_directory_uri() . '/assets/img/wp-customizer/title-center-vertically.svg',
 						],
 						'middle-center' => [
-							'name'  => __( 'Center Horizal & Vertical', 'stax' ),
+							'name'  => __( 'Center Horizontal & Vertical', 'stax' ),
 							'image' => get_template_directory_uri() . '/assets/img/wp-customizer/title-center-vertically-horizontally.svg',
 						],
 					],

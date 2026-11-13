@@ -38,7 +38,7 @@ class Css_Prop {
 
 	/**
 	 * Get suffix from controls that store data in the following format:
-	 * { desktop: value, tablet: value, mobile: value, suffix : { deskop: px, tablet: px, mobile: px} }
+	 * { desktop: value, tablet: value, mobile: value, suffix : { desktop: px, tablet: px, mobile: px} }
 	 *
 	 * @param array $meta Subscribers meta data.
 	 */

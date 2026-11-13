@@ -52,7 +52,7 @@ if ( ! isset( $overlay_classes ) ) {
 		</div>
 		<figcaption class="svq-figcaption will-animate" data-cssanimate="fadeIn">
 			<?php if ( $image_post && $image_post->post_excerpt ) : ?>
-				<span class="media-caption--text"><?php wp_kses_post( $image_post->post_excerpt ); ?></span>
+				<span class="media-caption--text"><?php echo wp_kses_post( $image_post->post_excerpt ); ?></span>
 			<?php endif; ?>
 		</figcaption>
 	</figure>

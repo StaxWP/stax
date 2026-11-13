@@ -42,7 +42,7 @@ class Main {
 	 */
 	private static $is_active = true;
 	/**
-	 * Teamplates locations.
+	 * Templates locations.
 	 *
 	 * @var array Header templates locations.
 	 */

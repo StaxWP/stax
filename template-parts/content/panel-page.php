@@ -29,7 +29,7 @@ if ( is_404() ) {
 	if ( ! have_posts() ) {
 		$panel_title = __( 'Nothing Found', 'stax' );
 	} elseif ( ! is_front_page() ) {
-		$panel_title = single_post_title();
+		$panel_title = single_post_title( '', false );
 	}
 } elseif ( is_search() ) {
 	$panel_title = sprintf(

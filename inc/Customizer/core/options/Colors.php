@@ -88,7 +88,7 @@ class Colors extends Base_Customizer {
 	/**
 	 * Sanitize Global Colors Setting
 	 *
-	 * @param array $value recieved value.
+	 * @param array $value received value.
 	 * @return array
 	 */
 	public function sanitize_global_colors( $value ) {
