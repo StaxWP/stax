@@ -35,8 +35,6 @@ class Component implements Component_Interface {
 	 * Adds the action and filter hooks to integrate with WordPress.
 	 */
 	public function initialize() {
-
-		$this->tgm_plugins = $this->get_recommended_plugins();
 		/* Load required plugins library */
 		require_once __dir__ . '/lib/class-tgm-plugin-activation.php';
 		add_action( 'tgmpa_register', [ $this, 'required_plugins' ] );
@@ -141,7 +139,7 @@ class Component implements Component_Interface {
 			],
 		];
 
-		tgmpa( $this->tgm_plugins, $config );
+		tgmpa( $this->get_recommended_plugins(), $config );
 	}
 
 }
