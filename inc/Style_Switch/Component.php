@@ -130,16 +130,24 @@ class Component implements Component_Interface {
 	}
 
 	/**
-	 * Thumbnail request from the Stax Panel: the other style for this admin only, without the admin bar.
+	 * Thumbnail request from the Stax Panel: the other style for this admin only (the admin bar is
+	 * covered by CSS so the thumbnail shows the page as visitors see it).
 	 */
 	public function action_thumbnail() {
 		if ( ! $this->get_thumbnail_mode() ) {
 			return;
 		}
 
-		add_filter( 'show_admin_bar', '__return_false' );
 		nocache_headers();
 		$this->action_preview();
+		add_action( 'wp_enqueue_scripts', [ $this, 'action_thumbnail_css' ], 30 );
+	}
+
+	/**
+	 * Thumbnail CSS: no admin bar space.
+	 */
+	public function action_thumbnail_css() {
+		wp_add_inline_style( 'stax-global', 'html:root{margin-top:0!important}#wpadminbar{display:none!important}' );
 	}
 
 	/**
