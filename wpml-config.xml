@@ -1,0 +1,37 @@
+<wpml-config>
+	<!-- Customizer texts that WPML (String Translation) and Polylang can translate. -->
+	<admin-texts>
+		<key name="theme_mods_stax">
+			<key name="footer_copyright_content" />
+			<key name="custom_html_content" />
+			<key name="button_base_text_setting" />
+			<key name="button_base_link_setting" />
+			<key name="header_menu_icon_menu_label" />
+			<key name="header_search_placeholder" />
+			<key name="header_search_responsive_placeholder" />
+		</key>
+	</admin-texts>
+	<custom-fields>
+		<!-- Per post display settings (Stax sidebar in the editor) are copied to translations. -->
+		<custom-field action="copy">stax_block_gap</custom-field>
+		<custom-field action="copy">stax_show_title_section</custom-field>
+		<custom-field action="copy">stax_single_post_audio_panel</custom-field>
+		<custom-field action="copy">stax_single_post_cateory_breadcrumb</custom-field>
+		<custom-field action="copy">stax_single_post_gallery_panel</custom-field>
+		<custom-field action="copy">stax_single_post_gallery_slides</custom-field>
+		<custom-field action="copy">stax_single_post_gallery_width</custom-field>
+		<custom-field action="copy">stax_single_post_image_format</custom-field>
+		<custom-field action="copy">stax_single_post_image_width</custom-field>
+		<custom-field action="copy">stax_single_post_media_panel_height</custom-field>
+		<custom-field action="copy">stax_single_post_media_panel_text</custom-field>
+		<custom-field action="copy">stax_single_post_meta_author_avatar</custom-field>
+		<custom-field action="copy">stax_single_post_meta_author_name</custom-field>
+		<custom-field action="copy">stax_single_post_meta_post_date</custom-field>
+		<custom-field action="copy">stax_single_post_title_align</custom-field>
+		<custom-field action="copy">stax_single_post_title_extra_align</custom-field>
+		<custom-field action="copy">stax_single_post_title_position</custom-field>
+		<custom-field action="copy">stax_single_post_title_size</custom-field>
+		<custom-field action="copy">stax_single_post_video_panel</custom-field>
+		<custom-field action="copy">stax_single_post_video_width</custom-field>
+	</custom-fields>
+</wpml-config>

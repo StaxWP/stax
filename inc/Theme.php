@@ -159,6 +159,7 @@ class Theme {
 			new Load_Template\Component(),
 			new Load_Icon\Component(),
 			new Plugins\Component(),
+			new Compat\Component(),
 		];
 
 		if ( defined( 'JETPACK__VERSION' ) ) {

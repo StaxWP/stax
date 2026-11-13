@@ -63,12 +63,13 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		$breadcrumb_filter = false;
 
+		// SEO plugin breadcrumbs, when enabled in the plugin settings: Yoast SEO, Rank Math, SEOPress.
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			$yoast_breadcrumb = yoast_breadcrumb( '<div class="svq-breadcrumb breadcrumb svq-yoast">', '</div>', 'false' );
-
-			if ( $yoast_breadcrumb ) {
-				$breadcrumb_filter = $yoast_breadcrumb;
-			}
+			$breadcrumb_filter = yoast_breadcrumb( '<div class="svq-breadcrumb breadcrumb svq-yoast">', '</div>', false );
+		} elseif ( function_exists( 'rank_math_get_breadcrumbs' ) ) {
+			$breadcrumb_filter = rank_math_get_breadcrumbs( [ 'wrap_before' => '<div class="svq-breadcrumb breadcrumb svq-rank-math">', 'wrap_after' => '</div>' ] );
+		} elseif ( function_exists( 'seopress_display_breadcrumbs' ) ) {
+			$breadcrumb_filter = seopress_display_breadcrumbs( false );
 		}
 
 		$breadcrumb_filter = apply_filters( 'stax_breadcrumb_data', $breadcrumb_filter );

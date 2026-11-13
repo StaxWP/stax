@@ -1,0 +1,20 @@
+/* LearnDash, LifterLMS and Tutor LMS: theme colors for primary buttons and progress. */
+.llms-button-primary,
+.llms-button-action,
+.learndash-wrapper .ld-button,
+.tutor-btn-primary {
+	background-color: var(--primary-color) !important;
+	border-color: var(--primary-color) !important;
+	color: var(--primary-contrast-color, #000) !important;
+}
+
+.llms-progress .progress-bar-complete,
+.learndash-wrapper .ld-progress .ld-progress-bar .ld-progress-bar-percentage,
+.tutor-progress-value {
+	background-color: var(--link-color) !important;
+}
+
+.llms-sidebar-widget,
+.learndash-wrapper .ld-item-list .ld-item-list-item {
+	border-color: var(--border-color);
+}
